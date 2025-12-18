@@ -1,0 +1,54 @@
+[
+  {
+    "goods_name": "콜드브루라떼",
+    "goods_eng_name": "Coldbrew Latte",
+    "goods_summary": "콜드브루에 고소한 우유를 섞어, 깔끔함과 부드러움을 잡은 라떼.",
+    "goods_description": "591ml 1회 제공량 164.2kcal",
+    "goods_allergy": "우유 고카페인 함유",
+    "goods_fat": "포화지방 5.2g",
+    "goods_sugar": "당류 2.1g",
+    "goods_sodium": "나트륨 54.4mg",
+    "goods_protein": "단백질 9.0g",
+    "goods_caffeine": "카페인 216.7mg",
+    "goods_type": "HOT"
+  },
+  {
+    "goods_name": "콜드브루오리지널",
+    "goods_eng_name": "Coldbrew",
+    "goods_summary": "차가운 물에 장시간 우려내 깔끔한 목넘김을 느낄 수 있는 콜드브루.",
+    "goods_description": "591ml 1회 제공량 10.6kcal",
+    "goods_allergy": "고카페인 함유",
+    "goods_fat": "포화지방 0.0g",
+    "goods_sugar": "당류 0.0g",
+    "goods_sodium": "나트륨 1.5mg",
+    "goods_protein": "단백질 1.0g",
+    "goods_caffeine": "카페인 217.0mg",
+    "goods_type": "HOT"
+  },
+  {
+    "goods_name": "콜드브루라떼",
+    "goods_eng_name": "Coldbrew Latte",
+    "goods_summary": "콜드브루에 고소한 우유를 섞어, 깔끔함과 부드러움을 잡은 라떼.",
+    "goods_description": "591ml 1회 제공량 167.6kcal",
+    "goods_allergy": "우유 고카페인 함유",
+    "goods_fat": "포화지방 4.1g",
+    "goods_sugar": "당류 2.3g",
+    "goods_sodium": "나트륨 35.4mg",
+    "goods_protein": "단백질 7.0g",
+    "goods_caffeine": "카페인 131.7mg",
+    "goods_type": "ICE"
+  },
+  {
+    "goods_name": "콜드브루오리지널",
+    "goods_eng_name": "Coldbrew",
+    "goods_summary": "차가운 물에 장시간 우려내 깔끔한 목넘김을 느낄 수 있는 콜드브루.",
+    "goods_description": "591ml 1회 제공량 7.2kcal",
+    "goods_allergy": "고카페인 함유",
+    "goods_fat": "포화지방 0.0g",
+    "goods_sugar": "당류 0.0g",
+    "goods_sodium": "나트륨 0.4mg",
+    "goods_protein": "단백질 0.8g",
+    "goods_caffeine": "카페인 156.4mg",
+    "goods_type": "ICE"
+  }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "goods_name": "치즈 케익",
+    "goods_eng_name": "Cheese Cake",
+    "goods_summary": "진한 치즈의 맛을 달콤하고 부드럽게 느낄 수 있는 케이크.",
+    "goods_description": "100g 1회 제공량 334kcal",
+    "goods_allergy": "달걀, 우유, 대두, 밀, 이산화황",
+    "goods_fat": "포화지방 15.0g",
+    "goods_sugar": "당류 14g",
+    "goods_sodium": "나트륨 223mg",
+    "goods_protein": "단백질 6g",
+    "goods_caffeine": "카페인 0.0mg",
+    "goods_type": ""
+  },
+  {
+    "goods_name": "초코무스 케익",
+    "goods_eng_name": "Chocolate Mousse Cake",
+    "goods_summary": "달콤한 초콜릿 본연의 맛을 더 진하게 느낄 수 있는 케이크.",
+    "goods_description": "101g 1회 제공량 341kcal",
+    "goods_allergy": "계란, 우유, 대두, 밀, 돼지고기",
+    "goods_fat": "포화지방 14g",
+    "goods_sugar": "당류 24g",
+    "goods_sodium": "나트륨 68mg",
+    "goods_protein": "단백질 4g",
+    "goods_caffeine": "카페인 0.0mg",
+    "goods_type": ""
+  },
+  {
+    "goods_name": "티라미수 케익",
+    "goods_eng_name": "Tiramisu Cake",
+    "goods_summary": "부드러운 치즈 맛과 코코아의 조화로운 향으로 호불호 없이 즐기는 케이크.",
+    "goods_description": "119g 1회 제공량 368kcal",
+    "goods_allergy": "계란, 우유, 대두, 밀, 돼지고기, 아황산류",
+    "goods_fat": "포화지방 17g",
+    "goods_sugar": "당류 20g",
+    "goods_sodium": "나트륨 213mg",
+    "goods_protein": "단백질 6g",
+    "goods_caffeine": "카페인",
+    "goods_type": ""
+  }
+]

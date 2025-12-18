@@ -1,0 +1,28 @@
+[
+  {
+    "goods_name": "메가 엠지씨 스틱 오리지날 아메리카노",
+    "goods_eng_name": "MEGA MGC STICK ORIGINAL AMERICANO",
+    "goods_summary": "예가체프 원두의 레드와인을 연상케 하는 깊은 풍미, 화이트 초콜릿의 고급스런 단 맛에 풍부한 바디감을 더해 밸런스 잡힌 맛을 느낄 수 있는 아메리카노",
+    "goods_description": "6g*5sticks 1회 제공량 20kcal",
+    "goods_allergy": "고카페인 함유",
+    "goods_fat": "포화지방 0g",
+    "goods_sugar": "당류 0g",
+    "goods_sodium": "나트륨 0g",
+    "goods_protein": "단백질 1.0g",
+    "goods_caffeine": "카페인 219.1mg",
+    "goods_type": ""
+  },
+  {
+    "goods_name": "스테비아 케이스",
+    "goods_eng_name": "Stevia case",
+    "goods_summary": "천연 감미료 스테비아 1gx40개입 케이스.",
+    "goods_description": "1g X 40ea 1회 제공량",
+    "goods_allergy": "",
+    "goods_fat": "포화지방",
+    "goods_sugar": "당류",
+    "goods_sodium": "나트륨",
+    "goods_protein": "단백질",
+    "goods_caffeine": "카페인",
+    "goods_type": ""
+  }
+]
