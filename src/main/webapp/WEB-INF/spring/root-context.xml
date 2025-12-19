@@ -11,7 +11,7 @@
 
     <!-- Mapper Interface 읽기 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-      <property name="basePackage" value="com.pcwk.ehr.mapper"></property>
+      <property name="basePackage" value="com.project.doc5.mapper"></property>
     </bean>
     
     

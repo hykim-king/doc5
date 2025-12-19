@@ -23,11 +23,18 @@
 
     <mybatis-version>3.5.16</mybatis-version>
     <mybatis-spring-version>2.1.1</mybatis-spring-version>
+    <gson-version>2.13.1</gson-version>
   </properties>
 
 
   <!-- 의존성 목록 -->
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+    <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>${gson-version}</version>
+    </dependency>
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
     <dependency>
       <groupId>org.springframework</groupId>

@@ -30,4 +30,27 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+  <!-- *.js 확장자 파일의 요청이 오면 default 서블릿을 사용 -->
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.js</url-pattern>
+  </servlet-mapping>
+  
+  <!-- UTF-8 인코딩 -->
+  <filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>
+      org.springframework.web.filter.CharacterEncodingFilter
+    </filter-class>
+
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>        
+    </init-param>       
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>
