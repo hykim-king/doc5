@@ -9,24 +9,24 @@
   <id column="user_id" property="userId"/>
   <result column="name" property="name"/>
   <result column="password" property="password"/>
-  <result column="login" property="login"/>
-  <result column="recommend" property="recommend"/>
-  <result column="email" property="email"/>
+  <result column="phone" property="phone"/>
   <result column="grade" property="grade"/>
   <result column="reg_dt" property="regDt"/>
+  <result column="mod_dt" property="modDt"/>  
+  <result column="privacy_dt" property="privacyDt"/>
   </resultMap>
 
   <insert id="saveAll">
 <![CDATA[       
-INSERT INTO member                              
-SELECT  'pcwk'||level AS user_id,               
+INSERT INTO doc5_member                              
+SELECT  'jamesol'||level||'@paran.com' AS user_id,               
         '이상무'||level AS name,                   
         '4321a' AS password,                    
-        MOD(level,50)+1 AS login,               
-        MOD(level,30)+1 AS recommand,           
-        'jamesol'||level||'@paran.com' AS email,
+        '010-0000-0000' AS phone,
         MOD(level,3)+1 AS grade,                
-        SYSDATE - level AS reg_dt               
+        SYSDATE - level AS reg_dt,
+        NULL,
+        SYSDATE   
   FROM dual                                     
 CONNECT BY LEVEL <=1002      
 ]]>                   
@@ -42,9 +42,6 @@ CONNECT BY LEVEL <=1002
 	      name LIKE #{searchWord}||'%'  
 	    </when>   
 	    <when test="searchDiv != null and searchDiv == '30'">
-	      email LIKE #{searchWord}||'%'  
-	    </when>
-	    <when test="searchDiv != null and searchDiv == '40'">
 	      (user_id LIKE #{searchWord}||'%' 
 	          OR name LIKE #{searchWord}||'%')
 	    </when>
@@ -61,16 +58,14 @@ SELECT A.*, B.*
               tt1.user_id,                                             
               tt1.name,                                                
               tt1.password,                                            
-              tt1.login,                                               
-              tt1.recommend,                                           
-              tt1.email,                                               
+              tt1.phone,                                               
               DECODE(tt1.grade,1,'BASIC', 2, 'SILVER', 3, 'GOLD','UNKNOWN') AS grade,                                              
               TO_CHAR(tt1.reg_dt,'YYYY/MM/DD') reg_dt                  
          FROM (                                                        
                SELECT ROWNUM AS rnum,t1.*                              
                  FROM (                                                
                        SELECT *                                        
-                         FROM member                                   
+                         FROM doc5_member                                   
                        --검색조건
                        -- searchDiv == 10 회원ID,
                        -- searchDiv == 20 이름,
@@ -86,7 +81,7 @@ SELECT A.*, B.*
        ]]>
  ) A CROSS JOIN (                                                      
        SELECT COUNT(*) total_cnt                                       
-         FROM member                                                   
+         FROM doc5_member                                                   
         <include refid="memberWhere"></include>                                           
  ) B                                                                   
   </select>
@@ -96,30 +91,26 @@ SELECT A.*, B.*
       user_id,                                          
       name,                                             
       password,                                         
-      login,                                            
-      recommend,                                        
-      email,                                            
+      phone,                                            
       DECODE(grade,1,'BASIC', 2, 'SILVER', 3, 'GOLD','UNKNOWN') AS grade,                                      
       TO_CHAR(reg_dt,'YYYY/MM/DD HH24:MI:SS')  AS reg_dt
   FROM                                                  
-      member                                            
+      doc5_member                                            
   ORDER BY reg_dt                                       
   </select>
   
   
   <delete id="doDelete" parameterType="UserVO">
-  DELETE FROM member
+  DELETE FROM doc5_member
   WHERE user_id = #{userId} 
   </delete>
   
   <update id="doUpdate">
-  UPDATE member          
+  UPDATE doc5_member          
   SET                    
       name      = #{name},
       password  = #{password},
-      login     = #{login},
-      recommend = #{recommend},
-      email     = #{email},
+      phone     = #{phone},
       grade     = DECODE(#{grade},'BASIC',1
                                  ,'SILVER',2
                                  ,'GOLD',3),
@@ -134,45 +125,41 @@ SELECT A.*, B.*
      user_id,                                           
      name,                                              
      password,                                          
-     login,                                             
-     recommend,                                         
-     email,                                             
+     phone,                                             
      DECODE(grade,1,'BASIC', 2, 'SILVER', 3, 'GOLD') grade,                                             
      TO_CHAR(reg_dt,'YYYY/MM/DD HH24:MI:SS')  AS reg_dt 
     FROM                                                   
-     member
+     doc5_member
    WHERE user_id = #{userId}
   </select>
 
   <!-- MyBatis에서 SQL 실행 결과가 "정수 1건"일 때 사용하는 결과 매핑 설정 -->
   <select id="getCount" resultType="java.lang.Integer">
-    SELECT COUNT(*) AS CNT FROM member
+    SELECT COUNT(*) AS CNT FROM doc5_member
   </select>
   
   <delete id="deleteAll">
-    DELETE FROM member 
+    DELETE FROM doc5_member 
   </delete>
   
   <insert id="doSave" parameterType="UserVO">
-  INSERT INTO member (
+  INSERT INTO doc5_member (
     user_id,
     name,
     password,
-    login,
-    recommend,
-    email,
+    phone,
     grade,
-    reg_dt
+    reg_dt,
+    privacy_dt
   ) VALUES (
     #{userId},
     #{name},
     #{password},
-    #{login},
-    #{recommend},
-    #{email},
+    #{phone},
     DECODE(#{grade},'BASIC',1
                    ,'SILVER',2
                    ,'GOLD',3),
+    SYSDATE,
     SYSDATE
   )
   </insert>

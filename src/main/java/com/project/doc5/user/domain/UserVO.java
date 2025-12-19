@@ -7,15 +7,13 @@ import com.project.doc5.cmn.DTO;
 public class UserVO extends DTO implements Serializable{
 
 	private String userId; // 사용자ID
-	private String name; // 이름
 	private String password;// 비밀번호
-	// -------------------------------
-	private int login;// 로그인
-	private int recommend;// 추천
-	private String email;// 이메일
+	private String name; // 이름
+	private String phone; // 전화번호
 	private Grade grade;// 등급
-
 	private String regDt; // 등록일
+	private String modDt; // 수정일
+	private String privacyDt; // 개인정보취급방침
 
 	// 전역변수
 	// Default 생성자
@@ -27,17 +25,17 @@ public class UserVO extends DTO implements Serializable{
 		super();
 	}
 
-	public UserVO(String userId, String name, String password, int login, int recommend, String email, Grade grade,
-			String regDt) {
+	public UserVO(String userId, String password, String name, String phone, Grade grade, String regDt, String modDt,
+			String privacyDt) {
 		super();
 		this.userId = userId;
-		this.name = name;
 		this.password = password;
-		this.login = login;
-		this.recommend = recommend;
-		this.email = email;
+		this.name = name;
+		this.phone = phone;
 		this.grade = grade;
 		this.regDt = regDt;
+		this.modDt = modDt;
+		this.privacyDt = privacyDt;
 	}
 
 	public String getUserId() {
@@ -48,14 +46,6 @@ public class UserVO extends DTO implements Serializable{
 		this.userId = userId;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getPassword() {
 		return password;
 	}
@@ -64,36 +54,20 @@ public class UserVO extends DTO implements Serializable{
 		this.password = password;
 	}
 
-	public String getRegDt() {
-		return regDt;
+	public String getName() {
+		return name;
 	}
 
-	public void setRegDt(String regDt) {
-		this.regDt = regDt;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public int getLogin() {
-		return login;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setLogin(int login) {
-		this.login = login;
-	}
-
-	public int getRecommend() {
-		return recommend;
-	}
-
-	public void setRecommend(int recommend) {
-		this.recommend = recommend;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public Grade getGrade() {
@@ -104,12 +78,38 @@ public class UserVO extends DTO implements Serializable{
 		this.grade = grade;
 	}
 
+	public String getRegDt() {
+		return regDt;
+	}
+
+	public void setRegDt(String regDt) {
+		this.regDt = regDt;
+	}
+
+	public String getModDt() {
+		return modDt;
+	}
+
+	public void setModDt(String modDt) {
+		this.modDt = modDt;
+	}
+
+	public String getPrivacyDt() {
+		return privacyDt;
+	}
+
+	public void setPrivacyDt(String privacyDt) {
+		this.privacyDt = privacyDt;
+	}
+
 	@Override
 	public String toString() {
-		return "UserVO [userId=" + userId + ", name=" + name + ", password=" + password + ", login=" + login
-				+ ", recommend=" + recommend + ", email=" + email + ", grade=" + grade + ", regDt=" + regDt
-				+ ", toString()=" + super.toString() + "]";
+		return "UserVO [userId=" + userId + ", password=" + password + ", name=" + name + ", phone=" + phone
+				+ ", grade=" + grade + ", regDt=" + regDt + ", modDt=" + modDt + ", privacyDt=" + privacyDt + "]";
 	}
+
+
+	
 
 
 
