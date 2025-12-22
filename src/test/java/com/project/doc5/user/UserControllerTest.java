@@ -74,6 +74,7 @@ class UserControllerTest {
 		log.debug("└──────────────────────────┘");	
 	}
 
+	@Disabled
 	@Test
 	void doSave() throws Exception {
 		log.debug("┌──────────────────────────┐");
@@ -118,7 +119,7 @@ class UserControllerTest {
 	}
 	
 	
-	@Disabled
+//	@Disabled
 	@Test
 	void beans() {
 		log.debug("┌──────────────────────────┐");

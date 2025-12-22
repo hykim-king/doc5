@@ -45,4 +45,12 @@ public interface UserService<T> {
 	 * @throws SQLException
 	 */
 	int doSave(T param);
+	
+	/**
+	 * 로그인 
+	 * 
+	 * @param param
+	 * @return UserVO
+	 */
+	UserVO doUserLogin(T param) ;
 }

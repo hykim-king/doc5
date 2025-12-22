@@ -27,5 +27,5 @@ public interface UserMapper extends WorkDiv<UserVO> {
 	int saveAll();
 
 	// 전체삭제:O
-	int deleteAll();	
+	int deleteAll();
 }

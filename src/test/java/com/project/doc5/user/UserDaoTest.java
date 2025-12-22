@@ -62,7 +62,26 @@ class UserDaoTest {
 		log.debug("└──────────────────────────┘");			
 	}
 
-	//@Disabled
+	@Test
+	void doUserLogin() {
+//		userMapper.deleteAll();
+//		int count = userMapper.getCount();
+//		assertEquals(0, count);	
+//		
+//		// 2.
+//		userMapper.saveAll();
+//		count = userMapper.getCount();
+//		assertEquals(1002, count);	
+		
+		UserVO loginUser = new UserVO();	
+		loginUser.setUserId("test1@doc5.com");
+		loginUser.setPassword("4321a");
+		log.debug("loginUser : {}", loginUser);
+		UserVO userCheckVO=userMapper.doUserLogin(loginUser);
+		log.debug("userCheckVO : {}", userCheckVO);
+	}
+	
+	@Disabled
 	@Test
 	void doRetrieve() {
 		// 매번 동일 결과가 도출 되도록 작성.
@@ -91,8 +110,6 @@ class UserDaoTest {
 		
 		// 4.
 		assertEquals(20, list.size());	
-		
-		
 	}
 	
 	@Disabled

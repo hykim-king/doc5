@@ -19,9 +19,9 @@
   <insert id="saveAll">
 <![CDATA[       
 INSERT INTO doc5_member                              
-SELECT  'jamesol'||level||'@paran.com' AS user_id,               
-        '이상무'||level AS name,                   
-        '4321a' AS password,                    
+SELECT  'test'||level||'@doc5.com' AS user_id,                           
+        '4321a' AS password,      
+        '이상무'||level AS name,                     
         '010-0000-0000' AS phone,
         MOD(level,3)+1 AS grade,                
         SYSDATE - level AS reg_dt,
@@ -163,4 +163,18 @@ SELECT A.*, B.*
     SYSDATE
   )
   </insert>
+  
+  <select id="doUserLogin">
+SELECT                                                 
+     user_id,                                           
+     name,                                              
+     password,                                          
+     phone,                                             
+     DECODE(grade,1,'BASIC', 2, 'SILVER', 3, 'GOLD') grade,                                             
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24:MI:SS')  AS reg_dt,
+     TO_CHAR(privacy_dt,'YYYY/MM/DD HH24:MI:SS')  AS privacy_dt 
+    FROM                                                   
+     doc5_member
+   WHERE user_id = #{userId} AND password = #{password}
+  </select>
 </mapper>

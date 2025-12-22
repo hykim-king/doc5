@@ -50,5 +50,12 @@ public class UserServicelmpl implements UserService<UserVO> {
 	public int doSave(UserVO param) {
 		return userMapper.doSave(param);
 	}
+	
+	@Override
+	public UserVO doUserLogin(UserVO param) {
+		return userMapper.doUserLogin(param);
+	}
+	
+	
 
 }

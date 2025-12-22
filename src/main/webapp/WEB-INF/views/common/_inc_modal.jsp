@@ -125,7 +125,7 @@
       </div>
       <div class="modal-body">
     <main class="form-signin w-100 m-auto">
-      <form>
+      <form action="/user/doLoginCheck.do" method="post">
 		<div style="text-align:center;">
         <img src="/resources/img/doc5_logo.png" class="" style="margin-bottom:60px;width:150px;">
 	   </div>
@@ -133,18 +133,22 @@
         <div class="form-floating">
           <input
             type="email"
+            name="userId"
             class="form-control"
             id="floatingInput"
             placeholder="name@example.com"
+            value="test1@doc5.com"
           />
           <label for="floatingInput">아이디</label>
         </div>
         <div class="form-floating">
           <input
             type="password"
+            name="password"
             class="form-control"
             id="floatingPassword"
             placeholder="Password"
+            value="4321a"
           />
           <label for="floatingPassword">비밀번호</label>
         </div>

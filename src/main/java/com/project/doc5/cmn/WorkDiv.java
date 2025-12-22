@@ -43,4 +43,12 @@ public interface WorkDiv<T> {
 	 * @throws SQLException
 	 */
 	int doSave(T param);
+	
+	/**
+	 * 로그인 
+	 * 
+	 * @param param
+	 * @return
+	 */
+	UserVO doUserLogin(T param);	
 }

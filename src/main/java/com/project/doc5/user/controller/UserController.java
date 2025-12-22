@@ -1,8 +1,16 @@
 package com.project.doc5.user.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,11 +33,60 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
+	
 	public UserController() {
 		super();
 		log.debug("┌──────────────────────────┐");
 		log.debug("│UserController()          │");
 		log.debug("└──────────────────────────┘");	
+	}
+	
+	@PostMapping(value =  "/doLoginCheck.do",produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String doLoginCheck(UserVO param, HttpServletResponse response, final HttpServletRequest request) throws IOException {
+		log.debug("┌──────────────────────────┐");
+		log.debug("│doLoginCheck()            │");
+		log.debug("└──────────────────────────┘");
+		log.debug("1.param:{}",param);
+		
+		
+		log.debug("loginUser : {}", param);
+		UserVO userCheckVO=userService.doUserLogin(param);
+		log.debug("userCheckVO : {}", userCheckVO);
+		
+		String message = "";
+		
+		if(null != userCheckVO.getUserId()) {
+			
+			// 로그인 시 세션 저장
+			HttpSession session = request.getSession();
+			session.setAttribute("userId", userCheckVO.getUserId());// session에 'userId' 속성값 저장
+			session.setMaxInactiveInterval(30*60); // 30분
+
+			String sessionUserId = (String) session.getAttribute("userId");
+			log.debug("┌──────────────────────────┐");
+			log.debug("│sessionUserId()           │"+sessionUserId);
+			log.debug("└──────────────────────────┘");
+			message = userCheckVO.getName() + "님 로그인 완료했습니다.";
+			response.setContentType("text/html; charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>");
+	        out.println("alert('"+message+"');");
+	        out.println("location.href='/';"); //  페이지로 돌아가기
+	        out.println("</script>");
+	        out.flush();
+	        return null; // 스크립트 출력이 끝났으므로 null 반환
+		}else {
+			message = param.getUserId() + " 아이디가 없거나 비밀번호가 틀렸습니다.";
+			response.setContentType("text/html; charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>");
+	        out.println("alert('"+message+"');");
+	        out.println("history.back();"); // 이전 페이지로 돌아가기
+	        out.println("</script>");
+	        out.flush();
+	        return null; // 스크립트 출력이 끝났으므로 null 반환
+		}
 	}
 	
 	@GetMapping(value = "/doSelectOne.do")  
