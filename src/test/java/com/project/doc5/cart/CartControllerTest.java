@@ -1,6 +1,6 @@
-package com.project.doc5.menu;
+package com.project.doc5.cart;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
@@ -17,9 +17,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.project.doc5.cmn.MenuVO;
-import com.project.doc5.mapper.MenuMapper;
-import com.project.doc5.user.domain.UserVO;
+import com.project.doc5.cart.domain.CartOptionVO;
+import com.project.doc5.cart.domain.CartVO;
+import com.project.doc5.mapper.CartMapper;
 
 @WebAppConfiguration
 @ExtendWith(SpringExtension.class)
@@ -27,35 +27,55 @@ import com.project.doc5.user.domain.UserVO;
 		"file:src/main/webapp/WEB-INF/spring/root-context.xml",
 		"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml"
 })
-public class MenuControllerTest {
+class CartControllerTest {
+
 	final Logger log = LogManager.getLogger(getClass());
 	
 	@Autowired
 	WebApplicationContext webApplicationContext;
 	
 	@Autowired
-	MenuMapper menuMapper;
+	CartMapper cartMapper;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		log.debug("┌──────────────────────────┐");
 		log.debug("│──setup───────────────────│");
-		log.debug("└──────────────────────────┘");
+		log.debug("└──────────────────────────┘");		
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		log.debug("┌──────────────────────────┐");
 		log.debug("│─tearDown()               │");
-		log.debug("└──────────────────────────┘");	
+		log.debug("└──────────────────────────┘");		
 	}
 
-	//상품 메뉴 리스트
 	@Test
-	void getMenu() {
-		//3.
-		List<MenuVO> list = menuMapper.getMenuAll();
-		log.debug(list);
+	void cartList() {
+		log.debug("┌──────────────────────────┐");
+		log.debug("│─cartList()               │");
+		log.debug("└──────────────────────────┘");	
+		
+		CartVO cartVO = new CartVO();
+		
+		cartVO.setUserId("test");
+		log.debug("cartvo : {}",cartVO);
+		
+		List<CartVO> list = cartMapper.doCartList(cartVO);
+
+		log.debug("cartList:{}",list);
+		
+		CartOptionVO cartOptionVO = new CartOptionVO();
+		List<CartOptionVO> optionList = null;
+
+		for(CartVO vo : list) {
+			log.debug("seq : {}",vo.getSeq());
+			cartOptionVO.setcSeq(vo.getSeq());
+			log.debug("cartOptionVO : {}",cartOptionVO);
+			optionList = cartMapper.doCartOptionList(cartOptionVO);
+			log.debug("optionList : {}",optionList);
+		}
 	}
 	
 	@Disabled
@@ -66,9 +86,12 @@ public class MenuControllerTest {
 		log.debug("└──────────────────────────┘");	
 		
 		log.debug("webApplicationContext:"+webApplicationContext);
-		log.debug("menuMapper:"+menuMapper);
+		log.debug("cartMapper:"+cartMapper);
+		
 		assertNotNull(webApplicationContext);
-		assertNotNull(menuMapper);
+		assertNotNull(cartMapper);
 		
 	}
+
 }
+

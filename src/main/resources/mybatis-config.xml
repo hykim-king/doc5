@@ -12,5 +12,7 @@
   <typeAliases>
     <typeAlias alias="UserVO" type="com.project.doc5.user.domain.UserVO"/>
     <typeAlias alias="MenuVO" type="com.project.doc5.cmn.MenuVO"/>
+    <typeAlias alias="CartVO" type="com.project.doc5.cart.domain.CartVO"/>
+    <typeAlias alias="CartOptionVO" type="com.project.doc5.cart.domain.CartOptionVO"/>
   </typeAliases>
 </configuration>

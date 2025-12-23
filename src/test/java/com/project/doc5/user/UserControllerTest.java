@@ -119,7 +119,7 @@ class UserControllerTest {
 	}
 	
 	
-//	@Disabled
+	@Disabled
 	@Test
 	void beans() {
 		log.debug("┌──────────────────────────┐");

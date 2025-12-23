@@ -1,4 +1,4 @@
-package com.project.doc5.cmn;
+package com.project.doc5.goods.service;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,7 +8,6 @@ public class Menu {
 
 	public Menu() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	
