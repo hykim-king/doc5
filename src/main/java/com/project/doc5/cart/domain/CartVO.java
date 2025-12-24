@@ -19,7 +19,6 @@ public class CartVO {
 	private String regDt;
 	private String modDt;
 	
-	private int 
 	
 	public CartVO() {
 		super();
@@ -96,7 +95,7 @@ public class CartVO {
 		this.goodsName = goodsName;
 	}
 	
-	public int getGoodsPrice() {
+	public double getGoodsPrice() {
 		return goodsPrice;
 	}
 	
@@ -128,7 +127,7 @@ public class CartVO {
 		this.hotFl = hotFl;
 	}
 	
-	public int getHotPrice() {
+	public double getHotPrice() {
 		return hotPrice;
 	}
 	
@@ -144,7 +143,7 @@ public class CartVO {
 		this.iceFl = iceFl;
 	}
 	
-	public int getIcePrice() {
+	public double getIcePrice() {
 		return icePrice;
 	}
 	

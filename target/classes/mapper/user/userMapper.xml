@@ -19,8 +19,8 @@
   <insert id="saveAll">
 <![CDATA[       
 INSERT INTO doc5_member                              
-SELECT  'test'||level||'@doc5.com' AS user_id,                           
-        '4321a' AS password,      
+SELECT  'doc5_'||level||'@doc5.com' AS user_id,                           
+        'doc5_010' AS password,      
         '이상무'||level AS name,                     
         '010-0000-0000' AS phone,
         MOD(level,3)+1 AS grade,                
@@ -28,7 +28,7 @@ SELECT  'test'||level||'@doc5.com' AS user_id,
         NULL,
         SYSDATE   
   FROM dual                                     
-CONNECT BY LEVEL <=1002      
+CONNECT BY LEVEL <=102      
 ]]>                   
   </insert>
 
