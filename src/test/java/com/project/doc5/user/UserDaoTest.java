@@ -3,7 +3,11 @@ package com.project.doc5.user;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.io.PrintWriter;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -58,14 +62,19 @@ class UserDaoTest {
 	@AfterEach
 	void tearDown() throws Exception {
 		log.debug("┌──────────────────────────┐");
-		log.debug("│─doSelectOne()            │");
+		log.debug("│──tearDown────────────────│");
 		log.debug("└──────────────────────────┘");			
 	}
 
 	//로그인
-	@Disabled
+	//@Disabled
 	@Test
 	void doUserLogin() {
+		//1. 전체삭제
+		//2. 102명 회원 생성
+		//3. 로그인 정보로 회원정보 불러오기
+		//4. 회원정보 있으면 로그
+		
 		userMapper.deleteAll();
 		int count = userMapper.getCount();
 		assertEquals(0, count);	
@@ -75,12 +84,33 @@ class UserDaoTest {
 		count = userMapper.getCount();
 		assertEquals(102, count);	
 		
+		// 3. 
 		UserVO loginUser = new UserVO();	
 		loginUser.setUserId("doc5_1@doc5.com");
 		loginUser.setPassword("doc5_010");
 		log.debug("loginUser : {}", loginUser);
 		UserVO userCheckVO=userMapper.doUserLogin(loginUser);
 		log.debug("userCheckVO : {}", userCheckVO);
+		
+		// 4.
+		log.debug("┌──────────────────────────┐");
+		log.debug("│로그인 완료했습니다            │");
+		log.debug("└──────────────────────────┘");
+		
+	}
+	
+	//로그아웃 
+	@Disabled
+	@Test
+	void doLogOut() {
+		//1. 섹션 삭제
+		// com.project.doc5.user.controller => doLogOut 메서드에 설정완료
+		
+		log.debug("┌──────────────────────────┐");
+		log.debug("│doLogOut()                │");
+		log.debug("└──────────────────────────┘");
+		
+		log.debug("로그아웃 완료했습니다.");
 	}
 	
 	//회원 수정
@@ -135,6 +165,7 @@ class UserDaoTest {
 		isSameUser(upResultVO, outVO);		
 	}
 	
+	//회원가입 
 	@Disabled
 	@Test
 	void doSave() {

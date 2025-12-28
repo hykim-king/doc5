@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.doc5.mapper.BoardMapper">
+	<delete id="doDelete" parameterType="BoardVO">
+	DELETE FROM doc5_board_notice
+	WHERE seq = #{seq}
+	</delete>
+	
+	<update id="updateReadCnt">
+	UPDATE doc5_board_notice
+	SET
+	 	view_cnt = NVL(view_cnt,0)+1
+	WHERE 
+	    seq = #{seq}
+	</update>
+	
+	<sql id="boardWhere">
+        <choose>
+        	<when test=" null != searchDiv AND '10' == searchDiv  ">
+        		AND subject LIKE '%'||#{searchWord}||'%'
+        	</when>
+        	<when test=" null != searchDiv AND '20' == searchDiv  ">
+        		AND contents LIKE '%'||#{searchWord}||'%'
+        	</when>		
+        	<when test=" null != searchDiv AND '30' == searchDiv  ">
+        	    AND ( subject LIKE '%'||#{searchWord}||'%'
+        	          OR 
+        	          contents LIKE '%'||#{searchWord}||'%')
+        	</when>   
+        </choose>   
+   
+   </sql>
+	<select id="doRetrieve" parameterType="com.project.doc5.cmn.DTO" resultType="BoardVO">
+	SELECT A.*,B.*
+     FROM(
+		SELECT tt1.rnum as no,
+		       tt1.seq,
+		       tt1.contents,
+		       tt1.view_cnt,
+		       tt1.mod_id,
+		       DECODE(TO_CHAR(SYSDATE,'YYYY/MM/DD'),TO_CHAR(mod_dt,'YYYY/MM/DD')
+		                                           ,TO_CHAR(mod_dt,'HH24:MI')
+		                                           ,TO_CHAR(mod_dt,'YYYY/MM/DD')) AS mod_dt
+		FROM (
+		    SELECT ROWNUM AS rnum, t1.*
+		    FROM (
+		        SELECT *
+		          FROM board
+		         --WHERE 
+		         --제목 : 10
+		         --내용 : 20
+		         --제목 + 내용 : 30
+		         WHERE 1=1
+		         <include refid="boardWhere"></include>
+		         ORDER BY mod_dt DESC
+		    )T1 
+		    WHERE ROWNUM <![CDATA[ <= ]]>  (#{pageSize} * (#{pageNo} - 1) + #{pageSize}) 
+		)TT1
+		WHERE TT1.RNUM  <![CDATA[ >= ]]>   (#{pageSize} * (#{pageNo} - 1) + 1)      
+    ) A
+    CROSS JOIN
+    (
+		SELECT COUNT(*) total_cnt 
+		  FROM BOARD    
+		  --WHERE 
+         WHERE 1=1
+		 <include refid="boardWhere"></include>		  
+    ) B
+	</select>
+	<insert id="saveAll">
+	INSERT INTO doc5_board_notice
+		SELECT bn_seq.NEXTVAL AS seq,
+	       '제목'||LEVEL AS subject ,
+	       '내용'||LEVEL AS contents,
+	       0,
+	       SYSDATE,
+	       'ADMIN' AS reg_id,
+	       SYSDATE,
+	       'ADMIN' AS mod_id
+		FROM dual
+		CONNECT BY LEVEL <![CDATA[ <= ]]> 1002      
+	</insert>
+	
+	<select id="doSelectOne" parameterType="BoardVO" resultType="BoardVO">
+	SELECT
+	    seq,
+	    subject,
+	    contents,
+	    view_cnt,
+	    reg_dt,
+	    reg_id,
+	    mod_dt,
+	    mod_id
+	FROM
+	    doc5_board_notice
+    WHERE seq = #{seq}
+	</select>
+	
+	<insert id="doSave">
+	<selectKey keyProperty="seq" order="BEFORE" resultType="int">
+		SELECT bn_seq.NEXTVAL FROM dual
+	</selectKey>
+	INSERT INTO doc5_board_notice (
+	    seq,
+	    subject,
+	    contents,
+	    view_cnt,
+	    reg_dt,
+	    reg_id,
+	    mod_dt,
+	    mod_id
+	) VALUES ( 
+		#{seq},
+        #{subject},
+        #{contents},
+        0,
+        SYSDATE,
+        #{regId},
+        SYSDATE,
+        #{modId}
+    )
+	</insert>
+	
+	<select id="getCount" resultType="int">
+	SELECT COUNT(*) FROM doc5_board_notice
+	</select>
+	
+	<delete id="deleteAll">
+	DELETE FROM doc5_board_notice
+	</delete>
+</mapper>

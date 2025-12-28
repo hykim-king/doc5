@@ -33,7 +33,7 @@ public interface WorkDiv<T> {
 	 * @param param
 	 * @return UserVO
 	 */
-	UserVO doSelectOne(T param) ;
+	T doSelectOne(T param) ;
 
 	/**
 	 * 단건저장
@@ -44,11 +44,4 @@ public interface WorkDiv<T> {
 	 */
 	int doSave(T param);
 	
-	/**
-	 * 로그인 
-	 * 
-	 * @param param
-	 * @return
-	 */
-	UserVO doUserLogin(T param);	
 }

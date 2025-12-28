@@ -72,7 +72,8 @@
     <!-- Connection Pool -->
     <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
       <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-      <property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.100.30:1522:xe"></property>
+      <!-- <property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.100.30:1522:xe"></property> -->
+      <property name="jdbcUrl" value="jdbc:oracle:thin:@218.144.130.138:1522:xe"></property>
       <property name="username" value="doc5_p2"></property>
       <property name="password" value="0916"></property>
       

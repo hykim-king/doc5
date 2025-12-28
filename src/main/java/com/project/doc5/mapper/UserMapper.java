@@ -28,4 +28,7 @@ public interface UserMapper extends WorkDiv<UserVO> {
 
 	// 전체삭제:O
 	int deleteAll();
+	
+	// 로그인 
+	UserVO doUserLogin(UserVO param);
 }

@@ -227,5 +227,5 @@
 
 		</div>
 	</div>
-<%@ include file="/WEB-INF/views/common/footer/footer.jsp" %>
+<%@ include file="/WEB-INF/views/common/footer/footer_order.jsp" %>
 <script src="/resources/js/goods_view.js"></script>

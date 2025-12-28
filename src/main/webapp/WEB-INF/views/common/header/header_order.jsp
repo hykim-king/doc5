@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+	
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
 <%
+String userId = (String) session.getAttribute("userId");
+
+
+
 String cate=request.getParameter("cate");
 if (cate == null || "null".equals(cate)){
 	cate = "m_rec";
@@ -100,7 +105,7 @@ switch(cate){
 
 
 	<!-- swiper -->
-	<link rel="stylesheet" type="text/css" href="https://img.79plus.co.kr/megahp/common/css/swiper.min.css?ver=202508271045">
+	<link rel="stylesheet" type="text/css" href="https://img.79plus.co.kr/megahp/common/css/swiper.min.css">
 	<script type="text/javascript" src="https://img.79plus.co.kr/megahp/common/js/swiper.min.js"></script>
 	
 <script src="/resources/js/assets/dist/js/bootstrap.bundle.min.js"></script>
@@ -121,14 +126,22 @@ switch(cate){
 					</div>
 				</div>
 				<div class="head_title">
-					DOC5 오더
+					<img src="/resources/img/5p_order.png" class="top_5doc_order_icon">
 				</div>
 				
 				<div class="mobile_top_icon_wrap" >
+				<c:choose>
+				    <c:when test="${userId != null}">
+				    	<div>.<button class="top_mypage" data-bs-toggle="modal" data-bs-target="#mMypage" title="마이페이지"><span>마이페이지</span></button></div>
+				    </c:when>
+				    <c:otherwise>
+				        <div><button class="top_login" data-bs-toggle="modal" data-bs-target="#mlogin" title="로그인"><span>Login</span></button></div>
+				    </c:otherwise>
+				</c:choose>
                          <div><button class="top_search bn_srch" data-bs-toggle="modal" data-bs-target="#mSearch" title="검색"><span>검색</span></button></div>
 					<!--로그인 중 일시 마이페이지 보기-->
-					<div><button class="top_login" data-bs-toggle="modal" data-bs-target="#mlogin" title="로그인"><span>Login</span></button></div>
-					<!--<div><button class="top_login" data-bs-toggle="modal" data-bs-target="#mMypage" title="마이페이지"><span>마이페이지</span></button></div>-->
+
+
                          
 				</div>
 			</div>
@@ -138,13 +151,12 @@ switch(cate){
 					<div class="swiper-wrapper">
 						<div data-num="0" class="swiper-slide <% if(cate.equals("m_rec")){ %>on<%}%>"><a href="./goodsList?cate=m_rec">추천</a></div>
 						<div data-num="1" class="swiper-slide <% if(cate.equals("new")){ %>on<%}%>"><a href="./goodsList?cate=new">신메뉴</a></div>
-						<div data-num="2" class="swiper-slide <% if(cate.equals("rec")){ %>on<%}%>"><a href="./goodsList?cate=rec">추천메뉴</a></div>
-						<div data-num="3" class="swiper-slide <% if(cate.equals("001")){ %>on<%}%>"><a href="./goodsList?cate=001">커피</a></div>
-						<div data-num="4" class="swiper-slide <% if(cate.equals("002")){ %>on<%}%>"><a href="./goodsList?cate=002">디카페인</a></div>
-						<div data-num="5" class="swiper-slide <% if(cate.equals("003")){ %>on<%}%>"><a href="./goodsList?cate=003">음료</a></div>
-						<div data-num="6" class="swiper-slide <% if(cate.equals("004")){ %>on<%}%>"><a href="./goodsList?cate=004">티</a></div>
-						<div data-num="7" class="swiper-slide <% if(cate.equals("005")){ %>on<%}%>"><a href="./goodsList?cate=005">푸드</a></div>
-						<div data-num="8" class="swiper-slide <% if(cate.equals("006")){ %>on<%}%>"><a href="./goodsList?cate=006">상품</a></div>
+						<div data-num="2" class="swiper-slide <% if(cate.equals("001")){ %>on<%}%>"><a href="./goodsList?cate=001">커피</a></div>
+						<div data-num="3" class="swiper-slide <% if(cate.equals("002")){ %>on<%}%>"><a href="./goodsList?cate=002">디카페인</a></div>
+						<div data-num="4" class="swiper-slide <% if(cate.equals("003")){ %>on<%}%>"><a href="./goodsList?cate=003">음료</a></div>
+						<div data-num="5" class="swiper-slide <% if(cate.equals("004")){ %>on<%}%>"><a href="./goodsList?cate=004">티</a></div>
+						<div data-num="6" class="swiper-slide <% if(cate.equals("005")){ %>on<%}%>"><a href="./goodsList?cate=005">푸드</a></div>
+						<div data-num="7" class="swiper-slide <% if(cate.equals("006")){ %>on<%}%>"><a href="./goodsList?cate=006">상품</a></div>
 					</div>
 				</div>
 			</div>

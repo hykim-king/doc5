@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import com.project.doc5.cmn.DTO;
 
-public class UserVO extends DTO implements Serializable{
+public class UserVO extends DTO implements Serializable {
 
 	private String userId; // 사용자ID
 	private String password;// 비밀번호
@@ -107,10 +107,5 @@ public class UserVO extends DTO implements Serializable{
 		return "UserVO [userId=" + userId + ", password=" + password + ", name=" + name + ", phone=" + phone
 				+ ", grade=" + grade + ", regDt=" + regDt + ", modDt=" + modDt + ", privacyDt=" + privacyDt + "]";
 	}
-
-
-	
-
-
 
 }

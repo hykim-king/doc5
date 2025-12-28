@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+
+
 <!-- The Modal Start-->
  <!-- 통합검색 Modal - FullPage -->
 <div class="modal fade up" id="mSearch">
@@ -42,6 +45,25 @@
 			<!-- Modal Header -->
 			<div class="modal-header">
 			<h4 class="modal-title">마이페이지</h4>
+			<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+			Modal body..
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 공지사항  Modal - FullPage -->
+<div class="modal fade up" id="mNoticeBoard">
+	<div class="modal-dialog modal-fullscreen">
+		<div class="modal-content">
+			
+			<!-- Modal Header -->
+			<div class="modal-header">
+			<h4 class="modal-title">공지사항</h4>
 			<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 			</div>
 
@@ -103,11 +125,14 @@
 				<div class="fullpage-menu">
 					<ul>
 						<li><a href="#.">주문내역</a></li>
-						<li><a href="#.">스탬프</a></li>
-						<li><a href="#.">공지사항</a></li>
+						<!-- <li><a href="#.">스탬프</a></li> -->
+						<li><a href="#." data-bs-toggle="modal" data-bs-target="#mNoticeBoard"  title="공지사항">공지사항</a></li>
 						<li><a href="#.">이용안내</a></li>
 						<li><a href="#.">자주묻는 질문</a></li>
 						<li><a href="#.">약관 및 정책서</a></li>
+						<c:if test="${userId != null}">
+  							<li><a href="/user/doLogOut.do">로그아웃 </a></li>
+						</c:if>
 					</ul>
 				</div>
 			</div>
@@ -137,7 +162,7 @@
             class="form-control"
             id="floatingInput"
             placeholder="name@example.com"
-            value="test1@doc5.com"
+            value="doc5_1@doc5.com"
           />
           <label for="floatingInput">아이디</label>
         </div>
@@ -148,16 +173,15 @@
             class="form-control"
             id="floatingPassword"
             placeholder="Password"
-            value="4321a"
+            value="doc5_010"
           />
           <label for="floatingPassword">비밀번호</label>
         </div>
         
-        <button class="btn btn-primary w-100 py-2" type="button" id="loginSubmit">
-          로그인 하기
-        </button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">로그인 하기</button>
         <p class="mt-5 mb-3 text-body-secondary">&copy; PROJECT02 DOC5 TEAM.</p>
       </form>
+      
     </main>
       </div>
     </div>

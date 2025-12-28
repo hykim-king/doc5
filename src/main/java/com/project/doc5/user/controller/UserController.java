@@ -10,13 +10,11 @@ import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -41,8 +39,61 @@ public class UserController {
 		log.debug("└──────────────────────────┘");	
 	}
 	
+	
+	/**
+	 * 로그 아웃 
+	 * @param response
+	 * @param request
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping(value =  "/doLogOut.do")
+//	@ResponseBody
+	public String doLogOut(HttpServletResponse response, final HttpServletRequest request) throws IOException {
+		log.debug("┌──────────────────────────┐");
+		log.debug("│doLogOut()                │");
+		log.debug("└──────────────────────────┘");
+		
+		String message = "";
+		
+		HttpSession session = request.getSession();
+		
+		if(null != session.getAttribute("userId")) {
+			
+			session.setAttribute("userId",null);
+			
+			message = "로그아웃 완료했습니다.";
+			response.setContentType("text/html; charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>");
+	        out.println("alert('"+message+"');");
+	        out.println("location.href='/';"); //  페이지로 돌아가기
+	        out.println("</script>");
+	        out.flush();
+	        return null; // 스크립트 출력이 끝났으므로 null 반환
+		}else {
+			message = "잘못된 접근입니다.";
+			response.setContentType("text/html; charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>");
+	        out.println("alert('"+message+"');");
+	        out.println("history.back();"); // 이전 페이지로 돌아가기
+	        out.println("</script>");
+	        out.flush();
+	        return null; // 스크립트 출력이 끝났으므로 null 반환
+		}
+	}
+	
+	/**
+	 * 로그인 
+	 * @param param
+	 * @param response
+	 * @param request
+	 * @return
+	 * @throws IOException
+	 */
 	@PostMapping(value =  "/doLoginCheck.do",produces = "text/plain;charset=UTF-8")
-	@ResponseBody
+//	@ResponseBody
 	public String doLoginCheck(UserVO param, HttpServletResponse response, final HttpServletRequest request) throws IOException {
 		log.debug("┌──────────────────────────┐");
 		log.debug("│doLoginCheck()            │");
@@ -50,14 +101,14 @@ public class UserController {
 		log.debug("1.param:{}",param);
 		
 		
-		log.debug("loginUser : {}", param);
+		log.debug("2.loginUser : {}", param);
+		
 		UserVO userCheckVO=userService.doUserLogin(param);
-		log.debug("userCheckVO : {}", userCheckVO);
+		log.debug("3.userCheckVO : {}", userCheckVO);
 		
 		String message = "";
 		
-		if(null != userCheckVO.getUserId()) {
-			
+		if(null != userCheckVO) {
 			// 로그인 시 세션 저장
 			HttpSession session = request.getSession();
 			session.setAttribute("userId", userCheckVO.getUserId());// session에 'userId' 속성값 저장

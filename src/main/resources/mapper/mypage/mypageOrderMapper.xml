@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.doc5.mapper.mypageOrderMapper">
+	<select id="doSelectOne" parameterType="MypageOrderVO" resultType="MypageOrderVO">
+	SELECT
+	    order_no,
+	    branch_code,
+	    order_name,
+	    goods_total_cnt,
+	    settle_total_price,
+	    goods_total_price,
+	    option_total_price,
+	    settel_kind,
+	    order_step,
+	    reg_dt,
+	    mod_dt
+	FROM
+	    doc5_order
+    WHERE seq = #{orderNo}
+	</select>
+	
+	<insert id="doSave">
+	<!-- <selectKey keyProperty="orderNo" order="BEFORE" resultType="String">
+		SELECT TO_CHAR(SYSTIMESTAMP,'YYYYMMDDHH24MISSFF') FROM dual
+	</selectKey> -->
+	INSERT INTO doc5_order (
+	    order_no,
+	    branch_code,
+	    order_name,
+	    goods_total_cnt,
+	    settle_total_price,
+	    goods_total_price,
+	    option_total_price,
+	    settel_kind,
+	    order_step,
+	    reg_dt,
+	    mod_dt
+	) VALUES ( 
+		#{orderNo},
+        #{branchCode},
+        #{orderName},
+        #{goodsTotalCnt},
+        #{settleTotalPrice},
+        #{goodsTotalPrice},
+        #{optionTotalPrice},
+        #{settelKind},
+        #{orderStep},
+        #{regDt},
+        #{modDt}
+    );
+	</insert>
+	
+	<select id="getCount" resultType="int">
+	SELECT COUNT(*) FROM doc5_order
+	</select>
+	
+	<delete id="deleteAll">
+	DELETE FROM doc5_order
+	</delete>
+
+</mapper>
