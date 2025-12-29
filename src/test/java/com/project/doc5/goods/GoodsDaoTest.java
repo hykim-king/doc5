@@ -109,7 +109,7 @@ class GoodsDaoTest {
 	}
 	
 	
-	@Disabled
+	//@Disabled
 	@Test
 	void doSelectGoodsCategory() {
 		log.debug("┌──────────────────────────┐");

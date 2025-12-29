@@ -123,7 +123,7 @@ class MypageDaoTest {
 	
 	
 	// 주문 리스트
-	@Disabled
+	//@Disabled
 	@Test
 	void doRetrieve() {
 		log.debug("┌──────────────────────────┐");

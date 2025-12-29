@@ -14183,3 +14183,210 @@ Caused by: java.net.ConnectException: Connection refused: connect
 [2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - └──────────────────────────┘
 [2025-12-29 15:36:56] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 [2025-12-29 15:36:56] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+[2025-12-29 16:05:58] [INFO ] org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[2025-12-29 16:05:58] [INFO ] org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@55cb6996, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1807e3f6, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@480d3575, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@f1da57d, org.springframework.test.context.support.DirtiesContextTestExecutionListener@194fad1, org.springframework.test.context.transaction.TransactionalTestExecutionListener@26abb146, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@72c8e7b, org.springframework.test.context.event.EventPublishingTestExecutionListener@65f8f5ae]
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\com\project\doc5\mapper\BoardMapper.class]
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\com\project\doc5\mapper\CartMapper.class]
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\com\project\doc5\mapper\GoodsMapper.class]
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\com\project\doc5\mapper\MenuMapper.class]
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\com\project\doc5\mapper\MypageCartMapper.class]
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\com\project\doc5\mapper\MypageOrderMapper.class]
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\com\project\doc5\mapper\UserMapper.class]
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'boardMapper' and 'com.project.doc5.mapper.BoardMapper' mapperInterface
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'boardMapper'.
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'cartMapper' and 'com.project.doc5.mapper.CartMapper' mapperInterface
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'cartMapper'.
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'goodsMapper' and 'com.project.doc5.mapper.GoodsMapper' mapperInterface
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'goodsMapper'.
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'menuMapper' and 'com.project.doc5.mapper.MenuMapper' mapperInterface
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'menuMapper'.
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'mypageCartMapper' and 'com.project.doc5.mapper.MypageCartMapper' mapperInterface
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'mypageCartMapper'.
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'mypageOrderMapper' and 'com.project.doc5.mapper.MypageOrderMapper' mapperInterface
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'mypageOrderMapper'.
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'userMapper' and 'com.project.doc5.mapper.UserMapper' mapperInterface
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'userMapper'.
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\mapper\board\boardMapper.xml]'
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\mapper\cart\cartMapper.xml]'
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\mapper\cmn\menuMapper.xml]'
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\mapper\goods\goodsMapper.xml]'
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\mapper\mypage\mypageCartMapper.xml]'
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\mapper\mypage\mypageOrderMapper.xml]'
+[2025-12-29 16:05:58] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\mapper\user\userMapper.xml]'
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.board.contorller.BoardContorller - ┌──────────────────────────┐
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.board.contorller.BoardContorller - │BoardContorller()         │
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.board.contorller.BoardContorller - └──────────────────────────┘
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.board.service.BoardServiceImpl - ┌──────────────────────────┐
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.board.service.BoardServiceImpl - │BoardServiceImpl()        │
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.board.service.BoardServiceImpl - └──────────────────────────┘
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.controller.UserController - ┌──────────────────────────┐
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.controller.UserController - │UserController()          │
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.controller.UserController - └──────────────────────────┘
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.service.UserServicelmpl - ┌──────────────────────────┐
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.service.UserServicelmpl - │UserServicelmpl()         │
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.service.UserServicelmpl - └──────────────────────────┘
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - ┌──────────────────────────┐
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - │──setup───────────────────│
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - └──────────────────────────┘
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ece1e79] was not registered for synchronization because synchronization is not active
+[2025-12-29 16:05:59] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[2025-12-29 16:05:59] [WARN ] com.zaxxer.hikari.util.DriverDataSource - Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+[2025-12-29 16:05:59] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@839552703 wrapping oracle.jdbc.driver.T4CConnection@213bd3d5] will not be managed by Spring
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.deleteAll - ==>  Preparing: DELETE FROM doc5_member
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.deleteAll - ==> Parameters: 
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.deleteAll - <==    Updates: 105
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ece1e79]
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5624657a] was not registered for synchronization because synchronization is not active
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@83534488 wrapping oracle.jdbc.driver.T4CConnection@213bd3d5] will not be managed by Spring
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.getCount - ==>  Preparing: SELECT COUNT(*) AS CNT FROM doc5_member
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.getCount - ==> Parameters: 
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.getCount - <==      Total: 1
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5624657a]
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1cf0cacc] was not registered for synchronization because synchronization is not active
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@83210381 wrapping oracle.jdbc.driver.T4CConnection@213bd3d5] will not be managed by Spring
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.saveAll - ==>  Preparing: INSERT INTO doc5_member SELECT 'doc5_'||level||'@doc5.com' AS user_id, 'doc5_010' AS password, '이상무'||level AS name, '010-0000-0000' AS phone, MOD(level,3)+1 AS grade, SYSDATE - level AS reg_dt, NULL, SYSDATE FROM dual CONNECT BY LEVEL <=102
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.saveAll - ==> Parameters: 
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.saveAll - <==    Updates: 102
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1cf0cacc]
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@529c2a9a] was not registered for synchronization because synchronization is not active
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1015545330 wrapping oracle.jdbc.driver.T4CConnection@213bd3d5] will not be managed by Spring
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.getCount - ==>  Preparing: SELECT COUNT(*) AS CNT FROM doc5_member
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.getCount - ==> Parameters: 
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.getCount - <==      Total: 1
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@529c2a9a]
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - loginUser : UserVO [userId=doc5_1@doc5.com, password=doc5_010, name=null, phone=null, grade=null, regDt=null, modDt=null, privacyDt=null]
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4601203a] was not registered for synchronization because synchronization is not active
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@135002781 wrapping oracle.jdbc.driver.T4CConnection@213bd3d5] will not be managed by Spring
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doUserLogin - ==>  Preparing: SELECT user_id, name, password, phone, DECODE(grade,1,'BASIC', 2, 'SILVER', 3, 'GOLD') grade, TO_CHAR(reg_dt,'YYYY/MM/DD HH24:MI:SS') AS reg_dt, TO_CHAR(privacy_dt,'YYYY/MM/DD HH24:MI:SS') AS privacy_dt FROM doc5_member WHERE user_id = ? AND password = ?
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doUserLogin - ==> Parameters: doc5_1@doc5.com(String), doc5_010(String)
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doUserLogin - <==      Total: 1
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4601203a]
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - userCheckVO : UserVO [userId=doc5_1@doc5.com, password=doc5_010, name=이상무1, phone=010-0000-0000, grade=SILVER, regDt=2025/12/28 16:05:58, modDt=null, privacyDt=2025/12/29 16:05:58]
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - ┌──────────────────────────┐
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - │로그인 완료했습니다            │
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - └──────────────────────────┘
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - ┌──────────────────────────┐
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - │──tearDown────────────────│
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - └──────────────────────────┘
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - ┌──────────────────────────┐
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - │──setup───────────────────│
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - └──────────────────────────┘
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7d78f3d5] was not registered for synchronization because synchronization is not active
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@172711139 wrapping oracle.jdbc.driver.T4CConnection@213bd3d5] will not be managed by Spring
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.deleteAll - ==>  Preparing: DELETE FROM doc5_member
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.deleteAll - ==> Parameters: 
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.deleteAll - <==    Updates: 102
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7d78f3d5]
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@f5b6e78] was not registered for synchronization because synchronization is not active
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1263455953 wrapping oracle.jdbc.driver.T4CConnection@213bd3d5] will not be managed by Spring
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doSave - ==>  Preparing: INSERT INTO doc5_member ( user_id, name, password, phone, grade, reg_dt, privacy_dt ) VALUES ( ?, ?, ?, ?, DECODE(?,'BASIC',1 ,'SILVER',2 ,'GOLD',3), SYSDATE, SYSDATE )
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doSave - ==> Parameters: doc5_01@doc5.com(String), 독오01(String), doc5_010(String), 010-0000-0000(String), BASIC(String)
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doSave - <==    Updates: 1
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@f5b6e78]
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@71926a36] was not registered for synchronization because synchronization is not active
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@560897187 wrapping oracle.jdbc.driver.T4CConnection@213bd3d5] will not be managed by Spring
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.getCount - ==>  Preparing: SELECT COUNT(*) AS CNT FROM doc5_member
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.getCount - ==> Parameters: 
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.getCount - <==      Total: 1
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@71926a36]
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@48976e6d] was not registered for synchronization because synchronization is not active
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@708214419 wrapping oracle.jdbc.driver.T4CConnection@213bd3d5] will not be managed by Spring
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doSelectOne - ==>  Preparing: SELECT user_id, name, password, phone, DECODE(grade,1,'BASIC', 2, 'SILVER', 3, 'GOLD') grade, TO_CHAR(reg_dt,'YYYY/MM/DD HH24:MI:SS') AS reg_dt FROM doc5_member WHERE user_id = ?
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doSelectOne - ==> Parameters: doc5_01@doc5.com(String)
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doSelectOne - <==      Total: 1
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@48976e6d]
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - ┌──────────────────────────┐
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - │──tearDown────────────────│
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - └──────────────────────────┘
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - ┌──────────────────────────┐
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - │──setup───────────────────│
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - └──────────────────────────┘
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - ┌──────────────────────────┐
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - │doLogOut()                │
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - └──────────────────────────┘
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - 로그아웃 완료했습니다.
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - ┌──────────────────────────┐
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - │──tearDown────────────────│
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - └──────────────────────────┘
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - ┌──────────────────────────┐
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - │──setup───────────────────│
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - └──────────────────────────┘
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@76332405] was not registered for synchronization because synchronization is not active
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@410931765 wrapping oracle.jdbc.driver.T4CConnection@213bd3d5] will not be managed by Spring
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.deleteAll - ==>  Preparing: DELETE FROM doc5_member
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.deleteAll - ==> Parameters: 
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.deleteAll - <==    Updates: 1
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@76332405]
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@d1d8e1a] was not registered for synchronization because synchronization is not active
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1412752396 wrapping oracle.jdbc.driver.T4CConnection@213bd3d5] will not be managed by Spring
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.getCount - ==>  Preparing: SELECT COUNT(*) AS CNT FROM doc5_member
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.getCount - ==> Parameters: 
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.getCount - <==      Total: 1
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@d1d8e1a]
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@514de325] was not registered for synchronization because synchronization is not active
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@818010696 wrapping oracle.jdbc.driver.T4CConnection@213bd3d5] will not be managed by Spring
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doSave - ==>  Preparing: INSERT INTO doc5_member ( user_id, name, password, phone, grade, reg_dt, privacy_dt ) VALUES ( ?, ?, ?, ?, DECODE(?,'BASIC',1 ,'SILVER',2 ,'GOLD',3), SYSDATE, SYSDATE )
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doSave - ==> Parameters: doc5_01@doc5.com(String), 독오01(String), doc5_010(String), 010-0000-0000(String), BASIC(String)
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doSave - <==    Updates: 1
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@514de325]
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@43a65cd8] was not registered for synchronization because synchronization is not active
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1058994646 wrapping oracle.jdbc.driver.T4CConnection@213bd3d5] will not be managed by Spring
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.getCount - ==>  Preparing: SELECT COUNT(*) AS CNT FROM doc5_member
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.getCount - ==> Parameters: 
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.getCount - <==      Total: 1
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@43a65cd8]
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3fd9e827] was not registered for synchronization because synchronization is not active
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1315447704 wrapping oracle.jdbc.driver.T4CConnection@213bd3d5] will not be managed by Spring
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doSave - ==>  Preparing: INSERT INTO doc5_member ( user_id, name, password, phone, grade, reg_dt, privacy_dt ) VALUES ( ?, ?, ?, ?, DECODE(?,'BASIC',1 ,'SILVER',2 ,'GOLD',3), SYSDATE, SYSDATE )
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doSave - ==> Parameters: doc5_02@doc5.com(String), 독오02(String), doc5_010(String), 010-0000-0000(String), SILVER(String)
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doSave - <==    Updates: 1
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3fd9e827]
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@24a86066] was not registered for synchronization because synchronization is not active
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1413491716 wrapping oracle.jdbc.driver.T4CConnection@213bd3d5] will not be managed by Spring
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.getCount - ==>  Preparing: SELECT COUNT(*) AS CNT FROM doc5_member
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.getCount - ==> Parameters: 
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.getCount - <==      Total: 1
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@24a86066]
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c5ddccd] was not registered for synchronization because synchronization is not active
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@31184256 wrapping oracle.jdbc.driver.T4CConnection@213bd3d5] will not be managed by Spring
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doSelectOne - ==>  Preparing: SELECT user_id, name, password, phone, DECODE(grade,1,'BASIC', 2, 'SILVER', 3, 'GOLD') grade, TO_CHAR(reg_dt,'YYYY/MM/DD HH24:MI:SS') AS reg_dt FROM doc5_member WHERE user_id = ?
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doSelectOne - ==> Parameters: doc5_01@doc5.com(String)
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doSelectOne - <==      Total: 1
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c5ddccd]
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@47d023b7] was not registered for synchronization because synchronization is not active
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1552133633 wrapping oracle.jdbc.driver.T4CConnection@213bd3d5] will not be managed by Spring
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doUpdate - ==>  Preparing: UPDATE doc5_member SET name = ?, password = ?, phone = ?, grade = DECODE(?,'BASIC',1 ,'SILVER',2 ,'GOLD',3), reg_dt = SYSDATE WHERE user_id = ?
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doUpdate - ==> Parameters: 독오01_U(String), doc5_010_U(String), 010-1111-1111(String), SILVER(String), doc5_01@doc5.com(String)
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doUpdate - <==    Updates: 1
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@47d023b7]
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d64c100] was not registered for synchronization because synchronization is not active
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1775525066 wrapping oracle.jdbc.driver.T4CConnection@213bd3d5] will not be managed by Spring
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doSelectOne - ==>  Preparing: SELECT user_id, name, password, phone, DECODE(grade,1,'BASIC', 2, 'SILVER', 3, 'GOLD') grade, TO_CHAR(reg_dt,'YYYY/MM/DD HH24:MI:SS') AS reg_dt FROM doc5_member WHERE user_id = ?
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doSelectOne - ==> Parameters: doc5_01@doc5.com(String)
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.mapper.UserMapper.doSelectOne - <==      Total: 1
+[2025-12-29 16:05:59] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d64c100]
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - ┌──────────────────────────┐
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - │──tearDown────────────────│
+[2025-12-29 16:05:59] [DEBUG] com.project.doc5.user.UserDaoTest - └──────────────────────────┘
+[2025-12-29 16:05:59] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[2025-12-29 16:05:59] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

@@ -97,7 +97,7 @@ class BoardDaoTest {
 	}
 	
 	//저장
-	@Disabled
+	//@Disabled
 	@Test
 	void doSave() {
 		// 매번 동일 결과가 도출 되도록 작성.

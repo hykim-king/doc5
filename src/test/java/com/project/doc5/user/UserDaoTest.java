@@ -100,7 +100,7 @@ class UserDaoTest {
 	}
 	
 	//로그아웃 
-	@Disabled
+	//@Disabled
 	@Test
 	void doLogOut() {
 		//1. 섹션 삭제
@@ -114,7 +114,7 @@ class UserDaoTest {
 	}
 	
 	//회원 수정
-	@Disabled
+	//@Disabled
 	@Test
 	void doUpdate() {
 		// 매번 동일 결과가 도출 되도록 작성.
@@ -166,7 +166,7 @@ class UserDaoTest {
 	}
 	
 	//회원가입 
-	@Disabled
+	//@Disabled
 	@Test
 	void doSave() {
 		// 매번 동일 결과가 도출 되도록 작성.
@@ -205,7 +205,7 @@ class UserDaoTest {
 	}	
 
 	//단건 삭제 (회원탈퇴)
-	@Disabled
+	//@Disabled
 	@Test
 	void doDelete() {
 		// 매번 동일 결과가 도출 되도록 작성.
@@ -242,6 +242,9 @@ class UserDaoTest {
 		
 	}
 
+	
+// [관리자 예정]-------------------------------------------------------------------------	
+	
 	//전체 삭제
 	@Disabled
 	@Test
@@ -252,7 +255,7 @@ class UserDaoTest {
 	}
 	
 	
-// [관리자 예정]-------------------------------------------------------------------------	
+
 	
 	//회원 페이징 리스트 , 데이터 대량 등록 102건 (페이징 포함)
 	@Disabled
