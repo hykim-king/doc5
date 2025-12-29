@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.doc5.mapper.GoodsMapper">
+
+	<!-- 컬럼 →Value Object와 매핑 -->
+<resultMap id="GoodsVO" type="com.project.doc5.goods.domain.GoodsVO">
+    <id column="goods_no" property="goodsNo"/>
+
+    <result column="goods_name" property="goodsName"/>
+    <result column="goods_eng_name" property="goodsEngName"/>
+    <result column="goods_price" property="goodsPrice"/>
+    <result column="hot_fl" property="hotFl"/>
+    <result column="hot_price" property="hotPrice"/>
+    <result column="ice_fl" property="iceFl"/>
+    <result column="ice_price" property="icePrice"/>
+    <result column="tumbler_fl" property="tumblerFl"/>
+    <result column="short_description" property="shortDescription"/>
+    <result column="goods_contents" property="goodsContents"/>
+    <result column="new_fl" property="newFl"/>
+    <result column="best_fl" property="bestFl"/>
+    <result column="alleoji_info" property="alleojiInfo"/>
+    <result column="goods_view" property="goodsView"/>
+    <result column="hidden_fl" property="hiddenFl"/>
+    <result column="reg_dt" property="regDt"/>
+    <result column="reg_id" property="regId"/>
+    <result column="mod_dt" property="modDt"/>
+    <result column="mod_id" property="modId"/>
+
+    <collection property="optionTypeVO"
+                ofType="com.project.doc5.goods.domain.OptionTypeVO"
+                resultMap="OptionTypeVO"/>
+                
+    <collection property="goodsInfoVO"
+                ofType="com.project.doc5.goods.domain.GoodsInfoVO"
+                resultMap="GoodsInfoVO"/>
+                
+    <collection property="categoryJoinVO"
+                ofType="com.project.doc5.goods.domain.CategoryJoinVO"
+                resultMap="CategoryJoinVO"/>                              
+                
+</resultMap>
+
+<resultMap id="CategoryVO" type="com.project.doc5.goods.domain.CategoryVO">
+    <id column="category_code" property="code"/>
+
+    <result column="category_name" property="categoryName"/>
+    <result column="category_hidden_fl" property="hiddenFl"/>
+
+</resultMap>
+
+
+<resultMap id="CategoryJoinVO" type="com.project.doc5.goods.domain.CategoryJoinVO">
+    <id column="category_join_seq" property="seq"/>
+
+    <result column="category_join_goods_no" property="goodsNo"/>
+    <result column="category_join_code" property="code"/>
+    <result column="category_join_hidden_fl" property="hiddenFl"/>
+
+    <collection property="categoryVO"
+                ofType="com.project.doc5.goods.domain.CategoryVO"
+                resultMap="CategoryVO"/>
+</resultMap>
+
+
+<resultMap id="GoodsInfoVO" type="com.project.doc5.goods.domain.GoodsInfoVO">
+    <id column="info_seq" property="seq"/>
+
+		<result column="info_goods_no" property="goodsNo"/>
+		<result column="info_goods_type" property="goodsType"/>
+		<result column="product_info_sort" property="productInfoSort"/>
+		<result column="product_info_title" property="productInfoTitle"/>
+		<result column="product_info_text" property="productInfoText"/>
+
+
+</resultMap>
+
+<resultMap id="OptionTypeVO" type="com.project.doc5.goods.domain.OptionTypeVO">
+    <id column="type_seq" property="seq"/>
+
+    <result column="goods_no" property="goodsNo"/>
+    <result column="goods_option_name" property="goodsOptionName"/>
+    <result column="goods_type" property="goodsType"/>
+    <result column="list_sort" property="listSort"/>
+    <result column="hidden_fl" property="hiddenFl"/>
+
+    <collection property="goodsOptionVO"
+                ofType="com.project.doc5.goods.domain.GoodsOptionVO"
+                resultMap="GoodsOptionVO"/>
+</resultMap>
+
+
+	<resultMap id="GoodsOptionVO" type="com.project.doc5.goods.domain.GoodsOptionVO">
+    <id column="option_seq" property="seq"/>
+
+    <result column="ot_seq" property="otSeq"/>
+    <result column="option_name" property="optionName"/>
+    <result column="option_price" property="optionPrice"/>
+    <result column="option_hidden" property="optionHidden"/>
+</resultMap>
+
+
+
+
+
+    <select id="SelectGoodsWithOptions" parameterType="int" resultMap="GoodsVO">
+    SELECT    
+	      a.goods_no,
+        a.goods_name,
+        a.goods_eng_name,
+        a.goods_price,
+        a.hot_fl,
+        a.hot_price,
+        a.ice_fl,
+        a.ice_price,
+        a.tumbler_fl,
+        a.short_description,
+        a.goods_contents,
+        a.new_fl,
+        a.best_fl,
+        a.alleoji_info,
+        a.goods_view,
+        a.hidden_fl,
+        a.reg_dt,
+        a.reg_id,
+        a.mod_dt,
+        a.mod_id,
+        b.seq            AS type_seq,
+        b.goods_option_name,
+        b.goods_type,
+        b.list_sort,
+        b.hidden_fl,
+        c.seq            AS option_seq,
+        c.ot_seq,
+        c.option_name,
+        c.option_price,
+        c.option_hidden,
+        d.seq            AS info_seq,
+				d.goods_type,
+				d.product_info_sort,
+				d.product_info_title,
+				d.product_info_text
+	  FROM DOC5_GOODS a
+    LEFT JOIN DOC5_OPTION_TYPE b
+      ON a.goods_no = b.goods_no
+    LEFT JOIN DOC5_GOODS_OPTION c
+      ON b.seq = c.ot_seq
+    LEFT JOIN DOC5_GOODS_INFO d
+      ON a.goods_no = d.goods_no
+    WHERE a.goods_no = #{goods_no}
+  </select>
+
+      <select id="SelectGoods" parameterType="int" resultMap="GoodsVO">
+      SELECT
+          a.goods_no,
+          a.goods_name,
+          a.goods_eng_name,
+          a.goods_price,
+          a.hot_fl,
+          a.hot_price,
+          a.ice_fl,
+          a.ice_price,
+          a.tumbler_fl,
+          a.short_description,
+          a.goods_contents,
+          a.new_fl,
+          a.best_fl,
+          a.alleoji_info,
+          a.goods_view,
+          a.hidden_fl,
+          a.reg_dt,
+          a.reg_id,
+          a.mod_dt,
+          a.mod_id
+          
+  
+      FROM DOC5_GOODS a
+      WHERE a.goods_no = #{goods_no}
+  </select>
+
+
+
+
+    <select id="SelectOptiontype" parameterType="int" resultMap="GoodsVO">
+    SELECT    
+        a.goods_no,
+        
+        b.seq            AS type_seq,
+        b.goods_option_name,
+        b.goods_type,
+        b.list_sort,
+        b.hidden_fl
+        
+    FROM DOC5_GOODS a
+    LEFT JOIN DOC5_OPTION_TYPE b
+      ON a.goods_no = b.goods_no
+    LEFT JOIN DOC5_GOODS_OPTION c
+      ON b.seq = c.ot_seq
+    LEFT JOIN DOC5_GOODS_INFO d
+      ON a.goods_no = d.goods_no
+    WHERE a.goods_no = #{goods_no}
+  </select>
+
+    <select id="SelectGoodsOption" parameterType="int" resultMap="GoodsVO">
+    SELECT    
+        a.goods_no,
+        
+        c.seq            AS option_seq,
+        c.ot_seq,
+        c.option_name,
+        c.option_price,
+        c.option_hidden
+        
+    FROM DOC5_GOODS a
+    LEFT JOIN DOC5_OPTION_TYPE b
+      ON a.goods_no = b.goods_no
+    LEFT JOIN DOC5_GOODS_OPTION c
+      ON b.seq = c.ot_seq
+    LEFT JOIN DOC5_GOODS_INFO d
+      ON a.goods_no = d.goods_no
+    WHERE a.goods_no = #{goods_no}
+  </select>
+
+      <select id="SelectGoodsInfo" parameterType="int" resultMap="GoodsVO">
+    SELECT    
+        a.goods_no,
+        
+        d.seq            AS info_seq,
+        d.goods_type,
+        d.product_info_sort,
+        d.product_info_title,
+        d.product_info_text
+    FROM DOC5_GOODS a
+    LEFT JOIN DOC5_OPTION_TYPE b
+      ON a.goods_no = b.goods_no
+    LEFT JOIN DOC5_GOODS_OPTION c
+      ON b.seq = c.ot_seq
+    LEFT JOIN DOC5_GOODS_INFO d
+      ON a.goods_no = d.goods_no
+    WHERE a.goods_no = #{goods_no}
+  </select>
+
+
+	<select id="SelectGoodsCategory" parameterType="String" resultMap="GoodsVO">
+	    SELECT
+	        a.goods_no,
+	        a.goods_name,
+	        a.goods_eng_name,
+	        a.goods_price,
+	        a.hot_fl,
+	        a.hot_price,
+	        a.ice_fl,
+	        a.ice_price,
+	        a.tumbler_fl,
+	        a.short_description,
+	        a.goods_contents,
+	        a.new_fl,
+	        a.best_fl,
+	        a.alleoji_info,
+	        a.goods_view,
+	        a.hidden_fl,
+	        a.reg_dt,
+	        a.reg_id,
+	        a.mod_dt,
+	        a.mod_id,
+	        b.seq AS category_join_seq,
+	        b.goods_no AS category_join_goods_no,
+	        b.code AS category_join_code,
+	        b.hidden_fl AS category_join_hidden_fl,
+	        c.code AS category_code,
+	        c.category_name AS category_name,
+	        c.hidden_fl AS category_hidden_fl
+	
+	    FROM DOC5_GOODS a
+	    LEFT JOIN DOC5_CATEGORY_JOIN b
+	        ON a.goods_no = b.goods_no
+	    LEFT JOIN DOC5_CATEGORY c
+	        ON b.code = c.code
+	    WHERE b.code = #{code}
+	</select>
+
+
+  <select id="SelectCategory" parameterType="int" resultMap="GoodsVO">
+      SELECT
+          a.goods_no,
+          b.seq AS category_join_seq,
+          b.goods_no AS category_join_goods_no,
+          b.hidden_fl AS category_join_hidden_fl,
+          c.code AS category_code,
+          c.category_name AS category_name,
+          c.hidden_fl AS category_hidden_fl
+  
+      FROM DOC5_GOODS a
+      LEFT JOIN DOC5_CATEGORY_JOIN b
+          ON a.goods_no = b.goods_no
+      LEFT JOIN DOC5_CATEGORY c
+          ON b.code = c.code
+      WHERE a.goods_no = #{goods_no}
+  </select>
+
+
+</mapper>
