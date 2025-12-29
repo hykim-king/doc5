@@ -16,7 +16,7 @@
 	    mod_dt
 	FROM
 	    doc5_order
-    WHERE seq = #{orderNo}
+    WHERE order_no = #{orderNo}
 	</select>
 	
 	<insert id="doSave">
@@ -45,9 +45,9 @@
         #{optionTotalPrice},
         #{settelKind},
         #{orderStep},
-        #{regDt},
-        #{modDt}
-    );
+        SYSDATE,
+        SYSDATE
+    )
 	</insert>
 	
 	<select id="getCount" resultType="int">

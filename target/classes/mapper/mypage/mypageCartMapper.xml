@@ -47,10 +47,10 @@
         #{hotPrice},
         #{iceFl},
         #{icePrice},
-        #{cancelDt},
-        #{regDt},
-        #{modDt}
-    );
+        SYSDATE,
+        SYSDATE,
+        SYSDATE
+    )
 	</insert>
 	
 	<select id="getCount" resultType="int">

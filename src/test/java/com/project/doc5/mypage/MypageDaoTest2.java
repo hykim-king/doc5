@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,9 +55,11 @@ class MypageDaoTest2 {
 		log.debug("└──────────────────────────┘");	
 	}
 	
+
+	
 	
 
-	//@Disabled
+	@Disabled
 	@Test
 	void beans() {
 		log.debug("context:"+context);
@@ -64,6 +67,9 @@ class MypageDaoTest2 {
 		
 		log.debug("MypageOrderMapper : {}",mypageOrderMapper);
 		assertNotNull(mypageOrderMapper);
+		
+		log.debug("mypageCartMapper : {}",mypageCartMapper);
+		assertNotNull(mypageCartMapper);
 	}
 
 }
