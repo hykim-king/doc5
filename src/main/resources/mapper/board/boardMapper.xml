@@ -14,59 +14,60 @@
 	    seq = #{seq}
 	</update>
 	
-	<sql id="boardWhere">
+     <sql id="boardWhere">
         <choose>
-        	<when test=" null != searchDiv AND '10' == searchDiv  ">
-        		AND subject LIKE '%'||#{searchWord}||'%'
-        	</when>
-        	<when test=" null != searchDiv AND '20' == searchDiv  ">
-        		AND contents LIKE '%'||#{searchWord}||'%'
-        	</when>		
-        	<when test=" null != searchDiv AND '30' == searchDiv  ">
-        	    AND ( subject LIKE '%'||#{searchWord}||'%'
-        	          OR 
-        	          contents LIKE '%'||#{searchWord}||'%')
-        	</when>   
+          <when test=" '10' == searchDiv  ">
+            AND subject LIKE #{searchWord}||'%'
+          </when>
+          <when test=" '20' == searchDiv  ">
+            AND contents LIKE #{searchWord}||'%'
+          </when>   
+          <when test=" '30' == searchDiv  ">
+              AND ( subject LIKE #{searchWord}||'%'
+                    OR 
+                    contents LIKE #{searchWord}||'%')
+          </when>   
         </choose>   
    
    </sql>
 	<select id="doRetrieve" parameterType="com.project.doc5.cmn.DTO" resultType="BoardVO">
-	SELECT A.*,B.*
+	SELECT A.*,B.* 
      FROM(
-		SELECT tt1.rnum as no,
-		       tt1.seq,
-		       tt1.contents,
-		       tt1.view_cnt,
-		       tt1.mod_id,
-		       DECODE(TO_CHAR(SYSDATE,'YYYY/MM/DD'),TO_CHAR(mod_dt,'YYYY/MM/DD')
-		                                           ,TO_CHAR(mod_dt,'HH24:MI')
-		                                           ,TO_CHAR(mod_dt,'YYYY/MM/DD')) AS mod_dt
-		FROM (
-		    SELECT ROWNUM AS rnum, t1.*
-		    FROM (
-		        SELECT *
-		          FROM board
-		         --WHERE 
-		         --제목 : 10
-		         --내용 : 20
-		         --제목 + 내용 : 30 
-		         WHERE 1=1
-		         <include refid="boardWhere"></include>
-		         ORDER BY mod_dt DESC
-		    )T1 
-		    WHERE ROWNUM <![CDATA[ <= ]]>  (#{pageSize} * (#{pageNo} - 1) + #{pageSize}) 
-		)TT1
-		WHERE TT1.RNUM  <![CDATA[ >= ]]>   (#{pageSize} * (#{pageNo} - 1) + 1)      
+    SELECT tt1.rnum as no,
+           tt1.seq,
+           tt1.subject,
+           tt1.view_cnt,
+           tt1.mod_id,
+           DECODE(TO_CHAR(SYSDATE,'YYYY/MM/DD'),TO_CHAR(mod_dt,'YYYY/MM/DD')
+                                               ,TO_CHAR(mod_dt,'HH24:MI')
+                                               ,TO_CHAR(mod_dt,'YYYY/MM/DD')) AS mod_dt
+    FROM (
+        SELECT ROWNUM AS rnum, t1.*
+        FROM (
+            SELECT *
+              FROM doc5_board_notice
+             --WHERE 
+             --제목 : 10
+             --내용 : 20
+             --제목 + 내용 : 30
+             WHERE 1=1
+             <include refid="boardWhere"></include>
+             ORDER BY mod_dt DESC
+        )T1 
+        WHERE ROWNUM <![CDATA[ <= ]]>  (#{pageSize} * (#{pageNo} - 1) + #{pageSize}) 
+    )TT1
+    WHERE TT1.RNUM  <![CDATA[ >= ]]>   (#{pageSize} * (#{pageNo} - 1) + 1)      
     ) A
     CROSS JOIN
     (
-		SELECT COUNT(*) total_cnt 
-		  FROM BOARD    
-		  --WHERE 
+    SELECT COUNT(*) total_cnt 
+      FROM doc5_board_notice    
+      --WHERE 
          WHERE 1=1
-		 <include refid="boardWhere"></include>
+     <include refid="boardWhere"></include>     
     ) B
 	</select>
+	
 	<insert id="saveAll">
 	INSERT INTO doc5_board_notice
 		SELECT bn_seq.NEXTVAL AS seq,
