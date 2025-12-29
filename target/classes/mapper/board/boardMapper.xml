@@ -64,7 +64,7 @@
 		  FROM BOARD    
 		  --WHERE 
          WHERE 1=1
-		 <include refid="boardWhere"></include>		  
+		 <include refid="boardWhere"></include>
     ) B
 	</select>
 	<insert id="saveAll">
