@@ -1,4 +1,4 @@
-package com.project.doc5.menu;
+package com.project.doc5.goods;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
