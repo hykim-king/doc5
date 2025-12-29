@@ -17,6 +17,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import com.project.doc5.board.domain.BoardVO;
 import com.project.doc5.cmn.DTO;
 import com.project.doc5.mapper.MypageCartMapper;
 import com.project.doc5.mapper.MypageOrderMapper;
@@ -81,16 +82,16 @@ class MypageDaoTest {
 		// C = 주문취소
 		List<MypageCartGoodsOptionVO> mcgList = null;
 		mypageOrderVO01 = new MypageOrderVO("20251227093030123456","s0001","아메리카노",1,1700.00,1700.00,
-				0.00,"BA","C","2025-12-27 09:30:30","2025-12-27 09:30:50");
+				0.00,"BA","C","2025-12-27 09:30:30","2025-12-27 09:30:50","");
 	
 		mypageOrderVO02 = new MypageOrderVO("20251228123030654321","s0001","아메리카노",1,2000.00,2000.00,
-				0.00,"BA","S","2025-12-28 12:30:30","2025-12-28 12:30:50");
+				0.00,"BA","S","2025-12-28 12:30:30","2025-12-28 12:30:50","");
 		
 		mypageOrderVO03 = new MypageOrderVO("20251229093030836592","s0001","아메리카노",1,2000.00,2000.00,
-				0.00,"BA","P","2025-12-29 09:30:30","2025-12-29 09:30:50");
+				0.00,"BA","P","2025-12-29 09:30:30","2025-12-29 09:30:50","");
 		
 		mypageOrderVO04 = new MypageOrderVO("20251229113030333333","s0001","아메리카노",1,2000.00,2000.00,
-				0.00,"BA","O","2025-12-29 11:30:30","2025-12-29 11:30:50");
+				0.00,"BA","O","2025-12-29 11:30:30","2025-12-29 11:30:50","");
 		
 		int seq = 0;
 		mypageCartVO01 = new MypageCartVO(seq, 10000, "s0001", "20251227093030123456", "doc5_1@doc5.com",
@@ -109,6 +110,8 @@ class MypageDaoTest {
 				"아메리카노", 1700.00, 1, "N", "Y", 0.00, "N", 300.00,
 				null, "2025-12-29 11:30:30", "2025-12-29 11:30:50", mcgList);
 		
+		dto = new DTO();
+		
 	}
 
 	@AfterEach
@@ -118,14 +121,96 @@ class MypageDaoTest {
 		log.debug("└──────────────────────────┘");	
 	}
 	
-	//@Disabled
+	
+	//
+	@Disabled
+	@Test
+	void doRetrieve() {
+		// 매번 동일 결과가 도출 되도록 작성.
+		// 1. 전체 삭제
+		// 2. 4건 등록
+		// 3. 아이디 설정
+		// 4. 주문 리스트 확인
+		
+		// 1. 
+		mypageOrderMapper.deleteAll();
+		int count = mypageOrderMapper.getCount();
+		assertEquals(0, count);
+		
+		mypageCartMapper.deleteAll();
+		count = mypageCartMapper.getCount();
+		assertEquals(0, count);
+		
+		
+		// 2-1
+		int flag = mypageCartMapper.doSave(mypageCartVO01);
+		log.debug("flag : {}", flag);
+		log.debug("mypageCartVO01 : {}", mypageCartVO01);
+		
+		flag = mypageCartMapper.doSave(mypageCartVO02);
+		log.debug("flag : {}", flag);
+		log.debug("mypageCartVO02 : {}", mypageCartVO02);
+		
+		flag = mypageCartMapper.doSave(mypageCartVO03);
+		log.debug("flag : {}", flag);
+		log.debug("mypageCartVO03 : {}", mypageCartVO03);
+		
+		flag = mypageCartMapper.doSave(mypageCartVO04);
+		log.debug("flag : {}", flag);
+		log.debug("mypageCartVO04 : {}", mypageCartVO04);
+		
+		// 2-2
+		count = mypageCartMapper.getCount();
+		assertEquals(4, count);
+				
+		// 2-3
+		flag = mypageOrderMapper.doSave(mypageOrderVO01);
+		log.debug("flag : {}", flag);
+		log.debug("mypageOrderVO01 : {}", mypageOrderVO01);
+		
+		flag = mypageOrderMapper.doSave(mypageOrderVO02);
+		log.debug("flag : {}", flag);
+		log.debug("mypageOrderVO02 : {}", mypageOrderVO02);
+		
+		flag = mypageOrderMapper.doSave(mypageOrderVO03);
+		log.debug("flag : {}", flag);
+		log.debug("mypageOrderVO03 : {}", mypageOrderVO03);
+		
+		flag = mypageOrderMapper.doSave(mypageOrderVO04);
+		log.debug("flag : {}", flag);
+		log.debug("mypageOrderVO04 : {}", mypageOrderVO04);
+				
+		// 2-4
+		count = mypageOrderMapper.getCount();
+		assertEquals(4, count);
+		
+		// 3.
+		MypageOrderVO mypageCartVO = new MypageOrderVO();
+		
+		mypageCartVO.setUserId("doc5_1@doc5.com");
+		
+		List<MypageOrderVO> list = mypageOrderMapper.doRetrieve(mypageCartVO);
+		for(MypageOrderVO vo  :list) {
+			log.debug(vo);
+		}
+		assertEquals(list.size(), 4);
+		//총건수
+		//assertEquals(1002, list.get(0).getTotalCnt());
+		log.debug("총 건수:{}",list.get(0).getTotalCnt());
+		
+	}
+	
+	@Disabled
 	@Test
 	void doSave() {
 		// 매번 동일 결과가 도출 되도록 작성.
-		// 1. 전체 삭제
-		// 2. 단건등록board01)	
-		// 3. 전체건수 조회
-		// 4. 실제데이터 조회
+		// 1. 전체 삭제 (주문서, 장바구니)
+		// 2-1. 장바구니 단건등록(mypageOrderVO01)
+		// 2-2. 장바구니 건수 조회
+		// 2-3. 주문서 단건등록(mypageOrderVO01)
+		// 2-4. 주문서 건수 조회
+
+		// 3. 실제데이터 조회
 				
 		// 1. 
 		mypageOrderMapper.deleteAll();
@@ -137,19 +222,27 @@ class MypageDaoTest {
 		assertEquals(0, count);
 		
 		
-		// 2.
-		int flag = mypageOrderMapper.doSave(mypageOrderVO01);
-		log.debug("flag : {}", flag);
-		log.debug("mypageOrderVO01 : {}", mypageOrderVO01);
-		
-		count = mypageOrderMapper.getCount();
-		assertEquals(1, count);
-		
-		flag = mypageCartMapper.doSave(mypageCartVO01);
+		// 2-1
+		int flag = mypageCartMapper.doSave(mypageCartVO01);
 		log.debug("flag : {}", flag);
 		log.debug("mypageCartVO01 : {}", mypageCartVO01);
 		
+		// 2-2
+		count = mypageCartMapper.getCount();
+		assertEquals(1, count);
 		
+		// 2-3
+		flag = mypageOrderMapper.doSave(mypageOrderVO01);
+		log.debug("flag : {}", flag);
+		log.debug("mypageOrderVO01 : {}", mypageOrderVO01);
+		
+		// 2-4
+		count = mypageOrderMapper.getCount();
+		assertEquals(1, count);
+		
+		
+		
+		// 3.
 		MypageOrderVO mypageOrderOutVO = mypageOrderMapper.doSelectOne(mypageOrderVO01);
 		log.debug("mypageOrderOutVO : {}",mypageOrderOutVO);
 		assertNotNull(mypageOrderOutVO);
@@ -157,6 +250,8 @@ class MypageDaoTest {
 		MypageCartVO mypageCartOutVO = mypageCartMapper.doSelectOne(mypageCartVO01);
 		log.debug("mypageCartVO01 : {}",mypageCartVO01);
 		assertNotNull(mypageCartOutVO);
+		
+		
 	}
 
 	@Disabled

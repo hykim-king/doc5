@@ -17,6 +17,7 @@ public class MypageOrderVO extends DTO {
 	private String orderStep          ;  //주문단계
 	private String regDt              ;  //작성일
 	private String modDt              ;  //수정일
+	private String userId			  ;  //회원아이디
 	
 
 	public MypageOrderVO() {
@@ -26,7 +27,7 @@ public class MypageOrderVO extends DTO {
 
 	public MypageOrderVO(String orderNo, String branchCode, String orderName, int goodsTotalCnt,
 			double settleTotalPrice, double goodsTotalPrice, double optionTotalPrice, String settelKind,
-			String orderStep, String regDt, String modDt) {
+			String orderStep, String regDt, String modDt, String userId) {
 		super();
 		this.orderNo = orderNo;
 		this.branchCode = branchCode;
@@ -39,6 +40,7 @@ public class MypageOrderVO extends DTO {
 		this.orderStep = orderStep;
 		this.regDt = regDt;
 		this.modDt = modDt;
+		this.userId = userId;
 	}
 
 	public String getOrderNo() {
@@ -129,12 +131,21 @@ public class MypageOrderVO extends DTO {
 		this.modDt = modDt;
 	}
 
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
 	@Override
 	public String toString() {
 		return "MypageOrderVO [orderNo=" + orderNo + ", branchCode=" + branchCode + ", orderName=" + orderName
 				+ ", goodsTotalCnt=" + goodsTotalCnt + ", settleTotalPrice=" + settleTotalPrice + ", goodsTotalPrice="
 				+ goodsTotalPrice + ", optionTotalPrice=" + optionTotalPrice + ", settelKind=" + settelKind
-				+ ", orderStep=" + orderStep + ", regDt=" + regDt + ", modDt=" + modDt + "]";
+				+ ", orderStep=" + orderStep + ", regDt=" + regDt + ", modDt=" + modDt + ", userId=" + userId + "]";
 	}
+
 
 }
