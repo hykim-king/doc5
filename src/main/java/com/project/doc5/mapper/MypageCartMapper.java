@@ -12,7 +12,7 @@ import com.project.doc5.mypage.domain.MypageCartVO;
 public interface MypageCartMapper extends WorkDiv<MypageCartVO> {
 	
 	// 전체조회:O
-	List<BoardVO> getAll();
+	List<MypageCartVO> getAll();
 			
 	// 전체 데이터 건수 조회:O
 	int getCount();

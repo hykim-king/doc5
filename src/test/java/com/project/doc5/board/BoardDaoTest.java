@@ -62,6 +62,7 @@ class BoardDaoTest {
 		log.debug("└──────────────────────────┘");	
 	}
 	
+	//리스트 페이징
 	@Test
 	void doRetrieve() {
 		// 매번 동일 결과가 도출 되도록 작성.
@@ -95,6 +96,7 @@ class BoardDaoTest {
 		log.debug("총 건수:{}",list.get(0).getTotalCnt());
 	}
 	
+	//저장
 	@Disabled
 	@Test
 	void doSave() {

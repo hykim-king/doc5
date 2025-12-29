@@ -9,7 +9,7 @@
 	    doc5_cart c
 	LEFT JOIN doc5_cart_goods_option cgo
 	  ON c.seq = cgo.c_seq
-    WHERE c.seq = #{seq}
+    WHERE c.order_no = #{orderNo} AND c.user_id= #{userId}
 	</select>
 	
 	<insert id="doSave">

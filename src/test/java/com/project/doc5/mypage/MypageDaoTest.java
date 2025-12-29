@@ -122,10 +122,14 @@ class MypageDaoTest {
 	}
 	
 	
-	//
+	// 주문 리스트
 	@Disabled
 	@Test
 	void doRetrieve() {
+		log.debug("┌──────────────────────────┐");
+		log.debug("│──doRetrieve()            │");
+		log.debug("└──────────────────────────┘");	
+		
 		// 매번 동일 결과가 도출 되도록 작성.
 		// 1. 전체 삭제
 		// 2. 4건 등록
@@ -200,56 +204,83 @@ class MypageDaoTest {
 		
 	}
 	
-	@Disabled
+	//주문 상세
+	//@Disabled
 	@Test
-	void doSave() {
+	void doSelectOne() {
+		
+		log.debug("┌──────────────────────────┐");
+		log.debug("│──doSelectOne()           │");
+		log.debug("└──────────────────────────┘");	
+		
 		// 매번 동일 결과가 도출 되도록 작성.
-		// 1. 전체 삭제 (주문서, 장바구니)
-		// 2-1. 장바구니 단건등록(mypageOrderVO01)
-		// 2-2. 장바구니 건수 조회
-		// 2-3. 주문서 단건등록(mypageOrderVO01)
-		// 2-4. 주문서 건수 조회
-
-		// 3. 실제데이터 조회
+		// 1. 전체 삭제
+		// 2. 4건 등록
+		// 3. 아이디 설정
+		// 4. 주문 리스트 확인
 				
 		// 1. 
 		mypageOrderMapper.deleteAll();
 		int count = mypageOrderMapper.getCount();
 		assertEquals(0, count);
-		
+				
 		mypageCartMapper.deleteAll();
 		count = mypageCartMapper.getCount();
 		assertEquals(0, count);
-		
-		
+				
+				
 		// 2-1
 		int flag = mypageCartMapper.doSave(mypageCartVO01);
 		log.debug("flag : {}", flag);
 		log.debug("mypageCartVO01 : {}", mypageCartVO01);
-		
+				
+		flag = mypageCartMapper.doSave(mypageCartVO02);
+		log.debug("flag : {}", flag);
+		log.debug("mypageCartVO02 : {}", mypageCartVO02);
+				
+		flag = mypageCartMapper.doSave(mypageCartVO03);
+		log.debug("flag : {}", flag);
+		log.debug("mypageCartVO03 : {}", mypageCartVO03);
+				
+		flag = mypageCartMapper.doSave(mypageCartVO04);
+		log.debug("flag : {}", flag);
+		log.debug("mypageCartVO04 : {}", mypageCartVO04);
+				
 		// 2-2
 		count = mypageCartMapper.getCount();
-		assertEquals(1, count);
-		
+		assertEquals(4, count);
+						
 		// 2-3
 		flag = mypageOrderMapper.doSave(mypageOrderVO01);
 		log.debug("flag : {}", flag);
 		log.debug("mypageOrderVO01 : {}", mypageOrderVO01);
-		
+				
+		flag = mypageOrderMapper.doSave(mypageOrderVO02);
+		log.debug("flag : {}", flag);
+		log.debug("mypageOrderVO02 : {}", mypageOrderVO02);
+				
+		flag = mypageOrderMapper.doSave(mypageOrderVO03);
+		log.debug("flag : {}", flag);
+		log.debug("mypageOrderVO03 : {}", mypageOrderVO03);
+				
+		flag = mypageOrderMapper.doSave(mypageOrderVO04);
+		log.debug("flag : {}", flag);
+		log.debug("mypageOrderVO04 : {}", mypageOrderVO04);
+				
 		// 2-4
 		count = mypageOrderMapper.getCount();
-		assertEquals(1, count);
-		
-		
+		assertEquals(4, count);
 		
 		// 3.
-		MypageOrderVO mypageOrderOutVO = mypageOrderMapper.doSelectOne(mypageOrderVO01);
-		log.debug("mypageOrderOutVO : {}",mypageOrderOutVO);
-		assertNotNull(mypageOrderOutVO);
+		MypageCartVO mypageCartVO = new MypageCartVO();
 		
-		MypageCartVO mypageCartOutVO = mypageCartMapper.doSelectOne(mypageCartVO01);
-		log.debug("mypageCartVO01 : {}",mypageCartVO01);
-		assertNotNull(mypageCartOutVO);
+		mypageCartVO.setUserId("doc5_1@doc5.com");
+		mypageCartVO.setOrderNo("20251229113030333333");
+		
+		MypageCartVO outVO = mypageCartMapper.doSelectOne(mypageCartVO);
+		
+		log.debug("outVO : {}",outVO);
+		
 		
 		
 	}

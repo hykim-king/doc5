@@ -13992,3 +13992,194 @@ Caused by: java.net.ConnectException: Connection refused: connect
 [2025-12-29 14:21:22] [DEBUG] com.project.doc5.mypage.MypageDaoTest - └──────────────────────────┘
 [2025-12-29 14:21:22] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 [2025-12-29 14:21:22] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+[2025-12-29 15:36:54] [INFO ] org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[2025-12-29 15:36:54] [INFO ] org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6e535154, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@15a34df2, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@5b38c1ec, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@338fc1d8, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4722ef0c, org.springframework.test.context.transaction.TransactionalTestExecutionListener@48e1f6c7, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@55cb6996, org.springframework.test.context.event.EventPublishingTestExecutionListener@1807e3f6]
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\com\project\doc5\mapper\BoardMapper.class]
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\com\project\doc5\mapper\CartMapper.class]
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\com\project\doc5\mapper\GoodsMapper.class]
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\com\project\doc5\mapper\MenuMapper.class]
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\com\project\doc5\mapper\MypageCartMapper.class]
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\com\project\doc5\mapper\MypageOrderMapper.class]
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\com\project\doc5\mapper\UserMapper.class]
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'boardMapper' and 'com.project.doc5.mapper.BoardMapper' mapperInterface
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'boardMapper'.
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'cartMapper' and 'com.project.doc5.mapper.CartMapper' mapperInterface
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'cartMapper'.
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'goodsMapper' and 'com.project.doc5.mapper.GoodsMapper' mapperInterface
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'goodsMapper'.
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'menuMapper' and 'com.project.doc5.mapper.MenuMapper' mapperInterface
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'menuMapper'.
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'mypageCartMapper' and 'com.project.doc5.mapper.MypageCartMapper' mapperInterface
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'mypageCartMapper'.
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'mypageOrderMapper' and 'com.project.doc5.mapper.MypageOrderMapper' mapperInterface
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'mypageOrderMapper'.
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'userMapper' and 'com.project.doc5.mapper.UserMapper' mapperInterface
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'userMapper'.
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\mapper\board\boardMapper.xml]'
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\mapper\cart\cartMapper.xml]'
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\mapper\cmn\menuMapper.xml]'
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\mapper\goods\goodsMapper.xml]'
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\mapper\mypage\mypageCartMapper.xml]'
+[2025-12-29 15:36:54] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\mapper\mypage\mypageOrderMapper.xml]'
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [D:\ACON_20250916\03_SPRING\workspace\doc5\target\classes\mapper\user\userMapper.xml]'
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.board.contorller.BoardContorller - ┌──────────────────────────┐
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.board.contorller.BoardContorller - │BoardContorller()         │
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.board.contorller.BoardContorller - └──────────────────────────┘
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.board.service.BoardServiceImpl - ┌──────────────────────────┐
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.board.service.BoardServiceImpl - │BoardServiceImpl()        │
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.board.service.BoardServiceImpl - └──────────────────────────┘
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.user.controller.UserController - ┌──────────────────────────┐
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.user.controller.UserController - │UserController()          │
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.user.controller.UserController - └──────────────────────────┘
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.user.service.UserServicelmpl - ┌──────────────────────────┐
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.user.service.UserServicelmpl - │UserServicelmpl()         │
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.user.service.UserServicelmpl - └──────────────────────────┘
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - ┌──────────────────────────┐
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - │──setup───────────────────│
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - └──────────────────────────┘
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - ┌──────────────────────────┐
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - │──doSelectOne()           │
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - └──────────────────────────┘
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@75798d03] was not registered for synchronization because synchronization is not active
+[2025-12-29 15:36:55] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[2025-12-29 15:36:55] [WARN ] com.zaxxer.hikari.util.DriverDataSource - Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+[2025-12-29 15:36:55] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@906741317 wrapping oracle.jdbc.driver.T4CConnection@6ae3fb94] will not be managed by Spring
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.deleteAll - ==>  Preparing: DELETE FROM doc5_order
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.deleteAll - ==> Parameters: 
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.deleteAll - <==    Updates: 4
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@75798d03]
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7e642b88] was not registered for synchronization because synchronization is not active
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1665324560 wrapping oracle.jdbc.driver.T4CConnection@6ae3fb94] will not be managed by Spring
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.getCount - ==>  Preparing: SELECT COUNT(*) FROM doc5_order
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.getCount - ==> Parameters: 
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.getCount - <==      Total: 1
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7e642b88]
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@329bad59] was not registered for synchronization because synchronization is not active
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@140702728 wrapping oracle.jdbc.driver.T4CConnection@6ae3fb94] will not be managed by Spring
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.deleteAll - ==>  Preparing: DELETE FROM doc5_cart
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.deleteAll - ==> Parameters: 
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.deleteAll - <==    Updates: 4
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@329bad59]
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@178f268a] was not registered for synchronization because synchronization is not active
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@871153004 wrapping oracle.jdbc.driver.T4CConnection@6ae3fb94] will not be managed by Spring
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.getCount - ==>  Preparing: SELECT COUNT(*) FROM doc5_cart
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.getCount - ==> Parameters: 
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.getCount - <==      Total: 1
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@178f268a]
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@366d8b97] was not registered for synchronization because synchronization is not active
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@1461322233 wrapping oracle.jdbc.driver.T4CConnection@6ae3fb94] will not be managed by Spring
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave!selectKey - ==>  Preparing: SELECT c_seq.NEXTVAL FROM dual
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave!selectKey - ==> Parameters: 
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave!selectKey - <==      Total: 1
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave - ==>  Preparing: INSERT INTO doc5_cart ( seq, goods_no, branch_code, order_no, user_id, goods_name, goods_price, goods_cnt, tumbler_fl, hot_fl, hot_price, ice_fl, ice_price, cancel_dt, reg_dt, mod_dt ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE, SYSDATE, SYSDATE )
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave - ==> Parameters: 48(Integer), 10000(Integer), s0001(String), 20251227093030123456(String), doc5_1@doc5.com(String), 아메리카노(String), 1700.0(Double), 1(Integer), N(String), Y(String), 0.0(Double), N(String), 300.0(Double)
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave - <==    Updates: 1
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@366d8b97]
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - flag : 1
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - mypageCartVO01 : MypageCartVO [seq=48, goodsNo=10000, branchCode=s0001, orderNo=20251227093030123456, userId=doc5_1@doc5.com, goodsName=아메리카노, goodsPrice=1700.0, goodsCnt=1, tumblerFl=N, hotFl=Y, hotPrice=0.0, iceFl=N, icePrice=300.0, cancelDt=2025-12-27 09:30:50, regDt=2025-12-27 09:30:30, modDt=2025-12-27 09:30:50, mcgList=null]
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@73d60e76] was not registered for synchronization because synchronization is not active
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@620261614 wrapping oracle.jdbc.driver.T4CConnection@6ae3fb94] will not be managed by Spring
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave!selectKey - ==>  Preparing: SELECT c_seq.NEXTVAL FROM dual
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave!selectKey - ==> Parameters: 
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave!selectKey - <==      Total: 1
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave - ==>  Preparing: INSERT INTO doc5_cart ( seq, goods_no, branch_code, order_no, user_id, goods_name, goods_price, goods_cnt, tumbler_fl, hot_fl, hot_price, ice_fl, ice_price, cancel_dt, reg_dt, mod_dt ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE, SYSDATE, SYSDATE )
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave - ==> Parameters: 49(Integer), 10000(Integer), s0001(String), 20251228123030654321(String), doc5_1@doc5.com(String), 아메리카노(String), 1700.0(Double), 1(Integer), N(String), Y(String), 0.0(Double), N(String), 300.0(Double)
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave - <==    Updates: 1
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@73d60e76]
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - flag : 1
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - mypageCartVO02 : MypageCartVO [seq=49, goodsNo=10000, branchCode=s0001, orderNo=20251228123030654321, userId=doc5_1@doc5.com, goodsName=아메리카노, goodsPrice=1700.0, goodsCnt=1, tumblerFl=N, hotFl=Y, hotPrice=0.0, iceFl=N, icePrice=300.0, cancelDt=null, regDt=2025-12-28 12:30:30, modDt=2025-12-28 12:30:50, mcgList=null]
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3c78e551] was not registered for synchronization because synchronization is not active
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@2132736278 wrapping oracle.jdbc.driver.T4CConnection@6ae3fb94] will not be managed by Spring
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave!selectKey - ==>  Preparing: SELECT c_seq.NEXTVAL FROM dual
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave!selectKey - ==> Parameters: 
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave!selectKey - <==      Total: 1
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave - ==>  Preparing: INSERT INTO doc5_cart ( seq, goods_no, branch_code, order_no, user_id, goods_name, goods_price, goods_cnt, tumbler_fl, hot_fl, hot_price, ice_fl, ice_price, cancel_dt, reg_dt, mod_dt ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE, SYSDATE, SYSDATE )
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave - ==> Parameters: 50(Integer), 10000(Integer), s0001(String), 20251229093030836592(String), doc5_1@doc5.com(String), 아메리카노(String), 1700.0(Double), 1(Integer), N(String), Y(String), 0.0(Double), N(String), 300.0(Double)
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave - <==    Updates: 1
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3c78e551]
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - flag : 1
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - mypageCartVO03 : MypageCartVO [seq=50, goodsNo=10000, branchCode=s0001, orderNo=20251229093030836592, userId=doc5_1@doc5.com, goodsName=아메리카노, goodsPrice=1700.0, goodsCnt=1, tumblerFl=N, hotFl=Y, hotPrice=0.0, iceFl=N, icePrice=300.0, cancelDt=null, regDt=2025-12-29 09:30:30, modDt=2025-12-29 09:30:50, mcgList=null]
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1f03fba0] was not registered for synchronization because synchronization is not active
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@400385823 wrapping oracle.jdbc.driver.T4CConnection@6ae3fb94] will not be managed by Spring
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave!selectKey - ==>  Preparing: SELECT c_seq.NEXTVAL FROM dual
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave!selectKey - ==> Parameters: 
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave!selectKey - <==      Total: 1
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave - ==>  Preparing: INSERT INTO doc5_cart ( seq, goods_no, branch_code, order_no, user_id, goods_name, goods_price, goods_cnt, tumbler_fl, hot_fl, hot_price, ice_fl, ice_price, cancel_dt, reg_dt, mod_dt ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE, SYSDATE, SYSDATE )
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave - ==> Parameters: 51(Integer), 10000(Integer), s0001(String), 20251229113030333333(String), doc5_1@doc5.com(String), 아메리카노(String), 1700.0(Double), 1(Integer), N(String), Y(String), 0.0(Double), N(String), 300.0(Double)
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSave - <==    Updates: 1
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1f03fba0]
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - flag : 1
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - mypageCartVO04 : MypageCartVO [seq=51, goodsNo=10000, branchCode=s0001, orderNo=20251229113030333333, userId=doc5_1@doc5.com, goodsName=아메리카노, goodsPrice=1700.0, goodsCnt=1, tumblerFl=N, hotFl=Y, hotPrice=0.0, iceFl=N, icePrice=300.0, cancelDt=null, regDt=2025-12-29 11:30:30, modDt=2025-12-29 11:30:50, mcgList=null]
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@9679750] was not registered for synchronization because synchronization is not active
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@163160871 wrapping oracle.jdbc.driver.T4CConnection@6ae3fb94] will not be managed by Spring
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.getCount - ==>  Preparing: SELECT COUNT(*) FROM doc5_cart
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.getCount - ==> Parameters: 
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.getCount - <==      Total: 1
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@9679750]
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@358ab600] was not registered for synchronization because synchronization is not active
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@14838518 wrapping oracle.jdbc.driver.T4CConnection@6ae3fb94] will not be managed by Spring
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.doSave - ==>  Preparing: INSERT INTO doc5_order ( order_no, branch_code, order_name, goods_total_cnt, settle_total_price, goods_total_price, option_total_price, settel_kind, order_step, reg_dt, mod_dt ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE, SYSDATE )
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.doSave - ==> Parameters: 20251227093030123456(String), s0001(String), 아메리카노(String), 1(Integer), 1700.0(Double), 1700.0(Double), 0.0(Double), BA(String), C(String)
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.doSave - <==    Updates: 1
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@358ab600]
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - flag : 1
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - mypageOrderVO01 : MypageOrderVO [orderNo=20251227093030123456, branchCode=s0001, orderName=아메리카노, goodsTotalCnt=1, settleTotalPrice=1700.0, goodsTotalPrice=1700.0, optionTotalPrice=0.0, settelKind=BA, orderStep=C, regDt=2025-12-27 09:30:30, modDt=2025-12-27 09:30:50, userId=]
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@44065156] was not registered for synchronization because synchronization is not active
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@932312334 wrapping oracle.jdbc.driver.T4CConnection@6ae3fb94] will not be managed by Spring
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.doSave - ==>  Preparing: INSERT INTO doc5_order ( order_no, branch_code, order_name, goods_total_cnt, settle_total_price, goods_total_price, option_total_price, settel_kind, order_step, reg_dt, mod_dt ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE, SYSDATE )
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.doSave - ==> Parameters: 20251228123030654321(String), s0001(String), 아메리카노(String), 1(Integer), 2000.0(Double), 2000.0(Double), 0.0(Double), BA(String), S(String)
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.doSave - <==    Updates: 1
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@44065156]
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - flag : 1
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - mypageOrderVO02 : MypageOrderVO [orderNo=20251228123030654321, branchCode=s0001, orderName=아메리카노, goodsTotalCnt=1, settleTotalPrice=2000.0, goodsTotalPrice=2000.0, optionTotalPrice=0.0, settelKind=BA, orderStep=S, regDt=2025-12-28 12:30:30, modDt=2025-12-28 12:30:50, userId=]
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@32177fa5] was not registered for synchronization because synchronization is not active
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@177657196 wrapping oracle.jdbc.driver.T4CConnection@6ae3fb94] will not be managed by Spring
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.doSave - ==>  Preparing: INSERT INTO doc5_order ( order_no, branch_code, order_name, goods_total_cnt, settle_total_price, goods_total_price, option_total_price, settel_kind, order_step, reg_dt, mod_dt ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE, SYSDATE )
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.doSave - ==> Parameters: 20251229093030836592(String), s0001(String), 아메리카노(String), 1(Integer), 2000.0(Double), 2000.0(Double), 0.0(Double), BA(String), P(String)
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.doSave - <==    Updates: 1
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@32177fa5]
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - flag : 1
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - mypageOrderVO03 : MypageOrderVO [orderNo=20251229093030836592, branchCode=s0001, orderName=아메리카노, goodsTotalCnt=1, settleTotalPrice=2000.0, goodsTotalPrice=2000.0, optionTotalPrice=0.0, settelKind=BA, orderStep=P, regDt=2025-12-29 09:30:30, modDt=2025-12-29 09:30:50, userId=]
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@43f9dd56] was not registered for synchronization because synchronization is not active
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@487778643 wrapping oracle.jdbc.driver.T4CConnection@6ae3fb94] will not be managed by Spring
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.doSave - ==>  Preparing: INSERT INTO doc5_order ( order_no, branch_code, order_name, goods_total_cnt, settle_total_price, goods_total_price, option_total_price, settel_kind, order_step, reg_dt, mod_dt ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE, SYSDATE )
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.doSave - ==> Parameters: 20251229113030333333(String), s0001(String), 아메리카노(String), 1(Integer), 2000.0(Double), 2000.0(Double), 0.0(Double), BA(String), O(String)
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.doSave - <==    Updates: 1
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@43f9dd56]
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - flag : 1
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - mypageOrderVO04 : MypageOrderVO [orderNo=20251229113030333333, branchCode=s0001, orderName=아메리카노, goodsTotalCnt=1, settleTotalPrice=2000.0, goodsTotalPrice=2000.0, optionTotalPrice=0.0, settelKind=BA, orderStep=O, regDt=2025-12-29 11:30:30, modDt=2025-12-29 11:30:50, userId=]
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d4608a6] was not registered for synchronization because synchronization is not active
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@551056181 wrapping oracle.jdbc.driver.T4CConnection@6ae3fb94] will not be managed by Spring
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.getCount - ==>  Preparing: SELECT COUNT(*) FROM doc5_order
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.getCount - ==> Parameters: 
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageOrderMapper.getCount - <==      Total: 1
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d4608a6]
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@58f437b0] was not registered for synchronization because synchronization is not active
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@553056396 wrapping oracle.jdbc.driver.T4CConnection@6ae3fb94] will not be managed by Spring
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSelectOne - ==>  Preparing: SELECT c.*, cgo.* FROM doc5_cart c LEFT JOIN doc5_cart_goods_option cgo ON c.seq = cgo.c_seq WHERE c.order_no = ? AND c.user_id= ?
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSelectOne - ==> Parameters: 20251229113030333333(String), doc5_1@doc5.com(String)
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mapper.MypageCartMapper.doSelectOne - <==      Total: 1
+[2025-12-29 15:36:55] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@58f437b0]
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - outVO : MypageCartVO [seq=51, goodsNo=10000, branchCode=s0001, orderNo=20251229113030333333, userId=doc5_1@doc5.com, goodsName=아메리카노, goodsPrice=1700.0, goodsCnt=1, tumblerFl=N, hotFl=Y, hotPrice=0.0, iceFl=N, icePrice=300.0, cancelDt=2025-12-29 15:36:54, regDt=2025-12-29 15:36:54, modDt=2025-12-29 15:36:54, mcgList=null]
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - ┌──────────────────────────┐
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - │──tearDown────────────────│
+[2025-12-29 15:36:55] [DEBUG] com.project.doc5.mypage.MypageDaoTest - └──────────────────────────┘
+[2025-12-29 15:36:56] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[2025-12-29 15:36:56] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
