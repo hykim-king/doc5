@@ -2,9 +2,19 @@
 
 <%@ include file="/WEB-INF/views/common/header/header_order.jsp" %>
 
+<style>
+.cont_wrap .menuSubTitle {
+  width: 90%;
+  margin: 10px auto;
+  font-size:22px;
+  font-weight:bold;
+  text-align: center;
+  
+}
+</style>
 	<div class="cont_wrap menu_wrap">
 		<div class="cont goods_list">
-
+    <!-- <div class="menuSubTitle">${cateTitle}</div>  -->
 			<link rel="stylesheet" href="/resources/css/item.css">
 
 <ul id="menuList"></ul>
@@ -66,7 +76,7 @@ fetch(jsonPath)
     data.forEach(item => {
       const html = `
         <li>
-          <a href="./goodsView?cate=${cate}&goodsno=10001">
+          <a href="./goodsView.do?cate=${cate}&goodsno=10000">
             <div class="cont_gallery_list_box">
                 <div class="cont_gallery_list_img">
                     <img src="https://img.79plus.co.kr/megahp/manager/upload/menu/20250320000925_1742396965069_ekSqAIVc1L.jpg">

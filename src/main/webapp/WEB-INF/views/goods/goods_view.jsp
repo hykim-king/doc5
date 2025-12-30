@@ -2,6 +2,8 @@
 
 <%@ include file="/WEB-INF/views/common/header/header_order.jsp" %>
     <link rel="stylesheet" href="/resources/css/modals.css">
+    
+    
 	<div class="cont_wrap menu_wrap">
 		<div class="cont goods_list">
             <div class="goods_detail_wrap">
@@ -20,6 +22,28 @@
             </div>
         </div>
        
+
+  <input type="text" name="goodsNo" value="${goodsVO.goodsNo}">
+  <input type="text" name="branchCode" value="s0001">
+  <input type="text" name="orderNo" value="null">
+  <input type="text" name="userId" value="">
+  <input type="text" name="goodsName" value="${goodsVO.goodsName}">
+  <input type="text" name="goodsPrice" value="">
+  <input type="text" name="goodsCnt" value="">
+  <input type="text" name="tumblerFl" value="">
+  <input type="text" name="hotFl" value="">
+  <input type="text" name="hotPrice" value="">
+  <input type="text" name="iceFl" value="">
+  <input type="text" name="icePrice" value="">
+
+  <input type="hidden" name="option[]" id="optionName-2" value="옵션이름">
+  <input type="hidden" name="optionPrice[]" id="optionPrice-2" value="옵션가격">
+  <input type="hidden" name="option[]" value="옵션이름">
+  <input type="hidden" name="optionPrice[]" value="옵션가격">
+  <input type="hidden" name="option[]" value="옵션이름">
+  <input type="hidden" name="optionPrice[]" value="옵션가격">
+  
+  
 
         <div class="section-box" style="text-align:center;">
             <button id="detailBtn" class="detail-btn">
@@ -221,6 +245,7 @@
 
 
 
+ 
 
 
 

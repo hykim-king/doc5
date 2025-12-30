@@ -14,35 +14,7 @@ if (cate == null || "null".equals(cate)){
  
 String cTitle = "";
 /*
-switch(cate){
-	case "m_rec":
-		cTitle = "추천 상품";
-		break;
-	case "new":
-		cTitle = "신메뉴";
-		break;
-	case "rec":
-		cTitle = "추천메뉴";
-		break;
-	case "001":
-		cTitle = "커피";
-		break;
-	case "002":
-		cTitle = "디카페인";
-		break;
-	case "003":
-		cTitle = "음료";
-		break;
-	case "004":
-		cTitle = "티";
-		break;
-	case "005":
-		cTitle = "푸트";
-		break;
-	case "006":
-		cTitle = "상품";
-		break;
-}
+
 */
 %>	
 
@@ -149,14 +121,12 @@ switch(cate){
 			<div class="menuBox">
 				<div class="swiper topMenuSwiper">
 					<div class="swiper-wrapper">
-						<div data-num="0" class="swiper-slide <% if(cate.equals("m_rec")){ %>on<%}%>"><a href="./goodsList?cate=m_rec">추천</a></div>
-						<div data-num="1" class="swiper-slide <% if(cate.equals("new")){ %>on<%}%>"><a href="./goodsList?cate=new">신메뉴</a></div>
-						<div data-num="2" class="swiper-slide <% if(cate.equals("001")){ %>on<%}%>"><a href="./goodsList?cate=001">커피</a></div>
-						<div data-num="3" class="swiper-slide <% if(cate.equals("002")){ %>on<%}%>"><a href="./goodsList?cate=002">디카페인</a></div>
-						<div data-num="4" class="swiper-slide <% if(cate.equals("003")){ %>on<%}%>"><a href="./goodsList?cate=003">음료</a></div>
-						<div data-num="5" class="swiper-slide <% if(cate.equals("004")){ %>on<%}%>"><a href="./goodsList?cate=004">티</a></div>
-						<div data-num="6" class="swiper-slide <% if(cate.equals("005")){ %>on<%}%>"><a href="./goodsList?cate=005">푸드</a></div>
-						<div data-num="7" class="swiper-slide <% if(cate.equals("006")){ %>on<%}%>"><a href="./goodsList?cate=006">상품</a></div>
+						<div data-num="0" class="swiper-slide <% if(cate.equals("m_rec")){ %>on<%}%>"><a href="./goodsList.do?cate=m_rec">추천</a></div>
+						
+						<c:forEach var="cVo" items="${cateList}" varStatus="status">
+						<div data-num="${status.index + 1}" class="swiper-slide ${cate == cVo.code ? 'on' : ''}"><a href="./goodsList.do?cate=${cVo.code}">${cVo.categoryName}</a></div>
+						</c:forEach>
+
 					</div>
 				</div>
 			</div>

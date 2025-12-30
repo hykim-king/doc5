@@ -71,7 +71,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="/goods/goodsList">
+				<a href="/goods/goodsList.do">
 					<div><img src="/resources/img/5p_order.png" class="bottom_5doc_order"></div>
 					<span>DOC5 오더</span>
 				</a>
