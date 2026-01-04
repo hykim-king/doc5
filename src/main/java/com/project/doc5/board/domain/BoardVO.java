@@ -12,6 +12,7 @@ public class BoardVO extends DTO {
 	private String regId    ;    //작성자
 	private String modDt    ;    //수정일
 	private String modId    ;    //수정자
+	private String code     ;    //게시판 종류
 	
 	public BoardVO() {
 		super();
@@ -19,7 +20,7 @@ public class BoardVO extends DTO {
 	}
 
 	public BoardVO(int seq, String subject, String contents, int viewCnt, String regDt, String regId, String modDt,
-			String modId) {
+			String modId, String code) {
 		super();
 		this.seq = seq;
 		this.subject = subject;
@@ -29,6 +30,7 @@ public class BoardVO extends DTO {
 		this.regId = regId;
 		this.modDt = modDt;
 		this.modId = modId;
+		this.code = code;
 	}
 
 	public int getSeq() {
@@ -95,11 +97,22 @@ public class BoardVO extends DTO {
 		this.modId = modId;
 	}
 
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVO [seq=" + seq + ", subject=" + subject + ", contents=" + contents + ", viewCnt=" + viewCnt
-				+ ", regDt=" + regDt + ", regId=" + regId + ", modDt=" + modDt + ", modId=" + modId + "]";
+				+ ", regDt=" + regDt + ", regId=" + regId + ", modDt=" + modDt + ", modId=" + modId + ", code=" + code
+				+ "]";
 	}
+
+	
 
 	
 	

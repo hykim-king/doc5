@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.doc5.mapper.GoodsSearchMapper">
+
+	<update id="goodsSearchHiddenUpdate" parameterType="String">
+	UPDATE doc5_search_keyword
+	SET
+	    hidden_fl = 'Y'
+	WHERE
+        keyword = #{keyword}
+        AND user_id = #{userId}
+	</update>
+	
+	<update id="goodsSearchUpdate" parameterType="String">
+	UPDATE doc5_search_keyword
+	SET
+	    user_id = #{userId}
+	WHERE
+        user_id = #{tmpUserId}
+	</update>
+
+	<select id="goodsSearchKeywordList" parameterType="com.project.doc5.goods.domain.GoodsSearchKeywordVO" resultType="com.project.doc5.goods.domain.GoodsSearchKeywordVO">
+	SELECT seq,
+	       user_id,
+	       keyword,
+	       TO_CHAR(reg_dt,'MM.DD') AS reg_dt
+	  FROM(
+		   SELECT *
+	         FROM doc5_search_keyword
+	        WHERE user_id = #{userId}
+	          AND hidden_fl = 'N'
+	          ORDER BY reg_dt DESC
+	      ) 
+	 WHERE ROWNUM  <![CDATA[ <= ]]>10
+	</select>
+	
+	<select id="goodsSearch" parameterType="String" resultType="com.project.doc5.goods.domain.GoodsVO">
+	SELECT
+	    goods_no,
+	    goods_name,
+	    goods_eng_name,
+	    goods_price,
+	    hot_fl,
+	    hot_price,
+	    ice_fl,
+	    ice_price,
+	    tumbler_fl,
+	    short_description,
+	    goods_contents,
+	    new_fl,
+	    best_fl,
+	    alleoji_info,
+	    goods_view,
+	    hidden_fl,
+	    reg_dt,
+	    reg_id,
+	    mod_dt,
+	    mod_id
+	  FROM
+	    doc5_goods
+	 WHERE goods_name LIKE '%' || #{keyword} || '%'
+	</select>
+	
+	<insert id="goodsSearchSave" parameterType="com.project.doc5.goods.domain.GoodsSearchKeywordVO">
+	INSERT INTO doc5_search_keyword (
+	    seq,
+	    user_id,
+	    keyword,
+	    hidden_fl,
+	    reg_dt
+	) VALUES ( 
+		sk_seq.NEXTVAL,
+        #{userId},
+        #{keyword},
+        'N',
+        SYSDATE 
+    )
+	</insert>
+</mapper>

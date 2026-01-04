@@ -1,5 +1,7 @@
 package com.project.doc5.board.contorller;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.project.doc5.board.domain.BoardVO;
+import com.project.doc5.board.service.BoardPages;
 import com.project.doc5.board.service.BoardService;
+import com.project.doc5.cmn.DTO;
 import com.project.doc5.cmn.MessageVO;
 
 @Controller
@@ -24,12 +28,99 @@ public class BoardContorller {
 	
 	@Autowired
 	BoardService boardService;
+	
+
 
 	public BoardContorller() {
 		super();
 		log.debug("┌──────────────────────────┐");
 		log.debug("│BoardContorller()         │");
 		log.debug("└──────────────────────────┘");	
+	}
+	
+	@GetMapping(value = "/boardView.do", produces = "text/plain;charset=UTF-8")
+	public String boardView(@RequestParam(required = false, defaultValue = "notice") String code, @RequestParam int seq, @RequestParam(required = false, defaultValue = "1") int pageNo, Model model) {
+		
+		log.debug("┌──────────────────────────┐");
+		log.debug("│boardView()               │");
+		log.debug("└──────────────────────────┘");
+		
+		String viewString = "board/template/"+code+"/view";
+		log.debug("1. seq : {}", seq);
+		log.debug("1. pageNo : {}", pageNo);
+		
+		BoardVO param = new BoardVO();
+		param.setSeq(seq);
+		log.debug("2. param:{}",param);
+		
+		BoardVO outVO = boardService.upDoSelectOne(param);
+		log.debug("3. param:{}",outVO);
+		
+		model.addAttribute("vo",outVO);
+		
+		model.addAttribute("code",code);
+		model.addAttribute("pageNo",pageNo);
+		
+		return viewString;
+		
+	}
+	
+	@GetMapping(value = "/boardList.do", produces = "text/plain;charset=UTF-8")
+	public String boardList(@RequestParam String code, @RequestParam(required = false, defaultValue = "1") int pageNo, Model model) {
+		
+		log.debug("┌──────────────────────────┐");
+		log.debug("│boardList()               │");
+		log.debug("└──────────────────────────┘");
+		
+		String viewString = "board/template/"+code+"/list";
+		log.debug("1. code : {}", code);
+		
+		BoardVO param = new BoardVO();
+		param.setCode(code);
+		log.debug("2. param:{}",param);
+		int postsPerPage = 10;  // 한 페이지당 글 수 
+		int currentPage = pageNo;    // 현재 페이지 번호 
+		int displayPageNum = 5; // 한번에 표시할 페이지 개수 
+		DTO dto = new DTO();
+		dto.setPageNo(currentPage);
+		dto.setPageSize(postsPerPage);
+		log.debug("dto : {}",dto);
+		
+		List<BoardVO> list = boardService.doRetrieve(dto);
+		log.debug("3. list:{}",list);
+		
+		int totalPosts = list.get(0).getTotalCnt();
+		int totalPages = ( (totalPosts - 1) / postsPerPage ) + 1;
+		
+		int endPage = (( (currentPage - 1) / displayPageNum ) + 1 ) * displayPageNum;  //마지막 페이지 
+
+		int startPage = ((currentPage-1)/displayPageNum) * displayPageNum + 1; // 시작 페이지 
+
+		if(totalPages < endPage) 
+		    endPage = totalPages;
+		
+		boolean prev = (startPage == 1) ? false : true;
+
+		boolean next = (endPage == totalPages) ? false : true;
+
+		BoardPages boardPages = new BoardPages(totalPosts, currentPage, postsPerPage, displayPageNum, code);
+
+		
+		String pageCode = boardPages.printPages();
+		
+		
+
+		log.debug("pageCode : {}",pageCode);
+		
+		model.addAttribute("list",list);
+		model.addAttribute("pageCode",pageCode);
+		
+		
+		
+		
+		
+		return viewString;
+		
 	}
 	
 	@GetMapping(value = "/doSelectOne.do", produces = "text/plain;charset=UTF-8")

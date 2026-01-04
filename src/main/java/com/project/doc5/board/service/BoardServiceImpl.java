@@ -73,5 +73,5 @@ public class BoardServiceImpl implements BoardService {
 	public BoardVO doSelectOne(BoardVO param) {
 		return boardMapper.doSelectOne(param);
 	}
-
+	
 }

@@ -1,0 +1,36 @@
+[
+  {
+    "goods_name": "콜드브루디카페인",
+    "goods_eng_name": "Decaf Coldbrew",
+    "goods_summary": "카페인을 줄였지만, 원두 본연의 향미를 풍부하게 살려 맛을 잡은 디카페인 콜드브루.",
+    "goods_description": "710ml 1회 제공량 7.7kcal",
+    "goods_allergy": "",
+    "goods_fat": "포화지방 0.0g",
+    "goods_sugar": "당류 0.0g",
+    "goods_sodium": "나트륨 0.1mg",
+    "goods_protein": "단백질 0.5g",
+    "goods_caffeine": "카페인 8.7mg",
+    "hot_fl": "Y",
+    "hot_price": "0",
+    "ice_fl": "Y",
+    "ice_price": "300",
+    "goods_price": "3500"
+  },
+  {
+    "goods_name": "콜드브루디카페인라떼",
+    "goods_eng_name": "Decaf Coldbrew Latte",
+    "goods_summary": "우유와 만나 부드럽고 고소한 풍미가 더해진 콜드브루 디카페인 라떼.",
+    "goods_description": "591ml 1회 제공량 140.8kcal",
+    "goods_allergy": "우유",
+    "goods_fat": "포화지방 4.0g",
+    "goods_sugar": "당류 0.0g",
+    "goods_sodium": "나트륨 45.6mg",
+    "goods_protein": "단백질 7.9g",
+    "goods_caffeine": "카페인 9.9mg",
+    "hot_fl": "Y",
+    "hot_price": "0",
+    "ice_fl": "Y",
+    "ice_price": "300",
+    "goods_price": "4400"
+  }
+]

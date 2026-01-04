@@ -61,7 +61,7 @@
     CROSS JOIN
     (
     SELECT COUNT(*) total_cnt 
-      FROM doc5_board_notice    
+      FROM doc5_board_notice  
       --WHERE 
          WHERE 1=1
      <include refid="boardWhere"></include>     
@@ -71,12 +71,12 @@
 	<insert id="saveAll">
 	INSERT INTO doc5_board_notice
 		SELECT bn_seq.NEXTVAL AS seq,
-	       '제목'||LEVEL AS subject ,
-	       '내용'||LEVEL AS contents,
+	       '공지사항 입니다.'||LEVEL AS subject ,
+	       '공지사항 내용 입니다.'||LEVEL AS contents,
 	       0,
-	       SYSDATE,
+	       (SYSDATE + (LEVEL/24)),
 	       'ADMIN' AS reg_id,
-	       SYSDATE,
+	       (SYSDATE + (LEVEL/24)),
 	       'ADMIN' AS mod_id
 		FROM dual
 		CONNECT BY LEVEL <![CDATA[ <= ]]> 1002      

@@ -1,0 +1,53 @@
+[
+  {
+    "goods_name": "캐치!티니핑 유기농 보리",
+    "goods_eng_name": "Catch! Tiniping Organic Barley",
+    "goods_summary": "국산 유기농 보리를 사용해 더욱 안심하고 마실 수 있습니다.",
+    "goods_description": "591ml 1회 제공량 34.2kcal",
+    "goods_allergy": "",
+    "goods_fat": "",
+    "goods_sugar": "",
+    "goods_sodium": "",
+    "goods_protein": "",
+    "goods_caffeine": "",
+    "hot_fl": "N",
+    "hot_price": "0",
+    "ice_fl": "N",
+    "ice_price": "0",
+    "goods_price": "1500"
+  },
+  {
+    "goods_name": "캐치!티니핑 딸기맛",
+    "goods_eng_name": "Catch! Tiny Ping Strawberry",
+    "goods_summary": "캐치! 티니핑 시리즈에서 '딸기'와 직접적으로 연관된 캐릭터는 베리하츄핑입니다.",
+    "goods_description": "591ml 1회 제공량 34.2kcal",
+    "goods_allergy": "",
+    "goods_fat": "",
+    "goods_sugar": "",
+    "goods_sodium": "",
+    "goods_protein": "",
+    "goods_caffeine": "",
+    "hot_fl": "N",
+    "hot_price": "0",
+    "ice_fl": "N",
+    "ice_price": "0",
+    "goods_price": "1500"
+  },
+  {
+    "goods_name": "캐치!티니핑 밀크맛",
+    "goods_eng_name": "Catch! Tiny Ping Milk",
+    "goods_summary": "캐치! 티니핑 시리즈에서 '밀'와 직접적으로 연관된 캐릭터는 베리하츄핑입니다.",
+    "goods_description": "591ml 1회 제공량 34.2kcal",
+    "goods_allergy": "",
+    "goods_fat": "",
+    "goods_sugar": "",
+    "goods_sodium": "",
+    "goods_protein": "",
+    "goods_caffeine": "",
+    "hot_fl": "N",
+    "hot_price": "0",
+    "ice_fl": "N",
+    "ice_price": "0",
+    "goods_price": "1500"
+  }
+]

@@ -72,9 +72,9 @@ class BoardControllerTest {
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
 		
 		int seq = 0;
-		board01 = new BoardVO(seq, "제목01", "내용01",0,"작성일 null","admin","등록일 null","admin");
-		board02 = new BoardVO(seq, "제목02", "내용02",0,"작성일 null","admin","등록일 null","admin");
-		board03 = new BoardVO(seq, "제목03", "내용03",0,"작성일 null","admin","등록일 null","admin");
+		board01 = new BoardVO(seq, "제목01", "내용01",0,"작성일 null","admin","등록일 null","admin","");
+		board02 = new BoardVO(seq, "제목02", "내용02",0,"작성일 null","admin","등록일 null","admin","");
+		board03 = new BoardVO(seq, "제목03", "내용03",0,"작성일 null","admin","등록일 null","admin","");
 		
 		dto    = new DTO();	
 	}

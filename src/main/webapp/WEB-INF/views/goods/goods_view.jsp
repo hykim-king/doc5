@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ include file="/WEB-INF/views/common/header/header_order.jsp" %>
+<%@ include file="/WEB-INF/views/common/header/header_goods.jsp" %>
     <link rel="stylesheet" href="/resources/css/modals.css">
     
+    <style>
+    .cont_wrap {
+		margin-top:35px;
+	}
     
+    </style>
 	<div class="cont_wrap menu_wrap">
 		<div class="cont goods_list">
             <div class="goods_detail_wrap">
@@ -243,14 +248,7 @@
 
 
 
-
-
- 
-
-
-
-
 		</div>
 	</div>
-<%@ include file="/WEB-INF/views/common/footer/footer_order.jsp" %>
+<%@ include file="/WEB-INF/views/common/footer/footer_goods.jsp" %>
 <script src="/resources/js/goods_view.js"></script>

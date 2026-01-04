@@ -1,0 +1,36 @@
+[
+  {
+    "goods_name": "콜드브루 상품",
+    "goods_eng_name": "COLD BREW COFFEE",
+    "goods_summary": "집에서도 간편하게 콜드브루 커피의 맛을 느낄 수 있는 상품.",
+    "goods_description": "1회 제공량 2kcal(30ml 당)",
+    "goods_allergy": "고카페인 함유",
+    "goods_fat": "포화지방 0g",
+    "goods_sugar": "당류 0g",
+    "goods_sodium": "나트륨 0g",
+    "goods_protein": "단백질 1.0g",
+    "goods_caffeine": "카페인 219.1mg",
+    "hot_fl": "N",
+    "hot_price": "0",
+    "ice_fl": "N",
+    "ice_price": "0",
+    "goods_price": "20000"
+  },
+  {
+    "goods_name": "콜드브루 디카페인 상품",
+    "goods_eng_name": "Decaf COLD BREW COFFEE",
+    "goods_summary": "집에서도 간편하게 콜드브루 커피의 맛을 느낄 수 있는 상품.",
+    "goods_description": "1회 제공량 2kcal(30ml 당)",
+    "goods_allergy": "",
+    "goods_fat": "포화지방",
+    "goods_sugar": "당류",
+    "goods_sodium": "나트륨",
+    "goods_protein": "단백질",
+    "goods_caffeine": "카페인",
+    "hot_fl": "N",
+    "hot_price": "0",
+    "ice_fl": "N",
+    "ice_price": "0",
+    "goods_price": "20000"
+  }
+]

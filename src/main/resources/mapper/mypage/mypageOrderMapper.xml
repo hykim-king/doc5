@@ -2,23 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.doc5.mapper.MypageOrderMapper">
   <select id="doRetrieve" parameterType="MypageOrderVO" resultType="MypageOrderVO">
-  SELECT
-    o.order_no,
-    o.branch_code,
-    o.order_name,
-    o.goods_total_cnt,
-    o.settle_total_price,
-    o.goods_total_price,
-    o.option_total_price,
-    o.settel_kind,
-    o.order_step,
-    o.reg_dt,
-    o.mod_dt,
-    c.user_id
+    SELECT
+	    o.order_no,
+	    o.branch_code,
+	    b.branch_name,
+	    o.order_name,
+	    o.goods_total_cnt,
+	    o.settle_total_price,
+	    o.goods_total_price,
+	    o.option_total_price,
+	    o.settel_kind,
+	    DECODE(o.order_step,'O','주문완료','P','준비중','S','준비완료(픽업)','C','주문취소') AS order_step,
+	    o.reg_dt,
+	    TO_CHAR(o.mod_dt,'YYYY.MM.DD') as mod_dt,
+	    c.user_id
 	FROM
 	    doc5_order o
 	LEFT JOIN doc5_cart c
 	  ON o.order_no = c.order_no
+	LEFT JOIN doc5_branch b
+	  ON b.branch_code = o.branch_code
 	WHERE c.user_id = '${userId}'
   </select>
 

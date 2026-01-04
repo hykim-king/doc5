@@ -2,6 +2,9 @@ package com.project.doc5.user.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,9 +22,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
+import com.project.doc5.cmn.MenuVO;
 import com.project.doc5.cmn.MessageVO;
+import com.project.doc5.goods.domain.GoodsSearchKeywordVO;
+import com.project.doc5.mapper.GoodsSearchMapper;
+import com.project.doc5.user.domain.Grade;
 import com.project.doc5.user.domain.UserVO;
 import com.project.doc5.user.service.UserService;
+
+import sun.invoke.empty.Empty;
 
 @Controller
 @RequestMapping("/user")
@@ -31,6 +40,8 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
+	@Autowired
+	GoodsSearchMapper goodsSearchMapper;
 	
 	public UserController() {
 		super();
@@ -39,6 +50,55 @@ public class UserController {
 		log.debug("└──────────────────────────┘");	
 	}
 	
+	
+	@RequestMapping(value = "/userRegist.do")  
+	public String userRegist(Model model) {
+		log.debug("┌──────────────────────────┐");
+		log.debug("│userRegist()              │");
+		log.debug("└──────────────────────────┘");
+
+		String actionUrl = "/user/doSave.do";
+		model.addAttribute("pageTitle","회원가입");
+		model.addAttribute("actionUrl",actionUrl);
+		return "/user/user_regist";
+	}
+	
+	@RequestMapping(value = "/userModify.do")  
+	public String userModify(HttpServletResponse response, final HttpServletRequest request, Model model) throws IOException {
+		log.debug("┌──────────────────────────┐");
+		log.debug("│userModify()              │");
+		log.debug("└──────────────────────────┘");
+		
+		HttpSession session = request.getSession();
+		
+		response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();	
+        
+        String message;
+        if(null == session.getAttribute("sessionUserId")) {
+        	message = "잘못된 접속입니다.";
+	        out.println("<script>");
+	        out.println("alert('"+message+"');");
+	        out.println("location.href='/';"); //  페이지로 돌아가기
+	        out.println("</script>");
+	        out.flush();
+	        return null;
+        }else {
+        	String userId = session.getAttribute("sessionUserId")+"";
+        	UserVO userVO = new UserVO();
+        	userVO.setUserId(userId);
+        	UserVO userInfo = userService.doSelectOne(userVO);
+        	log.debug("userInfo : {}",userInfo);
+        	model.addAttribute("userInfo",userInfo);
+        	
+        }
+		
+		String actionUrl = "/user/doModify.do";
+		model.addAttribute("pageTitle","회원정보 수정");
+		model.addAttribute("actionUrl",actionUrl);
+		
+		return "/user/user_regist";
+	}
 	
 	/**
 	 * 로그 아웃 
@@ -58,13 +118,15 @@ public class UserController {
 		
 		HttpSession session = request.getSession();
 		
-		if(null != session.getAttribute("userId")) {
+		response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();	
+        
+		if(null != session.getAttribute("sessionUserId")) {
 			
-			session.setAttribute("userId",null);
+			session.setAttribute("sessionUserId",null);
+			session.setAttribute("sessionUserName",null);
 			
 			message = "로그아웃 완료했습니다.";
-			response.setContentType("text/html; charset=UTF-8");
-	        PrintWriter out = response.getWriter();
 	        out.println("<script>");
 	        out.println("alert('"+message+"');");
 	        out.println("location.href='/';"); //  페이지로 돌아가기
@@ -73,8 +135,7 @@ public class UserController {
 	        return null; // 스크립트 출력이 끝났으므로 null 반환
 		}else {
 			message = "잘못된 접근입니다.";
-			response.setContentType("text/html; charset=UTF-8");
-	        PrintWriter out = response.getWriter();
+			
 	        out.println("<script>");
 	        out.println("alert('"+message+"');");
 	        out.println("history.back();"); // 이전 페이지로 돌아가기
@@ -100,6 +161,8 @@ public class UserController {
 		log.debug("└──────────────────────────┘");
 		log.debug("1.param:{}",param);
 		
+		log.debug("1.userId:{}",request.getParameter("userId"));
+		
 		
 		log.debug("2.loginUser : {}", param);
 		
@@ -108,19 +171,33 @@ public class UserController {
 		
 		String message = "";
 		
+		response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        
 		if(null != userCheckVO) {
 			// 로그인 시 세션 저장
 			HttpSession session = request.getSession();
-			session.setAttribute("userId", userCheckVO.getUserId());// session에 'userId' 속성값 저장
+			session.setAttribute("sessionUserId", userCheckVO.getUserId());// session에 'userId' 속성값 저장
+			session.setAttribute("sessionUserName", userCheckVO.getName());// session에 'name' 속성값 저장
 			session.setMaxInactiveInterval(30*60); // 30분
 
-			String sessionUserId = (String) session.getAttribute("userId");
+			String tmpUserId = null;
+			if(session.getAttribute("sessionTmpId") != null) {
+				tmpUserId = session.getAttribute("sessionTmpId")+"";
+				session.setAttribute("sessionTmpId", null);
+			}
+			
+			GoodsSearchKeywordVO gskVO = new GoodsSearchKeywordVO();
+			
+			gskVO.setUserId(userCheckVO.getUserId());
+			gskVO.setTmpUserId(tmpUserId);
+			goodsSearchMapper.goodsSearchUpdate(gskVO);
+			
+			String sessionUserId = (String) session.getAttribute("sessionUserId");
 			log.debug("┌──────────────────────────┐");
 			log.debug("│sessionUserId()           │"+sessionUserId);
 			log.debug("└──────────────────────────┘");
 			message = userCheckVO.getName() + "님 로그인 완료했습니다.";
-			response.setContentType("text/html; charset=UTF-8");
-	        PrintWriter out = response.getWriter();
 	        out.println("<script>");
 	        out.println("alert('"+message+"');");
 	        out.println("location.href='/';"); //  페이지로 돌아가기
@@ -129,8 +206,6 @@ public class UserController {
 	        return null; // 스크립트 출력이 끝났으므로 null 반환
 		}else {
 			message = param.getUserId() + " 아이디가 없거나 비밀번호가 틀렸습니다.";
-			response.setContentType("text/html; charset=UTF-8");
-	        PrintWriter out = response.getWriter();
 	        out.println("<script>");
 	        out.println("alert('"+message+"');");
 	        out.println("history.back();"); // 이전 페이지로 돌아가기
@@ -167,40 +242,138 @@ public class UserController {
 		return "user/user_reg";
 	}
 	
-	//JSON -> JSON데이터
+
 	@PostMapping(value =  "/doSave.do",produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String doSave(UserVO param) {
+	public String doSave(UserVO param, HttpServletResponse response, final HttpServletRequest request) throws IOException {
 		log.debug("┌──────────────────────────┐");
 		log.debug("│doSave()                  │");
 		log.debug("└──────────────────────────┘");	
 		
-		String viewName = "user/user_mng";
+		param.setGrade(Grade.BASIC);
+		param.setPrivacyDt("Y");
 		
 		log.debug("1.param:{}",param);
 		
-		int flag = userService.doSave(param);
-		log.debug("2.flag:{}",flag);
-
+		UserVO userInfo = userService.doSelectOne(param);
+		log.debug("2.userInfo:{}",userInfo);
+		
 		String message = "";
-		if( 1 == flag ) {
-			message = param.getName()+"님 등록 되었습니다.";
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		if(param.getPassword().length() < 5) {
+			message = "비밀번호는 5자리 이상 입력해주세요.";
+			
+			out.println("<script type='text/javascript'>");
+			out.println("alert('" + message + "');"); 
+			out.println("</script>");
+			out.flush();
 		}else {
-			message = param.getName()+"님 등록 실패 했습니다.";
+		
+			if(userInfo == null) {
+				int flag = userService.doSave(param);
+				log.debug("2.flag:{}",flag);
+		
+				if( 1 == flag ) {
+					message = param.getName()+"님 등록 되었습니다.";
+					
+					HttpSession session = request.getSession();
+					session.setAttribute("sessionUserId", param.getUserId());// session에 'userId' 속성값 저장
+					session.setAttribute("sessionUserName", param.getName());// session에 'name' 속성값 저장
+					session.setMaxInactiveInterval(30*60); // 30분
+				}else {
+					message = param.getName()+"님 등록 실패 했습니다.";
+					
+				}
+				out.println("<script type='text/javascript'>");
+				out.println("alert('" + message + "');"); 
+				out.println("parent.location.href='/'"); 
+				out.println("</script>");
+				out.flush();
+			
+			}else{
+				
+				message = "이미 등록된 정보 입니다.";
+				out.println("<script type='text/javascript'>");
+				out.println("alert('" + message + "');"); 
+				out.println("</script>");
+				out.flush();
+				
+			}
 		}
 		
-		MessageVO messageVO=new MessageVO();
-		messageVO.setFlag(flag);
-		messageVO.setMessage(message);
+		return "";
+//		return "user/user_reg";
+	}
+	
+
+	@PostMapping(value =  "/doModify.do",produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String doModify(UserVO param, @RequestParam("password_re") String passwordRe, HttpServletResponse response, final HttpServletRequest request) throws IOException {
+		log.debug("┌──────────────────────────┐");
+		log.debug("│doModify()                │");
+		log.debug("└──────────────────────────┘");	
 		
-		log.debug("3.messageVO:{}",messageVO);
-		log.debug("4.viewName:{}",viewName);
-		Gson gson = new Gson();
-		String jsonString = gson.toJson(messageVO);
-		log.debug("4.jsonString:{}\n",jsonString);
 		
 		
-		return jsonString;
+		log.debug("1.param:{}",param);
+		log.debug("1.passwordRe:{}",passwordRe);
+		
+		UserVO userInfo = userService.doSelectOne(param);
+		log.debug("2.userInfo:{}",userInfo);
+		param.setGrade(userInfo.getGrade());
+		param.setPrivacyDt("");
+		
+		String message = "";
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		if(param.getPassword().length() < 5) {
+			message = "비밀번호는 5자리 이상 입력해주세요.";
+			
+			out.println("<script type='text/javascript'>");
+			out.println("alert('" + message + "');"); 
+			out.println("</script>");
+			out.flush();
+			return null;
+		}else {
+			
+			if(param.getPassword().equals(passwordRe)) {
+		
+				int flag = userService.doUpdate(param);
+				log.debug("2.flag:{}",flag);
+		
+				if( 1 == flag ) {
+					message = param.getName()+"님 수정 되었습니다.";
+					
+					HttpSession session = request.getSession();
+					session.setAttribute("sessionUserId", param.getUserId());// session에 'userId' 속성값 저장
+					session.setAttribute("sessionUserName", param.getName());// session에 'name' 속성값 저장
+					session.setMaxInactiveInterval(30*60); // 30분
+				}else {
+					message = param.getName()+"님 수정 실패 했습니다.";
+				}
+				out.println("<script type='text/javascript'>");
+				out.println("alert('" + message + "');"); 
+				out.println("parent.location.href='/'"); 
+				out.println("</script>");
+				out.flush();
+				return null;
+				
+				
+			}else {
+				message = "비밀번호가 일치하지 않습니다.";
+				out.println("<script type='text/javascript'>");
+				out.println("alert('" + message + "');"); 
+				out.println("</script>");
+				out.flush();
+				return null;
+			}
+		}
+		
 	}
 	
 }

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.doc5.mapper.DataInsertMapper">
+	<delete id="deleteOptionTypeAll">
+	DELETE FROM doc5_option_type
+	</delete>
+	
+	<delete id="deleteCategoryJoinAll">
+	DELETE FROM doc5_category_join
+	</delete>
+
+	<insert id="doCategoryJoinSave">
+	INSERT INTO doc5_category_join (
+	    seq,
+	    goods_no,
+	    code,
+	    hidden_fl
+	) VALUES ( 
+		ci_seq.NEXTVAL,
+	    #{goodsNo},
+	    #{code},
+	    #{hiddenFl}
+	)
+	</insert>
+	
+	<insert id="doGoodsOptionTypeSave" parameterType="com.project.doc5.goods.domain.OptionTypeVO">
+	<selectKey keyProperty="seq" order="BEFORE" resultType="int">
+		SELECT ot_seq.NEXTVAL FROM dual
+	</selectKey>
+	INSERT INTO doc5_option_type (
+	    seq,
+	    goods_no,
+	    goods_option_name,
+	    goods_type,
+	    list_sort,
+	    hidden_fl
+	) VALUES ( 
+		#{seq},
+        #{goodsNo},
+        #{goodsOptionName},
+        #{goodsType},
+        #{listSort},
+        #{hiddenFl}
+    )
+	</insert>
+	
+	<insert id="doGoodsSave" parameterType="com.project.doc5.goods.domain.GoodsVO">
+	INSERT INTO doc5_goods (
+	    goods_no,
+	    goods_name,
+	    goods_eng_name,
+	    goods_price,
+	    hot_fl,
+	    hot_price,
+	    ice_fl,
+	    ice_price,
+	    tumbler_fl,
+	    short_description,
+	    goods_contents,
+	    new_fl,
+	    best_fl,
+	    alleoji_info,
+	    goods_view,
+	    hidden_fl,
+	    reg_dt,
+	    reg_id,
+	    mod_dt,
+	    mod_id
+	) VALUES ( 
+		#{goodsNo},
+        #{goodsName},
+        #{goodsEngName},
+        #{goodsPrice},
+        #{hotFl},
+        #{hotPrice},
+        #{iceFl},
+        #{icePrice},
+        #{tumblerFl},
+        #{shortDescription},
+        #{goodsContents},
+        #{newFl},
+        #{bestFl},
+        #{alleojiInfo},
+        #{goodsView},
+        #{hiddenFl},
+        SYSDATE,
+        #{regId},
+        SYSDATE,
+        #{modId}
+     ) 
+	</insert>
+	
+	<insert id="doGoodsInfoSave" parameterType="com.project.doc5.goods.domain.GoodsInfoVO">
+	INSERT INTO doc5_goods_info (
+	    seq,
+	    goods_no,
+	    goods_type,
+	    product_info_sort,
+	    product_info_title,
+	    product_info_text
+	) VALUES ( 
+		gi_seq.NEXTVAL,
+        #{goodsNo},
+        #{goodsType},
+        #{productInfoSort},
+        #{productInfoTitle},
+        #{productInfoText} 
+    )
+	</insert>
+	
+	<insert id="doGoodsOptionSave">
+	INSERT INTO doc5_goods_option (
+	    seq,
+	    ot_seq,
+	    option_step,
+	    option_name,
+	    option_price,
+	    option_hidden
+	) VALUES ( 
+		go_seq.NEXTVAL,
+        #{otSeq},
+        #{optionStep},
+        #{optionName},
+        #{optionPrice},
+        #{optionHidden} 
+    )
+	</insert>
+	
+	<select id="goodsAllCount">
+	SELECT COUNT(*) FROM doc5_goods
+	</select>
+	
+	<delete id="deleteBranchAll">	
+	delete from doc5_branch
+	</delete>
+	
+	<delete id="deleteGoodsInfoAll">	
+	delete from doc5_goods_info
+	</delete>
+	
+	<delete id="deleteGoodsAll">	
+	delete from doc5_goods
+	</delete>
+	
+	<delete id="deleteGoodsOptionAll">	
+	delete from doc5_goods_option
+	</delete>
+	
+	<insert id="doSave" parameterType="com.project.doc5.branch.domain.BranchVO" >
+	INSERT INTO doc5_branch (
+	    branch_code,
+	    branch_name,
+	    lat,
+	    lng,
+	    zone_code,
+	    address1,
+	    address2,
+	    tel,
+	    hidden_fl
+	) VALUES ( 
+		#{branchCode},
+		#{branchName},
+		#{lat},
+		#{lng},
+		#{zoneCode},
+		#{address1},
+		#{address2},
+		#{tel},
+		#{hiddenFl}
+	 )
+	</insert>
+</mapper>

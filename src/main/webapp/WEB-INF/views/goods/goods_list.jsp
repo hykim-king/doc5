@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ include file="/WEB-INF/views/common/header/header_order.jsp" %>
+<%@ include file="/WEB-INF/views/common/header/header_goods.jsp" %>
 
 <style>
+.cont_wrap {
+	margin-top:35px;
+}
+
 .cont_wrap .menuSubTitle {
   width: 90%;
   margin: 10px auto;
@@ -114,5 +118,5 @@ fetch(jsonPath)
 		    -->
 		</div>
 	</div>
-<%@ include file="/WEB-INF/views/common/footer/footer_order.jsp" %>
+<%@ include file="/WEB-INF/views/common/footer/footer_goods.jsp" %>
 

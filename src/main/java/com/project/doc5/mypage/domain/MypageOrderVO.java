@@ -8,6 +8,7 @@ public class MypageOrderVO extends DTO {
 	
 	private String orderNo            ;  //주문고유번호
 	private String branchCode         ;  //지점고유번호
+	private String branchName         ;  //지점명
 	private String orderName          ;  //주문상품명
 	private int    goodsTotalCnt      ;  //상품총수량
 	private double settleTotalPrice   ;  //총주문금액
@@ -25,12 +26,13 @@ public class MypageOrderVO extends DTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MypageOrderVO(String orderNo, String branchCode, String orderName, int goodsTotalCnt,
+	public MypageOrderVO(String orderNo, String branchCode, String branchName, String orderName, int goodsTotalCnt,
 			double settleTotalPrice, double goodsTotalPrice, double optionTotalPrice, String settelKind,
 			String orderStep, String regDt, String modDt, String userId) {
 		super();
 		this.orderNo = orderNo;
 		this.branchCode = branchCode;
+		this.branchName = branchName;
 		this.orderName = orderName;
 		this.goodsTotalCnt = goodsTotalCnt;
 		this.settleTotalPrice = settleTotalPrice;
@@ -57,6 +59,14 @@ public class MypageOrderVO extends DTO {
 
 	public void setBranchCode(String branchCode) {
 		this.branchCode = branchCode;
+	}
+
+	public String getBranchName() {
+		return branchName;
+	}
+
+	public void setBranchName(String branchName) {
+		this.branchName = branchName;
 	}
 
 	public String getOrderName() {
@@ -141,11 +151,14 @@ public class MypageOrderVO extends DTO {
 
 	@Override
 	public String toString() {
-		return "MypageOrderVO [orderNo=" + orderNo + ", branchCode=" + branchCode + ", orderName=" + orderName
-				+ ", goodsTotalCnt=" + goodsTotalCnt + ", settleTotalPrice=" + settleTotalPrice + ", goodsTotalPrice="
-				+ goodsTotalPrice + ", optionTotalPrice=" + optionTotalPrice + ", settelKind=" + settelKind
-				+ ", orderStep=" + orderStep + ", regDt=" + regDt + ", modDt=" + modDt + ", userId=" + userId + "]";
+		return "MypageOrderVO [orderNo=" + orderNo + ", branchCode=" + branchCode + ", branchName=" + branchName
+				+ ", orderName=" + orderName + ", goodsTotalCnt=" + goodsTotalCnt + ", settleTotalPrice="
+				+ settleTotalPrice + ", goodsTotalPrice=" + goodsTotalPrice + ", optionTotalPrice=" + optionTotalPrice
+				+ ", settelKind=" + settelKind + ", orderStep=" + orderStep + ", regDt=" + regDt + ", modDt=" + modDt
+				+ ", userId=" + userId + "]";
 	}
+
+	
 
 
 }

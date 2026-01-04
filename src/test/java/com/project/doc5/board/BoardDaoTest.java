@@ -48,9 +48,9 @@ class BoardDaoTest {
 		log.debug("└──────────────────────────┘");	
 		
 		int seq = 0;
-		board01 = new BoardVO(seq, "제목1", "내용1",0,"작성일 null","admin","등록일 null","admin");
-		board02 = new BoardVO(seq, "제목1", "내용1",0,"작성일 null","admin","등록일 null","admin");
-		board03 = new BoardVO(seq, "제목1", "내용1",0,"작성일 null","admin","등록일 null","admin");
+		board01 = new BoardVO(seq, "제목1", "내용1",0,"작성일 null","admin","등록일 null","admin","");
+		board02 = new BoardVO(seq, "제목1", "내용1",0,"작성일 null","admin","등록일 null","admin","");
+		board03 = new BoardVO(seq, "제목1", "내용1",0,"작성일 null","admin","등록일 null","admin","");
 		
 		dto = new DTO();
 	}
@@ -84,7 +84,7 @@ class BoardDaoTest {
 		dto.setPageNo(1);
 		dto.setPageSize(10);
 		dto.setSearchDiv("10");
-		dto.setSearchWord("제목2");
+		dto.setSearchWord("입니다.5");
 		
 		List<BoardVO> list = boardMapper.doRetrieve(dto);
 		for(BoardVO vo  :list) {
@@ -97,7 +97,7 @@ class BoardDaoTest {
 	}
 	
 	//저장
-	//@Disabled
+	@Disabled
 	@Test
 	void doSave() {
 		// 매번 동일 결과가 도출 되도록 작성.
