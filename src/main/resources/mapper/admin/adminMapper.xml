@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.doc5.mapper.AdMapper">
+    <!-- ==================== 주문 결과 매핑 ==================== -->
+    <resultMap id="orderResultMap" type="com.project.doc5.manager.domain.AdOrderVO">
+        <id column="ORDER_NO" property="orderNo"/>
+        <result column="ORDER_DATE" property="regDt"/>
+        <result column="USER_ID" property="userId"/>
+        <result column="SETTLE_TOTAL_PRICE" property="settleTotalPrice"/>
+        <result column="ORDER_STEP" property="orderStep"/>
+    </resultMap>
+    <!-- ==================== 매출/주문수 결과 매핑 ==================== -->
+    <resultMap id="salesResultMap" type="com.project.doc5.manager.domain.AdOrderVO">
+        <result column="TOTAL_SALES" property="totalSales"/>
+        <result column="TOTAL_ORDER_COUNT" property="totalOrderCount"/>
+    </resultMap>
+    <!-- ==================== 월 매출 + 주문 수 ==================== -->
+<select id="selectSalesAndOrderCount"
+        parameterType="java.util.Map"
+        resultMap="salesResultMap">
+        SELECT (SELECT b.branch_name FROM doc5_branch b WHERE b.branch_code=#{branchCode}),
+               NVL(SUM(SETTLE_TOTAL_PRICE), 0) AS TOTAL_SALES,
+               count(*) AS TOTAL_ORDER_COUNT
+          FROM DOC5_ORDER
+         WHERE branch_code =#{branchCode} 
+               AND order_step = 'S'
+               AND TO_CHAR(reg_dt,'YYYYMM') = TO_CHAR(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), -1),'YYYYMM')
+         GROUP BY branch_code   
+</select>
+    <!-- ==================== 회원 목록 조회 ==================== -->
+    <select id="selectMemberList"  resultType="com.project.doc5.user.domain.UserVO">
+        SELECT
+            USER_ID,
+            NAME,
+            PHONE,
+            TO_CHAR(REG_DT, 'YYYY-MM-DD') AS REG_DT
+        FROM DOC5_MEMBER
+        <where>
+            <if test="searchWord != null and searchWord != ''">
+                AND USER_ID LIKE '%' || #{searchWord} || '%'
+            </if>
+        </where>
+        ORDER BY REG_DT DESC
+    </select>
+    <!-- ==================== 회원 삭제 ==================== -->
+    <delete id="deleteMemberCartData" parameterType="String">
+        DELETE FROM DOC5_CART
+        WHERE USER_ID = #{value}
+    </delete>
+    <delete id="deleteMember" parameterType="String">
+        DELETE FROM DOC5_MEMBER
+        WHERE USER_ID = #{value}
+    </delete>
+    <!-- ==================== 회원 주문 목록 ==================== -->
+    <select id="selectOrdersByMemberId"
+            parameterType="String"
+            resultMap="orderResultMap">
+        SELECT
+            O.ORDER_NO,
+            TO_CHAR(O.REG_DT, 'YYYY-MM-DD HH24:MI:SS') AS ORDER_DATE,
+            C.USER_ID,
+            O.SETTLE_TOTAL_PRICE,
+            O.ORDER_STEP
+        FROM DOC5_ORDER O
+        JOIN DOC5_CART C ON O.ORDER_NO = C.ORDER_NO
+        WHERE C.USER_ID = #{value}
+        ORDER BY O.REG_DT DESC
+    </select>
+    <!-- ==================== 미처리 주문 (페이징) ==================== -->
+    <select id="selectPendingOrders"
+            parameterType="com.project.doc5.manager.domain.AdDTO"
+            resultMap="orderResultMap">
+        SELECT
+            O.ORDER_NO,
+            TO_CHAR(O.REG_DT, 'YYYY-MM-DD HH24:MI:SS') AS ORDER_DATE,
+            C.USER_ID,
+            O.SETTLE_TOTAL_PRICE,
+            O.ORDER_STEP
+        FROM DOC5_ORDER O
+        JOIN DOC5_CART C ON O.ORDER_NO = C.ORDER_NO
+        WHERE O.ORDER_STEP = 'P'
+          AND O.BRANCH_CODE = #{branchCode}
+        ORDER BY O.REG_DT ASC
+    </select>
+    <!-- ==================== 주문 상태 변경 ==================== -->
+    <update id="updateOrderToSuccess" parameterType="java.util.Map">
+        UPDATE DOC5_ORDER
+           SET ORDER_STEP = 'S',
+               MOD_DT = SYSDATE
+         WHERE ORDER_NO = #{orderNo}
+           AND ORDER_STEP = 'P'
+           AND BRANCH_CODE = #{branchCode}
+    </update>
+    <update id="updateOrderToCancel" parameterType="java.util.Map">
+        UPDATE DOC5_ORDER
+           SET ORDER_STEP = 'C',
+               MOD_DT = SYSDATE
+         WHERE ORDER_NO = #{orderNo}
+           AND ORDER_STEP = 'P'
+           AND BRANCH_CODE = #{branchCode}
+    </update>
+    <!-- ==================== 테스트용 INSERT ==================== -->
+    <insert id="testInsertMember"
+            parameterType="com.project.doc5.user.domain.UserVO">
+        INSERT INTO DOC5_MEMBER (
+            USER_ID, NAME, PASSWORD, PHONE,
+            GRADE, REG_DT, PRIVACY_DT
+        ) VALUES (
+            #{userId},
+            #{name},
+            #{password},
+            #{phone},
+            DECODE(#{grade},
+                   'BASIC', 1,
+                   'SILVER', 2,
+                   'GOLD', 3),
+            SYSDATE,
+            SYSDATE
+        )
+    </insert>
+    <insert id="testInsertOrder"
+            parameterType="com.project.doc5.manager.domain.AdOrderVO">
+        INSERT INTO DOC5_ORDER (
+            ORDER_NO, BRANCH_CODE, ORDER_NAME, GOODS_TOTAL_CNT,
+            SETTLE_TOTAL_PRICE, GOODS_TOTAL_PRICE, OPTION_TOTAL_PRICE,
+            SETTEL_KIND, ORDER_STEP, REG_DT, MOD_DT
+        ) VALUES (
+            #{orderNo}, #{branchCode}, #{orderName}, #{goodsTotalCnt},
+            #{settleTotalPrice}, #{goodsTotalPrice}, #{optionTotalPrice},
+            #{settelKind}, #{orderStep}, SYSDATE, SYSDATE
+        )
+    </insert>
+    <insert id="testInsertCart" parameterType="java.util.Map">
+        INSERT INTO DOC5_CART (
+            SEQ, ORDER_NO, USER_ID, GOODS_NO,
+            BRANCH_CODE, GOODS_NAME
+        ) VALUES (
+            (SELECT NVL(MAX(SEQ), 0) + 1 FROM DOC5_CART),
+            #{orderNo}, #{userId}, 10000,
+            #{branchCode}, #{goodsName}
+        )
+    </insert>
+</mapper>
