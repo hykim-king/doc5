@@ -1,4 +1,4 @@
-package com.project.doc5.admin.controller;
+package com.project.doc5.manager.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -11,12 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/admin")
-public class AdminController {
+@RequestMapping("/manager")
+public class ManagerController {
 
 	final Logger log = LogManager.getLogger(getClass());
 
-	public AdminController() {
+	public ManagerController() {
 		super();
 		log.debug("┌──────────────────────────┐");
 		log.debug("│AdminController()         │");
@@ -25,19 +25,19 @@ public class AdminController {
 	
 	@RequestMapping(value = {"/", "/index"})
 	public String index(Locale locale, Model model) {
-		return "/admin/index"; 
+		return "/manager/index"; 
 	}
 	
 	@RequestMapping(value = "/member.do")
 	public String member(Locale locale, Model model) {
 		
-		return "/admin/admin_member"; 
+		return "/manager/admin_member"; 
 	}
 	
 	@RequestMapping(value = "/shop.do")
 	public String shop(Locale locale, Model model) {
 		
-		return "/admin/admin_shop"; 
+		return "/manager/admin_shop"; 
 	}
 	
 	@RequestMapping(value = "/branchLogin.do")  
@@ -46,7 +46,7 @@ public class AdminController {
 		log.debug("│branchLogin()             │");
 		log.debug("└──────────────────────────┘");
 
-		return "/admin/login";
+		return "/manager/login";
 	}
 	
 	
