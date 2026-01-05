@@ -31,13 +31,13 @@ public class AdminController {
 	@RequestMapping(value = "/member.do")
 	public String member(Locale locale, Model model) {
 		
-		return "/admin/member"; 
+		return "/admin/admin_member"; 
 	}
 	
 	@RequestMapping(value = "/shop.do")
 	public String shop(Locale locale, Model model) {
 		
-		return "/admin/shop"; 
+		return "/admin/admin_shop"; 
 	}
 	
 	@RequestMapping(value = "/branchLogin.do")  

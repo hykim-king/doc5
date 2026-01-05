@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ include file="/WEB-INF/views/admin/common/_header.jsp" %>
+<%@ include file="/WEB-INF/views/admin/common/header_not.jsp" %>
 
 
     <div class="modal-content">
@@ -46,4 +46,4 @@
     </div>
 
   
-<%@ include file="/WEB-INF/views/admin/common/_footer.jsp" %>
+<%@ include file="/WEB-INF/views/admin/common/footer_not.jsp" %>
