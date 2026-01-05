@@ -1,7 +1,5 @@
 package com.project.doc5.manager.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import org.apache.logging.log4j.LogManager;
@@ -11,12 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-<<<<<<< Updated upstream
 @RequestMapping("/manager")
-=======
-@RequestMapping("/admin")
->>>>>>> Stashed changes
-public class ManagerController {
+public class ManagerController {  
 
 	final Logger log = LogManager.getLogger(getClass());
 
@@ -35,13 +29,13 @@ public class ManagerController {
 	@RequestMapping(value = "/member.do")
 	public String member(Locale locale, Model model) {
 		
-		return "/manager/admin_member"; 
+		return "/manager/member"; 
 	}
 	
 	@RequestMapping(value = "/shop.do")
 	public String shop(Locale locale, Model model) {
 		
-		return "/manager/admin_shop"; 
+		return "/manager/shop"; 
 	}
 	
 	@RequestMapping(value = "/branchLogin.do")  
