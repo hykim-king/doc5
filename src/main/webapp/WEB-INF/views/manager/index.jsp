@@ -3,7 +3,7 @@
 
     
     
-  <%@ include file="/WEB-INF/views/admin/common/header.jsp" %>
+  <%@ include file="/WEB-INF/views/manager/common/header.jsp" %>
   
   			<h2>📊 매출 현황 (최근 30일)</h2>
             <table>
@@ -13,4 +13,4 @@
                 <tr><td>주문 건수 (성공)</td><td id="totalOrderCount">540건</td></tr>
             </table>
   
-  <%@ include file="/WEB-INF/views/admin/common/footer.jsp" %>
+  <%@ include file="/WEB-INF/views/manager/common/footer.jsp" %>
