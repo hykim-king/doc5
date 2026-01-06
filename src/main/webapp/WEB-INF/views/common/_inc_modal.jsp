@@ -152,11 +152,11 @@
 				<!-- <div class="fullpage-intext">DOC5님 반가워요 👋</div>-->
 				<div class="fullpage-stamp">
 					<c:choose>
-					<c:when test="${empty sessionUserName}">
+					<c:when test="${empty sessionScope.sessionUser.userId}">
 						로그인 해주세요.
 					</c:when>
 					<c:otherwise>
-						${sessionUserName}님 반가워요 👋
+						${sessionScope.sessionUser.name}님 반가워요 👋
 					</c:otherwise>
 					</c:choose>
 					
@@ -192,7 +192,7 @@
       </div>
       <div class="modal-body">
     <main class="form-signin w-100 m-auto">
-      <form action="/user/doLoginCheck.do" method="post">
+      <form action="/user/doLoginCheck.do" method="post" target="iframe">
 		<div style="text-align:center;">
         <img src="/resources/img/doc5_logo.png" class="" style="margin-bottom:60px;width:150px;">
 	   </div>

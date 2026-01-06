@@ -52,9 +52,43 @@ public class UserServicelmpl implements UserService<UserVO> {
 	}
 	
 	@Override
-	public UserVO doUserLogin(UserVO param) {
-		return userMapper.doUserLogin(param);
+	public UserVO userLogin(UserVO param) {
+		UserVO outVO = null;
+		
+		int count = userMapper.userIdCheck(param);
+		
+		if(0 == count) {
+			throw new IllegalArgumentException("존재하지 않는 사용자입니다.");
+		}
+		
+		count = userMapper.userPasswordCheck(param);
+		if(0 == count) {
+			throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+		}
+		
+		outVO = userMapper.doSelectOne(param);
+		log.debug("outVO:{}",outVO);
+		
+		outVO.setPassword("");
+		
+		return outVO;
 	}
+
+	@Override
+	public int userIdCheck(UserVO param) {
+		int count = userMapper.userIdCheck(param);
+		log.debug("userIdCheck count : {}", count);
+		return count;
+	}
+
+	@Override
+	public int userPasswordCheck(UserVO param) {
+		int count = userMapper.userPasswordCheck(param);
+		log.debug("userPasswordCheck count : {}", count);
+		return count;
+	}
+
+
 	
 	
 

@@ -89,7 +89,7 @@ class UserDaoTest {
 		loginUser.setUserId("doc5_1@doc5.com");
 		loginUser.setPassword("doc5_010");
 		log.debug("loginUser : {}", loginUser);
-		UserVO userCheckVO=userMapper.doUserLogin(loginUser);
+		UserVO userCheckVO=userMapper.userLogin(loginUser);
 		log.debug("userCheckVO : {}", userCheckVO);
 		
 		// 4.

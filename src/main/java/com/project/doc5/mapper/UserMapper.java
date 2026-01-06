@@ -30,5 +30,9 @@ public interface UserMapper extends WorkDiv<UserVO> {
 	int deleteAll();
 	
 	// 로그인 
-	UserVO doUserLogin(UserVO param);
+	UserVO userLogin(UserVO param);
+	
+	int userIdCheck(UserVO param);
+	
+	int userPasswordCheck(UserVO param);
 }

@@ -154,65 +154,43 @@ public class UserController {
 	 * @throws IOException
 	 */
 	@PostMapping(value =  "/doLoginCheck.do",produces = "text/plain;charset=UTF-8")
-//	@ResponseBody
-	public String doLoginCheck(UserVO param, HttpServletResponse response, final HttpServletRequest request) throws IOException {
+	@ResponseBody
+	public String doLoginCheck(UserVO param, HttpServletResponse response, HttpSession session) throws IOException  {
 		log.debug("┌──────────────────────────┐");
 		log.debug("│doLoginCheck()            │");
 		log.debug("└──────────────────────────┘");
-		log.debug("1.param:{}",param);
-		
-		log.debug("1.userId:{}",request.getParameter("userId"));
-		
-		
-		log.debug("2.loginUser : {}", param);
-		
-		UserVO userCheckVO=userService.doUserLogin(param);
-		log.debug("3.userCheckVO : {}", userCheckVO);
-		
+
 		String message = "";
 		
+		log.debug("1.param:{}",param);
+		
 		response.setContentType("text/html; charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        
-		if(null != userCheckVO) {
-			// 로그인 시 세션 저장
-			HttpSession session = request.getSession();
-			session.setAttribute("sessionUserId", userCheckVO.getUserId());// session에 'userId' 속성값 저장
-			session.setAttribute("sessionUserName", userCheckVO.getName());// session에 'name' 속성값 저장
-			session.setMaxInactiveInterval(30*60); // 30분
-
-			String tmpUserId = null;
-			if(session.getAttribute("sessionTmpId") != null) {
-				tmpUserId = session.getAttribute("sessionTmpId")+"";
-				session.setAttribute("sessionTmpId", null);
-			}
+		PrintWriter out = response.getWriter();
+		
+		try {
+			UserVO userVO = userService.userLogin(param);
+			log.debug("3.userVO : {}", userVO);
 			
-			GoodsSearchKeywordVO gskVO = new GoodsSearchKeywordVO();
+			session.setAttribute("sessionUser", userVO);
+			message = "로그인 되었습니다.";
 			
-			gskVO.setUserId(userCheckVO.getUserId());
-			gskVO.setTmpUserId(tmpUserId);
-			goodsSearchMapper.goodsSearchUpdate(gskVO);
+			out.println("<script type='text/javascript'>");
+			out.println("alert('" + message + "');"); 
+			out.println("parent.location.href='/'"); 
+			out.println("</script>");
+			out.flush();
 			
-			String sessionUserId = (String) session.getAttribute("sessionUserId");
-			log.debug("┌──────────────────────────┐");
-			log.debug("│sessionUserId()           │"+sessionUserId);
-			log.debug("└──────────────────────────┘");
-			message = userCheckVO.getName() + "님 로그인 완료했습니다.";
-	        out.println("<script>");
-	        out.println("alert('"+message+"');");
-	        out.println("location.href='/';"); //  페이지로 돌아가기
-	        out.println("</script>");
-	        out.flush();
-	        return null; // 스크립트 출력이 끝났으므로 null 반환
-		}else {
-			message = param.getUserId() + " 아이디가 없거나 비밀번호가 틀렸습니다.";
-	        out.println("<script>");
-	        out.println("alert('"+message+"');");
-	        out.println("history.back();"); // 이전 페이지로 돌아가기
-	        out.println("</script>");
-	        out.flush();
-	        return null; // 스크립트 출력이 끝났으므로 null 반환
+		} catch (RuntimeException e) {
+			message = e.getMessage();
+			out.println("<script type='text/javascript'>");
+			out.println("alert('" + message + "');"); 
+			out.println("</script>");
+			out.flush();
 		}
+		
+
+		return "";
+		
 	}
 	
 	@GetMapping(value = "/doSelectOne.do")  

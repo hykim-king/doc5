@@ -4,8 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
 <%
-String sessionUserId = (String) session.getAttribute("userId");
-String sessionUserName = (String) session.getAttribute("userName");
 Date date = new Date();
 SimpleDateFormat simpleDate = new SimpleDateFormat("yyyyMMddhhmmss");
 String verDate = simpleDate.format(date);
@@ -115,7 +113,7 @@ String verDate = simpleDate.format(date);
 				
 				<div class="mobile_top_icon_wrap" >
 				<c:choose>
-				    <c:when test="${sessionUserId != null}">
+				    <c:when test="${sessionScope.sessionUser.userId != null}">
 				    	<div><button class="top_mypage" title="마이페이지" onclick="location.href='/user/userModify.do'"><span>마이페이지</span></button></div>
 				    </c:when>
 				    <c:otherwise>

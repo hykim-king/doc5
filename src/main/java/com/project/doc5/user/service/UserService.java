@@ -7,27 +7,27 @@ import com.project.doc5.cmn.DTO;
 import com.project.doc5.user.domain.UserVO;
 
 
-public interface UserService<T> {
+public interface UserService<UserVo> {
 	/**
 	 * 목록조회
 	 * @param dto
 	 * @return
 	 */
-	List<T> doRetrieve(DTO dto);
+	List<UserVo> doRetrieve(DTO dto);
 
 	/**
 	 * 단건수정
 	 * @param param
 	 * @return
 	 */
-	int doUpdate(T param);
+	int doUpdate(UserVo param);
 	
 	/**
 	 * 단건삭제
 	 * @param param
 	 * @return
 	 */
-	int doDelete(T param);
+	int doDelete(UserVo param);
 
 	/**
 	 * 단건조회
@@ -35,7 +35,7 @@ public interface UserService<T> {
 	 * @param param
 	 * @return UserVO
 	 */
-	UserVO doSelectOne(T param) ;
+	UserVO doSelectOne(UserVo param) ;
 
 	/**
 	 * 단건저장
@@ -44,13 +44,27 @@ public interface UserService<T> {
 	 * @return 1(성공)/0(실패)
 	 * @throws SQLException
 	 */
-	int doSave(T param);
+	int doSave(UserVo param);
 	
 	/**
-	 * 로그인 
-	 * 
+	 * id존재 체크
 	 * @param param
-	 * @return UserVO
+	 * @return
 	 */
-	UserVO doUserLogin(T param) ;
+	int userIdCheck(UserVo param);
+	
+	
+	/**
+	 * id,비번 체크
+	 * @param param
+	 * @return
+	 */
+	int userPasswordCheck(UserVo param);
+	
+	/**
+	 * 로그인
+	 * @param param
+	 * @return
+	 */
+	UserVO userLogin(UserVo param);
 }

@@ -165,8 +165,8 @@ SELECT A.*, B.*
   )
   </insert>
   
-  <select id="doUserLogin">
-SELECT                                                 
+  <select id="userLogin">
+  SELECT                                                 
      user_id,                                           
      name,                                              
      password,                                          
@@ -177,5 +177,18 @@ SELECT
     FROM                                                   
      doc5_member
    WHERE user_id = #{userId} AND password = #{password}
+  </select>
+  
+  <select id="userIdCheck">
+  SELECT count(*) cnt
+    FROM doc5_member
+   WHERE user_id = #{userId}
+  </select>
+  
+  <select id="userPasswordCheck">
+  SELECT COUNT(*) CNT
+    FROM doc5_member
+   WHERE user_id = #{userId}
+     AND password = #{password}
   </select>
 </mapper>

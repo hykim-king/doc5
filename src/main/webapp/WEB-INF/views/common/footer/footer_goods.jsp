@@ -133,7 +133,6 @@
 		});
 	</script>
 	
-<script>
-
-</script>
+      <!-- iframe 설정 -->
+    <iframe id="iframe" name="iframe"></iframe>   
 </html>
