@@ -84,10 +84,16 @@ public class BoardContorller {
 		DTO dto = new DTO();
 		dto.setPageNo(currentPage);
 		dto.setPageSize(postsPerPage);
+		
 		log.debug("dto : {}",dto);
 		
 		List<BoardVO> list = boardService.doRetrieve(dto);
 		log.debug("3. list:{}",list);
+		
+		
+		dto = new DTO(pageNo, postsPerPage, list.get(0).getTotalCnt());
+		
+		log.debug("dto : {}",dto);
 		
 		int totalPosts = list.get(0).getTotalCnt();
 		int totalPages = ( (totalPosts - 1) / postsPerPage ) + 1;

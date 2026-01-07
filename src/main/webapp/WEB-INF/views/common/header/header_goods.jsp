@@ -83,7 +83,7 @@ String verDate = simpleDate.format(date);
 </head>
 <body>
 
-<%@ include file="/WEB-INF/views/common/_inc_modal.jsp" %>
+<%@ include file="/WEB-INF/views/common/inc/_inc_modal.jsp" %>
 
 	<div class="wrap">
 		<div class="head_wrap">

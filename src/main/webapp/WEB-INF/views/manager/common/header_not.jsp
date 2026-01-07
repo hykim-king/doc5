@@ -3,7 +3,7 @@
 <!doctype html>
 <html lang="ko">
 <head>
-	<title>DOC5커피...</title>
+	<title>DOC5커피</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<meta name="title" content="DOC5커피">

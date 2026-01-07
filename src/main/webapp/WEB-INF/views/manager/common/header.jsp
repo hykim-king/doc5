@@ -3,7 +3,7 @@
 <!doctype html>
 <html lang="ko">
 <head>
-	<title>DOC5커피...</title>
+	<title>DOC5커피</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<meta name="title" content="DOC5커피">
@@ -53,9 +53,9 @@
 <div class="wrapper">
     <div class="sidebar">
         <h2>DOC5 관리자 페이지</h2>
-        <a href="/admin/">메인</a>
-        <a href="/admin/member.do">회원관리</a>
-        <a href="/admin/shop.do">주문 관리</a>
+        <a href="/manager/">메인</a>
+        <a href="/manager/member.do">회원관리</a>
+        <a href="/manager/shop.do">주문 관리</a>
     </div>
 
     <div class="content">
