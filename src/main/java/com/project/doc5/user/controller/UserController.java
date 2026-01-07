@@ -74,8 +74,10 @@ public class UserController {
 		response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();	
         
+        UserVO userVO = (UserVO) session.getAttribute("sessionUser");
+        
         String message;
-        if(null == session.getAttribute("sessionUserId")) {
+        if(null == userVO) {
         	message = "잘못된 접속입니다.";
 	        out.println("<script>");
 	        out.println("alert('"+message+"');");
@@ -84,9 +86,7 @@ public class UserController {
 	        out.flush();
 	        return null;
         }else {
-        	String userId = session.getAttribute("sessionUserId")+"";
-        	UserVO userVO = new UserVO();
-        	userVO.setUserId(userId);
+        	userVO.setUserId(userVO.getUserId());
         	UserVO userInfo = userService.doSelectOne(userVO);
         	log.debug("userInfo : {}",userInfo);
         	model.addAttribute("userInfo",userInfo);
@@ -121,11 +121,10 @@ public class UserController {
 		response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();	
         
-		if(null != session.getAttribute("sessionUserId")) {
+		if(null != session.getAttribute("sessionUser")) {
 			
-			session.setAttribute("sessionUserId",null);
-			session.setAttribute("sessionUserName",null);
-			
+			session.invalidate();
+
 			message = "로그아웃 완료했습니다.";
 	        out.println("<script>");
 	        out.println("alert('"+message+"');");
@@ -309,46 +308,66 @@ public class UserController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		if(param.getPassword().length() < 5) {
-			message = "비밀번호는 5자리 이상 입력해주세요.";
-			
+		//비밀번호 입력없이 수정 하기
+		if(param.getPassword().length() == 0 && passwordRe.length() == 0) {
+			int flag = userService.doUpdateNotPass(param);
+			log.debug("2.flag:{}",flag);
+	
+			if( 1 == flag ) {
+				message = param.getName()+"님 수정 되었습니다.";
+				
+				HttpSession session = request.getSession();
+				session.setAttribute("sessionUser", userInfo);
+			}else {
+				message = param.getName()+"님 수정 실패 했습니다.";
+			}
 			out.println("<script type='text/javascript'>");
 			out.println("alert('" + message + "');"); 
+			out.println("parent.location.href='/'"); 
 			out.println("</script>");
 			out.flush();
 			return null;
 		}else {
-			
-			if(param.getPassword().equals(passwordRe)) {
 		
-				int flag = userService.doUpdate(param);
-				log.debug("2.flag:{}",flag);
-		
-				if( 1 == flag ) {
-					message = param.getName()+"님 수정 되었습니다.";
-					
-					HttpSession session = request.getSession();
-					session.setAttribute("sessionUserId", param.getUserId());// session에 'userId' 속성값 저장
-					session.setAttribute("sessionUserName", param.getName());// session에 'name' 속성값 저장
-					session.setMaxInactiveInterval(30*60); // 30분
-				}else {
-					message = param.getName()+"님 수정 실패 했습니다.";
-				}
+			if(param.getPassword().length() < 5) {
+				message = "비밀번호는 5자리 이상 입력해주세요.";
+				
 				out.println("<script type='text/javascript'>");
 				out.println("alert('" + message + "');"); 
-				out.println("parent.location.href='/'"); 
 				out.println("</script>");
 				out.flush();
 				return null;
-				
-				
 			}else {
-				message = "비밀번호가 일치하지 않습니다.";
-				out.println("<script type='text/javascript'>");
-				out.println("alert('" + message + "');"); 
-				out.println("</script>");
-				out.flush();
-				return null;
+				
+				if(param.getPassword().equals(passwordRe)) {
+			
+					int flag = userService.doUpdate(param);
+					log.debug("2.flag:{}",flag);
+			
+					if( 1 == flag ) {
+						message = param.getName()+"님 수정 되었습니다.";
+						
+						HttpSession session = request.getSession();
+						session.setAttribute("sessionUser", userInfo);
+					}else {
+						message = param.getName()+"님 수정 실패 했습니다.";
+					}
+					out.println("<script type='text/javascript'>");
+					out.println("alert('" + message + "');"); 
+					out.println("parent.location.href='/'"); 
+					out.println("</script>");
+					out.flush();
+					return null;
+					
+					
+				}else {
+					message = "비밀번호가 일치하지 않습니다.";
+					out.println("<script type='text/javascript'>");
+					out.println("alert('" + message + "');"); 
+					out.println("</script>");
+					out.flush();
+					return null;
+				}
 			}
 		}
 		

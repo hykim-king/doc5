@@ -21,6 +21,7 @@ public interface UserService<UserVo> {
 	 * @return
 	 */
 	int doUpdate(UserVo param);
+	int doUpdateNotPass(UserVo param);
 	
 	/**
 	 * 단건삭제

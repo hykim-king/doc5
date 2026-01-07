@@ -35,6 +35,11 @@ public class UserServicelmpl implements UserService<UserVO> {
 	public int doUpdate(UserVO param) {
 		return userMapper.doUpdate(param);
 	}
+	
+	@Override
+	public int doUpdateNotPass(UserVO param) {
+		return userMapper.doUpdateNotPass(param);
+	}
 
 	@Override
 	public int doDelete(UserVO param) {

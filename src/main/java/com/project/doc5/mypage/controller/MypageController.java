@@ -47,7 +47,7 @@ public class MypageController {
 		
 		HttpSession session = request.getSession();
 		
-		if(null == session.getAttribute("sessionUserId")) {
+		if(null == session.getAttribute("sessionUser")) {
 			response.setContentType("text/html; charset=UTF-8");
 	        PrintWriter out = response.getWriter();	
         	String message = "잘못된 접속입니다.";
@@ -58,8 +58,8 @@ public class MypageController {
 	        out.flush();
 	        return null;
         }else {
-        	
-        	String userId = session.getAttribute("sessionUserId")+"";
+        	UserVO userVO = (UserVO) session.getAttribute("sessionUser");
+        	String userId = userVO.getUserId();
         	
         	MypageOrderVO mypageOrderVO = new MypageOrderVO();
         	mypageOrderVO.setUserId(userId);
@@ -84,7 +84,7 @@ public class MypageController {
 		
 		HttpSession session = request.getSession();
 		
-		if(null == session.getAttribute("sessionUserId")) {
+		if(null == session.getAttribute("sessionUser")) {
 			response.setContentType("text/html; charset=UTF-8");
 	        PrintWriter out = response.getWriter();	
         	String message = "잘못된 접속입니다.";
@@ -95,8 +95,8 @@ public class MypageController {
 	        out.flush();
 	        return null;
         }else {
-        	
-        	String userId = session.getAttribute("sessionUserId")+"";
+        	UserVO userVO = (UserVO) session.getAttribute("sessionUser");
+        	String userId = userVO.getUserId();
         	
         	MypageOrderVO mypageOrderVO = new MypageOrderVO();
         	mypageOrderVO.setUserId(userId);

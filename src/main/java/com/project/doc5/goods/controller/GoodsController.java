@@ -41,6 +41,29 @@ public class GoodsController {
 	@Autowired
 	GoodsSearchMapper goodsSearchMapper;
 	
+	
+	@PostMapping(value = "/goodsPs.do")  
+//	@ResponseBody
+	public String goodsPs(GoodsVO param, @RequestParam(required = false) List<String> optionInfo
+			) {
+		log.debug("┌──────────────────────────┐");
+		log.debug("│goodsPs                 ()│");
+		log.debug("└──────────────────────────┘");
+		log.debug("1.param:{}",param);
+		
+		log.debug("1.option:{}",optionInfo);
+		
+		
+//		goodsServiceImpl.cartSave(param, optionInfo);
+//		goodsServiceImpl.cartOptionSave(optionInfo);
+		
+		
+		
+		
+		
+		return null;
+	}
+	
 	@GetMapping(value = "/goodsList.do")  
 	public String goodsList(@RequestParam(required = false, defaultValue = "m_rec") String cate
 			, Model model) {

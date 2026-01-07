@@ -35,4 +35,6 @@ public interface UserMapper extends WorkDiv<UserVO> {
 	int userIdCheck(UserVO param);
 	
 	int userPasswordCheck(UserVO param);
+	
+	int doUpdateNotPass(UserVO param);
 }
