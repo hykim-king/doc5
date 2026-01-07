@@ -1,0 +1,104 @@
+/* ===========================
+   공통 기본 스타일
+=========================== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* ===========================
+   레이아웃
+=========================== */
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+ /* 사이드바 */
+        .sidebar { /*사이드바 배경*/
+            width: 230px;
+            background: #eded04;
+            color: rgb(10, 10, 10);
+            padding-top: 20px;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+        }
+
+        .sidebar h2 { /*사이드바 밑줄*/
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 20px;
+            color: rgb(15, 15, 15);
+        }
+
+        .sidebar a { /*사이드바 글씨*/
+            display: block;
+            padding: 12px 20px;
+            color: rgb(18, 18, 18);
+            text-decoration: none;
+            border-bottom: 1px solid #34495e;
+        }
+
+.sidebar a:hover {
+    background: #1abc9c;
+}
+
+/* ===========================
+   콘텐츠 영역
+=========================== */
+.content {
+    margin-left: 230px;
+    padding: 20px;
+    width: 100%;
+}
+
+/* ===========================
+   헤더 (페이지 제목 + 관리자 메뉴)
+=========================== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header .page-title {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.admin-menu a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: bold;
+}
+.admin-menu a:hover {
+    color: #1abc9c;
+}
+
+/* ===========================
+   테이블
+=========================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+table th {
+    background: #eee;
+}
+
+button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
