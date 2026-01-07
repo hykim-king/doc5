@@ -7,7 +7,7 @@
     .cont_wrap {
 		margin-top:35px;
 	}
-    
+
     </style>
 	<div class="cont_wrap menu_wrap">
 		<div class="cont goods_list">
@@ -26,28 +26,31 @@
                 <p id="goodsSummary">[기본2샷]메가MGC커피 블렌드 원두로 추출한 에스프레소에 물을 더해, 풍부한 바디감을 느낄 수 있는 스탠다드 커피.</p>
             </div>
         </div>
-       
 
+ 
+<form id="orderForm" method="post" action="/goods/goodsPs.do">
   <input type="text" name="goodsNo" value="${goodsVO.goodsNo}">
   <input type="text" name="branchCode" value="s0001">
   <input type="text" name="orderNo" value="null">
-  <input type="text" name="userId" value="">
+  <input type="text" name="userId" value="${sessionScope.sessionUser.userId}">
   <input type="text" name="goodsName" value="${goodsVO.goodsName}">
-  <input type="text" name="goodsPrice" value="">
-  <input type="text" name="goodsCnt" value="">
-  <input type="text" name="tumblerFl" value="">
-  <input type="text" name="hotFl" value="">
-  <input type="text" name="hotPrice" value="">
-  <input type="text" name="iceFl" value="">
-  <input type="text" name="icePrice" value="">
+  <input type="text" name="goodsPrice" value="${goodsVO.goodsPrice}">
+  <input type="text" name="goodsCnt" value="1">
+  <input type="text" name="tumblerFl" value="${goodsVO.tumblerFl}">
+  <input type="text" name="hotFl" value="${goodsVO.hotFl}">
+  <input type="text" name="hotPrice" value="${goodsVO.hotPrice}">
+  <input type="text" name="iceFl" value="${goodsVO.iceFl}">
+  <input type="text" name="icePrice" value="${goodsVO.icePrice}">
 
-  <input type="hidden" name="option[]" id="optionName-2" value="옵션이름">
-  <input type="hidden" name="optionPrice[]" id="optionPrice-2" value="옵션가격">
-  <input type="hidden" name="option[]" value="옵션이름">
-  <input type="hidden" name="optionPrice[]" value="옵션가격">
-  <input type="hidden" name="option[]" value="옵션이름">
-  <input type="hidden" name="optionPrice[]" value="옵션가격">
+  <input type="hidden" name="option" value="옵션이름1">
+  <input type="hidden" name="optionPrice" value="옵션가격1">
+  <input type="hidden" name="option" value="옵션이름2">
+  <input type="hidden" name="optionPrice" value="옵션가격2">
+  <input type="hidden" name="option" value="옵션이름3">
+  <input type="hidden" name="optionPrice" value="옵션가격3">
   
+  <button type="submit">장바구니 저장</button>
+</form>  
   
 
         <div class="section-box" style="text-align:center;">

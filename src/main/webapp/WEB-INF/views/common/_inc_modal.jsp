@@ -171,7 +171,7 @@
 						<!-- <li><a href="#.">이용안내</a></li> -->
 						<!-- <li><a href="#.">자주묻는 질문</a></li> -->
 						<!-- <li><a href="#.">약관 및 정책서</a></li> -->
-						<c:if test="${sessionUserId != null}">
+						<c:if test="${sessionScope.sessionUser.userId != null}">
 							<li><a href="/mypage/myOrderList.do">주문내역</a></li>
   							<li><a href="/user/doLogOut.do">로그아웃 </a></li>
 						</c:if>
