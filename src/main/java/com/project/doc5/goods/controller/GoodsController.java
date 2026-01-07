@@ -1,5 +1,6 @@
 package com.project.doc5.goods.controller;
 
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +27,7 @@ import com.project.doc5.goods.domain.GoodsVO;
 import com.project.doc5.mapper.GoodsMapper;
 import com.project.doc5.mapper.GoodsSearchMapper;
 import com.project.doc5.mapper.MenuMapper;
+import com.project.doc5.user.domain.UserVO;
 
 @Controller
 @RequestMapping("/goods")
@@ -144,10 +146,12 @@ public class GoodsController {
 		log.debug("1.keyword:{}",keyword);
 		
 		HttpSession session = request.getSession();
+       
+        UserVO userVO = (UserVO) session.getAttribute("sessionUser");
 		
 		String userId;
 		
-		if(session.getAttribute("sessionUserId") == null) {
+		if(userVO == null) {
 
 			if(session.getAttribute("sessionTmpId") != null) {
 				userId = session.getAttribute("sessionTmpId")+"";
@@ -159,7 +163,7 @@ public class GoodsController {
 		        userId = formattedDate;
 			}
 		}else {
-			userId = session.getAttribute("sessionUserId")+"";
+			userId = userVO.getUserId();
 		}
 		
 		log.debug("userId After: {}",userId);
@@ -173,7 +177,7 @@ public class GoodsController {
 		//키워드 저장 
 		goodsSearchMapper.goodsSearchSave(gskVO);
 		
-		log.debug("list : {}",list);
+		log.debug("goodsSearch : {}",list);
 		model.addAttribute("keyword", keyword );
 		model.addAttribute("list", list );
 		
@@ -190,8 +194,10 @@ public class GoodsController {
 		HttpSession session = request.getSession();
 		
 		String userId;
+		String tmpId;
+		UserVO userVO = (UserVO) session.getAttribute("sessionUser");
 		
-		if(session.getAttribute("sessionUserId") == null) {
+		if(userVO == null) {
 
 			if(session.getAttribute("sessionTmpId") != null) {
 				userId = session.getAttribute("sessionTmpId")+"";
@@ -203,16 +209,25 @@ public class GoodsController {
 		        userId = formattedDate;
 			}
 		}else {
-			userId = session.getAttribute("sessionUserId")+"";
+			userId = userVO.getUserId();
+			tmpId = (String) session.getAttribute("sessionTmpId");
+			if(tmpId != null) {
+				session.setAttribute("sessionTmpId", null);
+				GoodsSearchKeywordVO goodsSearchKeywordVO = new GoodsSearchKeywordVO();
+				goodsSearchKeywordVO.setUserId(userId);
+				goodsSearchKeywordVO.setTmpUserId(tmpId);
+				goodsSearchMapper.goodsSearchUpdate(goodsSearchKeywordVO);
+			}
+			
+			
+			
+//			goodsSearchUpdate tmpUserId.
 		}
 		
 		log.debug("userId After: {}",userId);
 		
-		
-		
 		GoodsSearchKeywordVO gskVO = new GoodsSearchKeywordVO();
 		gskVO.setUserId(userId);
-		
 		
 		List<GoodsSearchKeywordVO> gsList = goodsSearchMapper.goodsSearchKeywordList(gskVO);
 		log.debug("gsList : {}",gsList);
@@ -235,7 +250,9 @@ public class GoodsController {
 		
 		String userId;
 		
-		if(session.getAttribute("sessionUserId") == null) {
+		UserVO userVO = (UserVO) session.getAttribute("sessionUser");
+		
+		if(userVO == null) {
 
 			if(session.getAttribute("sessionTmpId") != null) {
 				userId = session.getAttribute("sessionTmpId")+"";
@@ -247,7 +264,7 @@ public class GoodsController {
 		        userId = formattedDate;
 			}
 		}else {
-			userId = session.getAttribute("sessionUserId")+"";
+			userId = userVO.getUserId();
 		}
 
 		

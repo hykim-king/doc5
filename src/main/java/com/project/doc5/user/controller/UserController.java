@@ -178,6 +178,7 @@ public class UserController {
 			out.println("parent.location.href='/'"); 
 			out.println("</script>");
 			out.flush();
+			return null;
 			
 		} catch (RuntimeException e) {
 			message = e.getMessage();
@@ -185,10 +186,11 @@ public class UserController {
 			out.println("alert('" + message + "');"); 
 			out.println("</script>");
 			out.flush();
+			return null;
 		}
 		
 
-		return "";
+		
 		
 	}
 	
