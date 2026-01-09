@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="/WEB-INF/views/common/header/header_goods.jsp" %>
     <link rel="stylesheet" href="/resources/css/modals.css">
     
@@ -13,18 +14,26 @@
 		<div class="cont goods_list">
             <div class="goods_detail_wrap">
                 <div class="section-box">
-            <div class="goods_img_box" style="text-align:center;">
-                <img id="goodsImg" src="https://img.79plus.co.kr/megahp/manager/upload/menu/20250320000925_1742396965069_ekSqAIVc1L.jpg" style="width:260px;border-radius:10px;">
-            </div>
-
-            <div class="goods_info">
-                <h2 id="goodsName">아메리카노</h2>
-                <div id="goods_Type" class="temp-select">
-                    <button class="temp-btn ice active" data-value="ICE">ICE</button>
-                    <button class="temp-btn hot" data-value="HOT">HOT</button>
-                </div>
-                <p id="goodsSummary">[기본2샷]메가MGC커피 블렌드 원두로 추출한 에스프레소에 물을 더해, 풍부한 바디감을 느낄 수 있는 스탠다드 커피.</p>
-            </div>
+						<div class="goods_img_box" style="text-align:center;">
+						    <img id="goodsImg"
+						         src=""
+						         style="width:260px;border-radius:10px;">
+						</div>
+						
+						<div class="goods_info">
+						    <h2 id="goodsName">${goodsVO.goodsName}</h2>
+						
+						    <div id="goods_Type" class="temp-select">
+						        <c:if test="${goodsVO.iceFl eq 'Y'}">
+						            <button class="temp-btn ice active" data-value="ICE">ICE</button>
+						        </c:if>
+						        <c:if test="${goodsVO.hotFl eq 'Y'}">
+						            <button class="temp-btn hot" data-value="HOT">HOT</button>
+						        </c:if>
+						    </div>
+						
+						    <p id="goodsSummary">${goodsVO.goodsContents}</p>
+						</div>
         </div>
 
  
@@ -51,6 +60,13 @@
   
   <button type="submit">장바구니 저장</button>
 </form>  
+  
+			  <span id="priceData"
+				      data-base-price="${goodsVO.goodsPrice}"
+				      data-hot-price="${goodsVO.hotPrice}"
+				      data-ice-price="${goodsVO.icePrice}">
+				</span>
+				  
   
 
         <div class="section-box" style="text-align:center;">
@@ -96,22 +112,35 @@
             </div>
         </div>
 
-        <div id="detailModal" class="popup-container">
-            <div class="popup-content" style="height:60vh;">
-                <span id="closeDetailBtn" class="modal-close-icon">×</span>
-                <h3>상품 상세정보</h3>
-                <ul>
-                    <li><b>상품명:</b> <span id="detailGoodsName"></span></li>
-                    <li><b>칼로리:</b> <span id="goodsKcal"></span></li>
-                    <li><b>당류:</b> <span id="goodsSugar"></span></li>
-                    <li><b>포화지방:</b> <span id="goodsFat"></span></li>
-                    <li><b>나트륨:</b> <span id="goodsSodium"></span></li>
-                    <li><b>단백질:</b> <span id="goodsProtein"></span></li>
-                    <li><b>카페인:</b> <span id="goodsCaffeine"></span></li>
-                </ul>
-
-            </div>
-        </div>
+				<div id="detailModal" class="popup-container">
+				    <div class="popup-content" style="height:60vh;">
+				        <span id="closeDetailBtn" class="modal-close-icon">×</span>
+				        <h3>상품 상세정보</h3>
+				
+				        <ul>
+				            <!-- 상품명 -->
+				            <li>
+				                <b>상품명:</b> ${goodsVO.goodsName}
+				            </li>
+				
+				            <!-- 용량 / 기본 정보 -->
+				            <li>
+				                ${goodsVO.shortDescription}
+				            </li>
+				
+				            <!-- 영양정보 (중복 제거) -->
+				            <c:set var="printed" value="" />
+				
+				            <c:forEach var="info" items="${goodsVO.goodsInfoVO}">
+				                <c:if test="${not fn:contains(printed, info.productInfoText)}">
+				                    <li>${info.productInfoText}</li>
+				                    <c:set var="printed"
+				                           value="${printed}${info.productInfoText}|"/>
+				                </c:if>
+				            </c:forEach>
+				        </ul>
+				    </div>
+				</div>
 
 
 

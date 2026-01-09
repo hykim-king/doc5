@@ -223,4 +223,3 @@ tempButtons.forEach(btn => {
         console.log("현재 선택된 온도:", selectedTemp);
     });
 });
-

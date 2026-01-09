@@ -10,8 +10,8 @@ import com.project.doc5.goods.domain.GoodsVO;
 @Mapper
 public interface GoodsMapper {
 
-	GoodsVO SelectGoodsWithOptions(int goodsVO);
-	List<GoodsVO> SelectGoodsCategory(String code);
+	GoodsVO selectGoodsWithOptions(int goodsVO);
+	List<GoodsVO> selectGoodsCategory(String code);
 	GoodsVO SelectGoods(int goodsVO);
 	GoodsVO SelectOptiontype(int goodsVO);
 	GoodsVO SelectGoodsOption(int goodsVO);

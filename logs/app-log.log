@@ -2265,3 +2265,270 @@
 [2026-01-05 17:47:08] [INFO ] org.springframework.test.context.transaction.TransactionContext - Rolled back transaction for test: [DefaultTestContext@49122b8f testClass = AdDaoTest, testInstance = com.project.doc5.admin.AdDaoTest@3fe46690, testMethod = doSelectOrdersByMemberId_user01@AdDaoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@4beabeec testClass = AdDaoTest, locations = '{file:src/main/webapp/WEB-INF/spring/root-context.xml, file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
 [2026-01-05 17:47:08] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 [2026-01-05 17:47:08] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+[2026-01-08 15:37:23] [INFO ] org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[2026-01-08 15:37:23] [INFO ] org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6e535154, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@15a34df2, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@5b38c1ec, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@338fc1d8, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4722ef0c, org.springframework.test.context.transaction.TransactionalTestExecutionListener@48e1f6c7, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@55cb6996, org.springframework.test.context.event.EventPublishingTestExecutionListener@1807e3f6]
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\AdMapper.class]
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\BoardMapper.class]
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\CartMapper.class]
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\DataInsertMapper.class]
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\GoodsMapper.class]
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\GoodsSearchMapper.class]
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\MenuMapper.class]
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\MypageCartMapper.class]
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\MypageOrderMapper.class]
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\UserMapper.class]
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'adMapper' and 'com.project.doc5.mapper.AdMapper' mapperInterface
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'adMapper'.
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'boardMapper' and 'com.project.doc5.mapper.BoardMapper' mapperInterface
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'boardMapper'.
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'cartMapper' and 'com.project.doc5.mapper.CartMapper' mapperInterface
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'cartMapper'.
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dataInsertMapper' and 'com.project.doc5.mapper.DataInsertMapper' mapperInterface
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dataInsertMapper'.
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'goodsMapper' and 'com.project.doc5.mapper.GoodsMapper' mapperInterface
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'goodsMapper'.
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'goodsSearchMapper' and 'com.project.doc5.mapper.GoodsSearchMapper' mapperInterface
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'goodsSearchMapper'.
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'menuMapper' and 'com.project.doc5.mapper.MenuMapper' mapperInterface
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'menuMapper'.
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'mypageCartMapper' and 'com.project.doc5.mapper.MypageCartMapper' mapperInterface
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'mypageCartMapper'.
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'mypageOrderMapper' and 'com.project.doc5.mapper.MypageOrderMapper' mapperInterface
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'mypageOrderMapper'.
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'userMapper' and 'com.project.doc5.mapper.UserMapper' mapperInterface
+[2026-01-08 15:37:23] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'userMapper'.
+[2026-01-08 15:37:24] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[2026-01-08 15:37:24] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\admin\adminMapper.xml]'
+[2026-01-08 15:37:24] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\board\boardMapper.xml]'
+[2026-01-08 15:37:24] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\branch\dataInsertMapper.xml]'
+[2026-01-08 15:37:24] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\cart\cartMapper.xml]'
+[2026-01-08 15:37:24] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\cmn\menuMapper.xml]'
+[2026-01-08 15:37:24] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\goods\goodsMapper.xml]'
+[2026-01-08 15:37:24] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\goods\goodsSearchMapper.xml]'
+[2026-01-08 15:37:24] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\mypage\mypageCartMapper.xml]'
+[2026-01-08 15:37:24] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\mypage\mypageOrderMapper.xml]'
+[2026-01-08 15:37:24] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\user\userMapper.xml]'
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.board.contorller.BoardContorller - ┌──────────────────────────┐
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.board.contorller.BoardContorller - │BoardContorller()         │
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.board.contorller.BoardContorller - └──────────────────────────┘
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.board.service.BoardServiceImpl - ┌──────────────────────────┐
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.board.service.BoardServiceImpl - │BoardServiceImpl()        │
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.board.service.BoardServiceImpl - └──────────────────────────┘
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.goods.service.GoodsServiceImpl - ┌──────────────────────────┐
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.goods.service.GoodsServiceImpl - │GoodsServiceImpl          │
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.goods.service.GoodsServiceImpl - └──────────────────────────┘
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.manager.controller.ManagerController - ┌──────────────────────────┐
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.manager.controller.ManagerController - │AdminController()         │
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.manager.controller.ManagerController - └──────────────────────────┘
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.mypage.controller.MypageController - ┌──────────────────────────┐
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.mypage.controller.MypageController - │MypageController()        │
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.mypage.controller.MypageController - └──────────────────────────┘
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.user.controller.UserController - ┌──────────────────────────┐
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.user.controller.UserController - │UserController()          │
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.user.controller.UserController - └──────────────────────────┘
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.user.service.UserServicelmpl - ┌──────────────────────────┐
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.user.service.UserServicelmpl - │UserServicelmpl()         │
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.user.service.UserServicelmpl - └──────────────────────────┘
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.goods.GoodsServiceTest - ┌──────────────────────────┐
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.goods.GoodsServiceTest - │──setup───────────────────│
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.goods.GoodsServiceTest - └──────────────────────────┘
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.goods.GoodsServiceTest - ┌──────────────────────────┐
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.goods.GoodsServiceTest - │selectGoodsWithOptions()  │
+[2026-01-08 15:37:24] [DEBUG] com.project.doc5.goods.GoodsServiceTest - └──────────────────────────┘
+[2026-01-08 15:37:24] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2026-01-08 15:37:24] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@116a2108] was not registered for synchronization because synchronization is not active
+[2026-01-08 15:37:24] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[2026-01-08 15:37:24] [WARN ] com.zaxxer.hikari.util.DriverDataSource - Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+[2026-01-08 15:37:25] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[2026-01-08 15:37:25] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@3768050 wrapping oracle.jdbc.driver.T4CConnection@736309a9] will not be managed by Spring
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.mapper.GoodsMapper.selectGoodsWithOptions - ==>  Preparing: SELECT a.goods_no, a.goods_name, a.goods_eng_name, a.goods_price, a.hot_fl, a.hot_price, a.ice_fl, a.ice_price, a.tumbler_fl, a.short_description, a.goods_contents, a.new_fl, a.best_fl, a.alleoji_info, a.goods_view, a.hidden_fl, a.reg_dt, a.reg_id, a.mod_dt, a.mod_id, b.seq AS type_seq, b.goods_option_name, b.goods_type, b.list_sort, b.hidden_fl, c.seq AS option_seq, c.ot_seq, c.option_name, c.option_price, c.option_hidden, d.seq AS info_seq, d.goods_type, d.product_info_sort, d.product_info_title, d.product_info_text FROM DOC5_GOODS a LEFT JOIN DOC5_OPTION_TYPE b ON a.goods_no = b.goods_no LEFT JOIN DOC5_GOODS_OPTION c ON b.seq = c.ot_seq LEFT JOIN DOC5_GOODS_INFO d ON a.goods_no = d.goods_no WHERE a.goods_no = ?
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.mapper.GoodsMapper.selectGoodsWithOptions - ==> Parameters: 10000(Integer)
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.mapper.GoodsMapper.selectGoodsWithOptions - <==      Total: 40
+[2026-01-08 15:37:25] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@116a2108]
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.goods.GoodsServiceTest - 상품번호: 10000
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.goods.GoodsServiceTest - 상품명: 군고구마 크림브륄레 슈페너
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.goods.GoodsServiceTest - ▶ 옵션타입: 샷 선택
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.goods.GoodsServiceTest -    └ 옵션명: 연하게, 가격: 0.0
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.goods.GoodsServiceTest -    └ 옵션명: 샷 추가, 가격: 600.0
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.goods.GoodsServiceTest -    └ 옵션명: 2샷 추가, 가격: 1200.0
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.goods.GoodsServiceTest - ▶ 옵션타입: 저당 스테비아 슈가추가
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.goods.GoodsServiceTest -    └ 옵션명: 저당 스테비아 추가, 가격: 600.0
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.goods.GoodsServiceTest - ▶ 옵션타입: 당도 선택
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.goods.GoodsServiceTest -    └ 옵션명: 연유 추가, 가격: 700.0
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.goods.GoodsServiceTest - ▶ 옵션타입: 토핑 선택
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.goods.GoodsServiceTest -    └ 옵션명: 휘핑추가, 가격: 500.0
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.goods.GoodsServiceTest -    └ 옵션명: 타피오카 펄 추가, 가격: 700.0
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.goods.GoodsServiceTest -    └ 옵션명: 초코젤라또 추가, 가격: 700.0
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.goods.GoodsServiceTest - ┌──────────────────────────┐
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.goods.GoodsServiceTest - │─tearDown()               │
+[2026-01-08 15:37:25] [DEBUG] com.project.doc5.goods.GoodsServiceTest - └──────────────────────────┘
+[2026-01-08 15:37:25] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[2026-01-08 15:37:25] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+[2026-01-08 17:06:50] [INFO ] org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[2026-01-08 17:06:50] [INFO ] org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6e535154, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@15a34df2, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@5b38c1ec, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@338fc1d8, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4722ef0c, org.springframework.test.context.transaction.TransactionalTestExecutionListener@48e1f6c7, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@55cb6996, org.springframework.test.context.event.EventPublishingTestExecutionListener@1807e3f6]
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\AdMapper.class]
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\BoardMapper.class]
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\CartMapper.class]
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\DataInsertMapper.class]
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\GoodsMapper.class]
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\GoodsSearchMapper.class]
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\MenuMapper.class]
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\MypageCartMapper.class]
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\MypageOrderMapper.class]
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\UserMapper.class]
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'adMapper' and 'com.project.doc5.mapper.AdMapper' mapperInterface
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'adMapper'.
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'boardMapper' and 'com.project.doc5.mapper.BoardMapper' mapperInterface
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'boardMapper'.
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'cartMapper' and 'com.project.doc5.mapper.CartMapper' mapperInterface
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'cartMapper'.
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dataInsertMapper' and 'com.project.doc5.mapper.DataInsertMapper' mapperInterface
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dataInsertMapper'.
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'goodsMapper' and 'com.project.doc5.mapper.GoodsMapper' mapperInterface
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'goodsMapper'.
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'goodsSearchMapper' and 'com.project.doc5.mapper.GoodsSearchMapper' mapperInterface
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'goodsSearchMapper'.
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'menuMapper' and 'com.project.doc5.mapper.MenuMapper' mapperInterface
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'menuMapper'.
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'mypageCartMapper' and 'com.project.doc5.mapper.MypageCartMapper' mapperInterface
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'mypageCartMapper'.
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'mypageOrderMapper' and 'com.project.doc5.mapper.MypageOrderMapper' mapperInterface
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'mypageOrderMapper'.
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'userMapper' and 'com.project.doc5.mapper.UserMapper' mapperInterface
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'userMapper'.
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\admin\adminMapper.xml]'
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\board\boardMapper.xml]'
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\branch\dataInsertMapper.xml]'
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\cart\cartMapper.xml]'
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\cmn\menuMapper.xml]'
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\goods\goodsMapper.xml]'
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\goods\goodsSearchMapper.xml]'
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\mypage\mypageCartMapper.xml]'
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\mypage\mypageOrderMapper.xml]'
+[2026-01-08 17:06:50] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\user\userMapper.xml]'
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.board.contorller.BoardContorller - ┌──────────────────────────┐
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.board.contorller.BoardContorller - │BoardContorller()         │
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.board.contorller.BoardContorller - └──────────────────────────┘
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.board.service.BoardServiceImpl - ┌──────────────────────────┐
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.board.service.BoardServiceImpl - │BoardServiceImpl()        │
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.board.service.BoardServiceImpl - └──────────────────────────┘
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.goods.service.GoodsServiceImpl - ┌──────────────────────────┐
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.goods.service.GoodsServiceImpl - │GoodsServiceImpl          │
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.goods.service.GoodsServiceImpl - └──────────────────────────┘
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.manager.controller.ManagerController - ┌──────────────────────────┐
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.manager.controller.ManagerController - │AdminController()         │
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.manager.controller.ManagerController - └──────────────────────────┘
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.mypage.controller.MypageController - ┌──────────────────────────┐
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.mypage.controller.MypageController - │MypageController()        │
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.mypage.controller.MypageController - └──────────────────────────┘
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.user.controller.UserController - ┌──────────────────────────┐
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.user.controller.UserController - │UserController()          │
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.user.controller.UserController - └──────────────────────────┘
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.user.service.UserServicelmpl - ┌──────────────────────────┐
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.user.service.UserServicelmpl - │UserServicelmpl()         │
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.user.service.UserServicelmpl - └──────────────────────────┘
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.goods.GoodsServiceTest - ┌──────────────────────────┐
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.goods.GoodsServiceTest - │──setup───────────────────│
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.goods.GoodsServiceTest - └──────────────────────────┘
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.goods.GoodsServiceTest - ┌──────────────────────────┐
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.goods.GoodsServiceTest - │selectGoodsWithOptions()  │
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.goods.GoodsServiceTest - └──────────────────────────┘
+[2026-01-08 17:06:51] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2026-01-08 17:06:51] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@116a2108] was not registered for synchronization because synchronization is not active
+[2026-01-08 17:06:51] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[2026-01-08 17:06:51] [WARN ] com.zaxxer.hikari.util.DriverDataSource - Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+[2026-01-08 17:06:51] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[2026-01-08 17:06:51] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@3768050 wrapping oracle.jdbc.driver.T4CConnection@736309a9] will not be managed by Spring
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.mapper.GoodsMapper.selectGoodsWithOptions - ==>  Preparing: SELECT a.goods_no, a.goods_name, a.goods_eng_name, a.goods_price, a.hot_fl, a.hot_price, a.ice_fl, a.ice_price, a.tumbler_fl, a.short_description, a.goods_contents, a.new_fl, a.best_fl, a.alleoji_info, a.goods_view, a.hidden_fl, a.reg_dt, a.reg_id, a.mod_dt, a.mod_id, -- 옵션 타입 b.seq AS type_seq, b.goods_option_name, b.goods_type, b.list_sort, b.hidden_fl, -- 옵션 c.seq AS option_seq, c.ot_seq, c.option_name, c.option_price, c.option_hidden, -- 영양정보 (중복 제거) d.info_seq, d.product_info_sort, d.product_info_title, d.product_info_text FROM DOC5_GOODS a LEFT JOIN DOC5_OPTION_TYPE b ON a.goods_no = b.goods_no LEFT JOIN DOC5_GOODS_OPTION c ON b.seq = c.ot_seq LEFT JOIN ( SELECT goods_no, product_info_title, MAX(product_info_text) AS product_info_text, MIN(product_info_sort) AS product_info_sort FROM DOC5_GOODS_INFO WHERE goods_no = ? GROUP BY goods_no, product_info_title ) d ON a.goods_no = d.goods_no WHERE a.goods_no = ?
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.mapper.GoodsMapper.selectGoodsWithOptions - ==> Parameters: 10000(Integer), 10000(Integer)
+[2026-01-08 17:06:51] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@116a2108]
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.goods.GoodsServiceTest - ┌──────────────────────────┐
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.goods.GoodsServiceTest - │─tearDown()               │
+[2026-01-08 17:06:51] [DEBUG] com.project.doc5.goods.GoodsServiceTest - └──────────────────────────┘
+[2026-01-08 17:06:51] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[2026-01-08 17:06:51] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+[2026-01-08 17:07:06] [INFO ] org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[2026-01-08 17:07:06] [INFO ] org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6e535154, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@15a34df2, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@5b38c1ec, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@338fc1d8, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4722ef0c, org.springframework.test.context.transaction.TransactionalTestExecutionListener@48e1f6c7, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@55cb6996, org.springframework.test.context.event.EventPublishingTestExecutionListener@1807e3f6]
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\AdMapper.class]
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\BoardMapper.class]
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\CartMapper.class]
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\DataInsertMapper.class]
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\GoodsMapper.class]
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\GoodsSearchMapper.class]
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\MenuMapper.class]
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\MypageCartMapper.class]
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\MypageOrderMapper.class]
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Identified candidate component class: file [C:\Users\acorn\git\doc5\target\classes\com\project\doc5\mapper\UserMapper.class]
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'adMapper' and 'com.project.doc5.mapper.AdMapper' mapperInterface
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'adMapper'.
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'boardMapper' and 'com.project.doc5.mapper.BoardMapper' mapperInterface
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'boardMapper'.
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'cartMapper' and 'com.project.doc5.mapper.CartMapper' mapperInterface
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'cartMapper'.
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dataInsertMapper' and 'com.project.doc5.mapper.DataInsertMapper' mapperInterface
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dataInsertMapper'.
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'goodsMapper' and 'com.project.doc5.mapper.GoodsMapper' mapperInterface
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'goodsMapper'.
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'goodsSearchMapper' and 'com.project.doc5.mapper.GoodsSearchMapper' mapperInterface
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'goodsSearchMapper'.
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'menuMapper' and 'com.project.doc5.mapper.MenuMapper' mapperInterface
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'menuMapper'.
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'mypageCartMapper' and 'com.project.doc5.mapper.MypageCartMapper' mapperInterface
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'mypageCartMapper'.
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'mypageOrderMapper' and 'com.project.doc5.mapper.MypageOrderMapper' mapperInterface
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'mypageOrderMapper'.
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'userMapper' and 'com.project.doc5.mapper.UserMapper' mapperInterface
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'userMapper'.
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed configuration file: 'class path resource [mybatis-config.xml]'
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\admin\adminMapper.xml]'
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\board\boardMapper.xml]'
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\branch\dataInsertMapper.xml]'
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\cart\cartMapper.xml]'
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\cmn\menuMapper.xml]'
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\goods\goodsMapper.xml]'
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\goods\goodsSearchMapper.xml]'
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\mypage\mypageCartMapper.xml]'
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\mypage\mypageOrderMapper.xml]'
+[2026-01-08 17:07:07] [DEBUG] org.mybatis.spring.SqlSessionFactoryBean - Parsed mapper file: 'file [C:\Users\acorn\git\doc5\target\classes\mapper\user\userMapper.xml]'
+[2026-01-08 17:07:07] [DEBUG] com.project.doc5.board.contorller.BoardContorller - ┌──────────────────────────┐
+[2026-01-08 17:07:07] [DEBUG] com.project.doc5.board.contorller.BoardContorller - │BoardContorller()         │
+[2026-01-08 17:07:07] [DEBUG] com.project.doc5.board.contorller.BoardContorller - └──────────────────────────┘
+[2026-01-08 17:07:07] [DEBUG] com.project.doc5.board.service.BoardServiceImpl - ┌──────────────────────────┐
+[2026-01-08 17:07:07] [DEBUG] com.project.doc5.board.service.BoardServiceImpl - │BoardServiceImpl()        │
+[2026-01-08 17:07:07] [DEBUG] com.project.doc5.board.service.BoardServiceImpl - └──────────────────────────┘
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.goods.service.GoodsServiceImpl - ┌──────────────────────────┐
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.goods.service.GoodsServiceImpl - │GoodsServiceImpl          │
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.goods.service.GoodsServiceImpl - └──────────────────────────┘
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.manager.controller.ManagerController - ┌──────────────────────────┐
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.manager.controller.ManagerController - │AdminController()         │
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.manager.controller.ManagerController - └──────────────────────────┘
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.mypage.controller.MypageController - ┌──────────────────────────┐
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.mypage.controller.MypageController - │MypageController()        │
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.mypage.controller.MypageController - └──────────────────────────┘
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.user.controller.UserController - ┌──────────────────────────┐
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.user.controller.UserController - │UserController()          │
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.user.controller.UserController - └──────────────────────────┘
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.user.service.UserServicelmpl - ┌──────────────────────────┐
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.user.service.UserServicelmpl - │UserServicelmpl()         │
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.user.service.UserServicelmpl - └──────────────────────────┘
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.goods.GoodsServiceTest - ┌──────────────────────────┐
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.goods.GoodsServiceTest - │──setup───────────────────│
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.goods.GoodsServiceTest - └──────────────────────────┘
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.goods.GoodsServiceTest - ┌──────────────────────────┐
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.goods.GoodsServiceTest - │selectGoodsWithOptions()  │
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.goods.GoodsServiceTest - └──────────────────────────┘
+[2026-01-08 17:07:08] [DEBUG] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[2026-01-08 17:07:08] [DEBUG] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@116a2108] was not registered for synchronization because synchronization is not active
+[2026-01-08 17:07:08] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[2026-01-08 17:07:08] [WARN ] com.zaxxer.hikari.util.DriverDataSource - Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+[2026-01-08 17:07:08] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[2026-01-08 17:07:08] [DEBUG] org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [HikariProxyConnection@3768050 wrapping oracle.jdbc.driver.T4CConnection@736309a9] will not be managed by Spring
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.mapper.GoodsMapper.selectGoodsWithOptions - ==>  Preparing: SELECT a.goods_no, a.goods_name, a.goods_eng_name, a.goods_price, a.hot_fl, a.hot_price, a.ice_fl, a.ice_price, a.tumbler_fl, a.short_description, a.goods_contents, a.new_fl, a.best_fl, a.alleoji_info, a.goods_view, a.hidden_fl, a.reg_dt, a.reg_id, a.mod_dt, a.mod_id, -- 옵션 타입 b.seq AS type_seq, b.goods_option_name, b.goods_type, b.list_sort, b.hidden_fl, -- 옵션 c.seq AS option_seq, c.ot_seq, c.option_name, c.option_price, c.option_hidden, -- 영양정보 (중복 제거) d.info_seq, d.product_info_sort, d.product_info_title, d.product_info_text FROM DOC5_GOODS a LEFT JOIN DOC5_OPTION_TYPE b ON a.goods_no = b.goods_no LEFT JOIN DOC5_GOODS_OPTION c ON b.seq = c.ot_seq LEFT JOIN ( SELECT goods_no, product_info_title, MAX(product_info_text) AS product_info_text, MIN(product_info_sort) AS product_info_sort FROM DOC5_GOODS_INFO WHERE goods_no = ? GROUP BY goods_no, product_info_title ) d ON a.goods_no = d.goods_no WHERE a.goods_no = ?
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.mapper.GoodsMapper.selectGoodsWithOptions - ==> Parameters: 10000(Integer), 10000(Integer)
+[2026-01-08 17:07:08] [DEBUG] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@116a2108]
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.goods.GoodsServiceTest - ┌──────────────────────────┐
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.goods.GoodsServiceTest - │─tearDown()               │
+[2026-01-08 17:07:08] [DEBUG] com.project.doc5.goods.GoodsServiceTest - └──────────────────────────┘
+[2026-01-08 17:07:08] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[2026-01-08 17:07:08] [INFO ] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

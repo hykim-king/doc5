@@ -75,7 +75,7 @@ class GoodsDaoTest {
 		goodsVO.setGoodsNo(10000);
 		
 		//dao호출
-		GoodsVO outVO=goodsMapper.SelectGoodsWithOptions(goodsVO.getGoodsNo());
+		GoodsVO outVO=goodsMapper.selectGoodsWithOptions(goodsVO.getGoodsNo());
 		
 		
 		for (OptionTypeVO optType : outVO.getOptionTypeVO()) {
@@ -120,7 +120,7 @@ class GoodsDaoTest {
 		categoryVO.setCode("001");
 		
 		//dao호출
-		List<GoodsVO> outvo =goodsMapper.SelectGoodsCategory(categoryVO.getCode());
+		List<GoodsVO> outvo =goodsMapper.selectGoodsCategory(categoryVO.getCode());
 		
 		
 	    assertNotNull(outvo, "조회 결과 List는 null이면 안 됩니다.");

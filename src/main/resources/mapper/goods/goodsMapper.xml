@@ -103,7 +103,7 @@
 
 
 
-    <select id="SelectGoodsWithOptions" parameterType="int" resultMap="GoodsVO">
+    <select id="selectGoodsWithOptions" parameterType="int" resultMap="GoodsVO">
     SELECT    
 	      a.goods_no,
         a.goods_name,
@@ -241,7 +241,7 @@
   </select>
 
 
-	<select id="SelectGoodsCategory" parameterType="String" resultMap="GoodsVO">
+	<select id="selectGoodsCategory" parameterType="String" resultMap="GoodsVO">
 	    SELECT
 	        a.goods_no,
 	        a.goods_name,

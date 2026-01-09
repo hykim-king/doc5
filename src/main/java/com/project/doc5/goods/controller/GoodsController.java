@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.project.doc5.cmn.MenuVO;
 import com.project.doc5.goods.domain.GoodsSearchKeywordVO;
 import com.project.doc5.goods.domain.GoodsVO;
+import com.project.doc5.goods.service.GoodsService;
 import com.project.doc5.mapper.GoodsMapper;
 import com.project.doc5.mapper.GoodsSearchMapper;
 import com.project.doc5.mapper.MenuMapper;
@@ -42,6 +43,9 @@ public class GoodsController {
 	
 	@Autowired
 	GoodsSearchMapper goodsSearchMapper;
+	
+	@Autowired
+	GoodsService goodsService;
 	
 	
 	@PostMapping(value = "/goodsPs.do")  
@@ -67,50 +71,26 @@ public class GoodsController {
 	}
 	
 	@GetMapping(value = "/goodsList.do")  
-	public String goodsList(@RequestParam(required = false, defaultValue = "m_rec") String cate
+	public String goodsList(@RequestParam(name = "cate", required = false, defaultValue = "001") String code
 			, Model model) {
 		log.debug("┌──────────────────────────┐");
 		log.debug("│goodsList()               │");
 		log.debug("└──────────────────────────┘");
-		log.debug("1.cate:{}",cate);
+		log.debug("1.code:{}",code);
 		
 		String cateTitle = "";
 		
-//		if (cate == null || "null".equals(cate)){
-//			cate = "m_rec";
-//		}
-		
-		switch(cate){
-			case "m_rec":
-				cateTitle = "추천 상품";
-				break;
-			case "001":
-				cateTitle = "커피";
-				break;
-			case "002":
-				cateTitle = "디카페인";
-				break;
-			case "003":
-				cateTitle = "음료";
-				break;
-			case "004":
-				cateTitle = "티";
-				break;
-			case "005":
-				cateTitle = "푸트";
-				break;
-			case "006":
-				cateTitle = "상품";
-				break;
-		}
+
 	
 		
+		List<GoodsVO> goodsList = goodsService.selectGoodsCategory(code);
 		List<MenuVO> cateList = menuMapper.getMenuAll();
-		log.debug(cateList);
 		
+		log.debug(goodsList);
+		
+		model.addAttribute("goodsList", goodsList );
 		model.addAttribute("cateList", cateList );
-		model.addAttribute("cate", cate );
-		model.addAttribute("cateTitle", cateTitle );
+		model.addAttribute("cate", code );
 		return "/goods/goods_list";
 	}
 
@@ -127,7 +107,7 @@ public class GoodsController {
 		List<MenuVO> cateList = menuMapper.getMenuAll();
 		log.debug(cateList);
 		
-		GoodsVO goodsVO = goodsMapper.SelectGoods(goodsNo);
+		GoodsVO goodsVO = goodsService.selectGoodsWithOptions(goodsNo);
 		
 		log.debug("1.goodsVO:{}",goodsVO);
 		model.addAttribute("cateList", cateList );
