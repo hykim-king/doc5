@@ -57,19 +57,17 @@ public class UserController {
 		log.debug("│userRegist()              │");
 		log.debug("└──────────────────────────┘");
 
-		String actionUrl = "/user/doSave.do";
+		String actionUrl = "./doSave.do";
 		model.addAttribute("pageTitle","회원가입");
 		model.addAttribute("actionUrl",actionUrl);
 		return "/user/user_regist";
 	}
 	
 	@RequestMapping(value = "/userModify.do")  
-	public String userModify(HttpServletResponse response, final HttpServletRequest request, Model model) throws IOException {
+	public String userModify(HttpServletResponse response, HttpSession session, Model model) throws IOException {
 		log.debug("┌──────────────────────────┐");
 		log.debug("│userModify()              │");
 		log.debug("└──────────────────────────┘");
-		
-		HttpSession session = request.getSession();
 		
 		response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();	
@@ -81,7 +79,7 @@ public class UserController {
         	message = "잘못된 접속입니다.";
 	        out.println("<script>");
 	        out.println("alert('"+message+"');");
-	        out.println("location.href='/';"); //  페이지로 돌아가기
+	        out.println("location.href='./';"); //  페이지로 돌아가기
 	        out.println("</script>");
 	        out.flush();
 	        return null;
@@ -93,7 +91,7 @@ public class UserController {
         	
         }
 		
-		String actionUrl = "/user/doModify.do";
+		String actionUrl = "./doModify.do";
 		model.addAttribute("pageTitle","회원정보 수정");
 		model.addAttribute("actionUrl",actionUrl);
 		
@@ -109,14 +107,12 @@ public class UserController {
 	 */
 	@RequestMapping(value =  "/doLogOut.do")
 //	@ResponseBody
-	public String doLogOut(HttpServletResponse response, final HttpServletRequest request) throws IOException {
+	public String doLogOut(HttpServletResponse response, HttpSession session) throws IOException {
 		log.debug("┌──────────────────────────┐");
 		log.debug("│doLogOut()                │");
 		log.debug("└──────────────────────────┘");
 		
 		String message = "";
-		
-		HttpSession session = request.getSession();
 		
 		response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();	
@@ -128,7 +124,7 @@ public class UserController {
 			message = "로그아웃 완료했습니다.";
 	        out.println("<script>");
 	        out.println("alert('"+message+"');");
-	        out.println("location.href='/';"); //  페이지로 돌아가기
+	        out.println("location.href='../';"); //  페이지로 돌아가기
 	        out.println("</script>");
 	        out.flush();
 	        return null; // 스크립트 출력이 끝났으므로 null 반환
@@ -175,7 +171,7 @@ public class UserController {
 			
 			out.println("<script type='text/javascript'>");
 			out.println("alert('" + message + "');"); 
-			out.println("parent.location.href='/'"); 
+			out.println("parent.location.href='../'"); 
 			out.println("</script>");
 			out.flush();
 			return null;
@@ -224,7 +220,7 @@ public class UserController {
 
 	@PostMapping(value =  "/doSave.do",produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String doSave(UserVO param, HttpServletResponse response, final HttpServletRequest request) throws IOException {
+	public String doSave(UserVO param, HttpServletResponse response, HttpSession session) throws IOException {
 		log.debug("┌──────────────────────────┐");
 		log.debug("│doSave()                  │");
 		log.debug("└──────────────────────────┘");	
@@ -249,6 +245,7 @@ public class UserController {
 			out.println("alert('" + message + "');"); 
 			out.println("</script>");
 			out.flush();
+			return null;
 		}else {
 		
 			if(userInfo == null) {
@@ -257,10 +254,11 @@ public class UserController {
 		
 				if( 1 == flag ) {
 					message = param.getName()+"님 등록 되었습니다.";
+
+					UserVO userVO = userService.userLogin(param);
+					log.debug("3.userVO : {}", userVO);
 					
-					HttpSession session = request.getSession();
-					session.setAttribute("sessionUserId", param.getUserId());// session에 'userId' 속성값 저장
-					session.setAttribute("sessionUserName", param.getName());// session에 'name' 속성값 저장
+					session.setAttribute("sessionUser", userVO);
 					session.setMaxInactiveInterval(30*60); // 30분
 				}else {
 					message = param.getName()+"님 등록 실패 했습니다.";
@@ -268,9 +266,10 @@ public class UserController {
 				}
 				out.println("<script type='text/javascript'>");
 				out.println("alert('" + message + "');"); 
-				out.println("parent.location.href='/'"); 
+				out.println("parent.location.href='../'"); 
 				out.println("</script>");
 				out.flush();
+				return null;
 			
 			}else{
 				
@@ -279,18 +278,19 @@ public class UserController {
 				out.println("alert('" + message + "');"); 
 				out.println("</script>");
 				out.flush();
+				return null;
 				
 			}
 		}
 		
-		return "";
+
 //		return "user/user_reg";
 	}
 	
 
 	@PostMapping(value =  "/doModify.do",produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String doModify(UserVO param, @RequestParam("password_re") String passwordRe, HttpServletResponse response, final HttpServletRequest request) throws IOException {
+	public String doModify(UserVO param, @RequestParam("password_re") String passwordRe, HttpServletResponse response, HttpSession session) throws IOException {
 		log.debug("┌──────────────────────────┐");
 		log.debug("│doModify()                │");
 		log.debug("└──────────────────────────┘");	
@@ -317,15 +317,13 @@ public class UserController {
 	
 			if( 1 == flag ) {
 				message = param.getName()+"님 수정 되었습니다.";
-				
-				HttpSession session = request.getSession();
 				session.setAttribute("sessionUser", userInfo);
 			}else {
 				message = param.getName()+"님 수정 실패 했습니다.";
 			}
 			out.println("<script type='text/javascript'>");
 			out.println("alert('" + message + "');"); 
-			out.println("parent.location.href='/'"); 
+			out.println("parent.location.href='../'"); 
 			out.println("</script>");
 			out.flush();
 			return null;
@@ -348,15 +346,14 @@ public class UserController {
 			
 					if( 1 == flag ) {
 						message = param.getName()+"님 수정 되었습니다.";
-						
-						HttpSession session = request.getSession();
+
 						session.setAttribute("sessionUser", userInfo);
 					}else {
 						message = param.getName()+"님 수정 실패 했습니다.";
 					}
 					out.println("<script type='text/javascript'>");
 					out.println("alert('" + message + "');"); 
-					out.println("parent.location.href='/'"); 
+					out.println("parent.location.href='../'"); 
 					out.println("</script>");
 					out.flush();
 					return null;

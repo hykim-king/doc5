@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.project.doc5.board.domain.BoardVO;
-import com.project.doc5.board.service.BoardPages;
+import com.project.doc5.board.service.BoardPaging;
 import com.project.doc5.board.service.BoardService;
 import com.project.doc5.cmn.DTO;
 import com.project.doc5.cmn.MessageVO;
@@ -78,42 +78,24 @@ public class BoardContorller {
 		BoardVO param = new BoardVO();
 		param.setCode(code);
 		log.debug("2. param:{}",param);
-		int postsPerPage = 10;  // 한 페이지당 글 수 
-		int currentPage = pageNo;    // 현재 페이지 번호 
-		int displayPageNum = 5; // 한번에 표시할 페이지 개수 
+		int pageSize = 10;  // 한 페이지당 글 수 
+
+		int blockSize = 5; // 한번에 표시할 페이지 개수 
 		DTO dto = new DTO();
-		dto.setPageNo(currentPage);
-		dto.setPageSize(postsPerPage);
+		dto.setPageNo(pageNo);
+		dto.setPageSize(pageSize);
 		
 		log.debug("dto : {}",dto);
 		
 		List<BoardVO> list = boardService.doRetrieve(dto);
 		log.debug("3. list:{}",list);
 		
-		
-		dto = new DTO(pageNo, postsPerPage, list.get(0).getTotalCnt());
-		
 		log.debug("dto : {}",dto);
 		
-		int totalPosts = list.get(0).getTotalCnt();
-		int totalPages = ( (totalPosts - 1) / postsPerPage ) + 1;
-		
-		int endPage = (( (currentPage - 1) / displayPageNum ) + 1 ) * displayPageNum;  //마지막 페이지 
-
-		int startPage = ((currentPage-1)/displayPageNum) * displayPageNum + 1; // 시작 페이지 
-
-		if(totalPages < endPage) 
-		    endPage = totalPages;
-		
-		boolean prev = (startPage == 1) ? false : true;
-
-		boolean next = (endPage == totalPages) ? false : true;
-
-		BoardPages boardPages = new BoardPages(totalPosts, currentPage, postsPerPage, displayPageNum, code);
-
+		//페이징 설정 
+		BoardPaging boardPages = new BoardPaging(list.get(0).getTotalCnt(), pageNo, pageSize, blockSize, code);
 		
 		String pageCode = boardPages.printPages();
-		
 		
 
 		log.debug("pageCode : {}",pageCode);
@@ -175,7 +157,7 @@ public class BoardContorller {
 			message = "삭제 실패!";
 		}
 		
-		jsonString = new Gson().toJson(new MessageVO(flag, message));
+		jsonString = new Gson().toJson(new MessageVO(flag, message,0));
 		log.debug("3. jsonString:{}",jsonString);
 		
 		return jsonString;

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.project.doc5.cart.domain.CartOptionVO;
 import com.project.doc5.cart.domain.CartVO;
+import com.project.doc5.mypage.domain.MypageCartVO;
 
 @Mapper
 public interface CartMapper {
@@ -18,19 +19,19 @@ public interface CartMapper {
 	
 	
 	//장바구니 수량 변경
-	int doCartUpdate();
+	int doCartUpdate(MypageCartVO param);
 	
 	//장바구니 단건 삭제
-	int doCartDelete();
+	int doCartDelete(MypageCartVO param);
 	
 	//장바구니 전체 삭제
 	int cartDeleteAll();
 
 	//장바구니 목록 조회
-	List<CartVO> doCartList(CartVO cartvo);
+	List<MypageCartVO> doCartList(MypageCartVO param);
 	
 	//장바구니 목록 조회
-	List<CartOptionVO> doCartOptionList(CartOptionVO cartvo);	
+	List<CartOptionVO> doCartOptionList(CartOptionVO parem);	
 
 
 }

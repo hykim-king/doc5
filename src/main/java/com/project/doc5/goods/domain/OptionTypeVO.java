@@ -58,8 +58,8 @@ public class OptionTypeVO {
 		return goodsType;
 	}
 
-	public void setGoodsType(String goodsType) {
-		this.goodsType = goodsType;
+	public void setGoodsType(String GoodsType) {
+		this.goodsType = GoodsType;
 	}
 
 	public int getListSort() {

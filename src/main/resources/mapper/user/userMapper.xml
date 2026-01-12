@@ -120,6 +120,19 @@ SELECT A.*, B.*
       user_id = #{userId}    
   </update>
   
+  <update id="doUpdateNotPass">
+  UPDATE doc5_member          
+  SET                    
+      name      = #{name},
+      phone     = #{phone},
+      grade     = DECODE(#{grade},'BASIC',1
+                                 ,'SILVER',2
+                                 ,'GOLD',3),
+      reg_dt    = SYSDATE
+  WHERE                  
+      user_id = #{userId}    
+  </update>
+  
   
   <select id="doSelectOne" parameterType="UserVO" resultType="UserVO">
    SELECT                                                 

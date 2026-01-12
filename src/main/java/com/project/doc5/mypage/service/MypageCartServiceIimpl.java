@@ -5,11 +5,13 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.project.doc5.cmn.DTO;
 import com.project.doc5.mapper.MypageCartMapper;
 import com.project.doc5.mypage.domain.MypageCartVO;
 
+@Service
 public class MypageCartServiceIimpl implements MypageCartService {
 
 	final Logger log = LogManager.getLogger(getClass());

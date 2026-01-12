@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <style>
 .fullpage-intext {
 	font-size: 24px;
@@ -71,7 +70,7 @@
 			<!-- Modal body -->
 			<div class="modal-body">
 				<div class="modal-search-body">
-					<form action="/goods/goodsSearch.do" method="get">
+					<form action="${pageContext.request.contextPath}/goods/goodsSearch.do" method="get">
 					<div class="search-container-inputBox">
 						<ul>
 							<li><input type="text" class="form-control" name="keyword" required="required" placeholder="검색하실 상품을 입력하세요"></li>
@@ -82,8 +81,8 @@
 					<div class="search-keword-recommend">
 						<h4 class="modal-sub-title">추천 검색어</h4>
 						<div>
-							<div><a href="/goods/goodsSearch.do?keyword=아메리카노">아메리카노</a></div>
-							<div><a href="/goods/goodsSearch.do?keyword=디카페인">디카페인</a></div>
+							<div><a href="${pageContext.request.contextPath}/goods/goodsSearch.do?keyword=아메리카노">아메리카노</a></div>
+							<div><a href="${pageContext.request.contextPath}/goods/goodsSearch.do?keyword=디카페인">디카페인</a></div>
 						</div>
 					</div>
 					<div class="search-keword">
@@ -94,6 +93,28 @@
 				</div>
 			</div>
 
+		</div>
+	</div>
+</div>
+
+<style>
+
+</style>
+<!-- 매장찾기  Modal - FullPage -->
+<div class="modal fade up" id="mBranchSearch">
+	<div class="modal-dialog modal-fullscreen">
+		<div class="modal-content">
+			
+			<!-- Modal Header -->
+			<div class="modal-header">
+			<h4 class="modal-title">매장찾기</h4>
+			<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				<ul id="branchList"><div class="branch-list-circle"><img src="${pageContext.request.contextPath}/resources/img/loading-14573_256.gif" title="circle"/></div></ul>
+			</div>
 		</div>
 	</div>
 </div>
@@ -117,24 +138,6 @@
 	</div>
 </div>
 
-<!-- 공지사항  Modal - FullPage -->
-<div class="modal fade up" id="mNoticeBoard">
-	<div class="modal-dialog modal-fullscreen">
-		<div class="modal-content">
-			
-			<!-- Modal Header -->
-			<div class="modal-header">
-			<h4 class="modal-title">공지사항</h4>
-			<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-			</div>
-
-			<!-- Modal body -->
-			<div class="modal-body">
-			Modal body..
-			</div>
-		</div>
-	</div>
-</div>
 
 <!-- 전체페이지 Modal - FullPage -->
 <div class="modal fade up" id="fullPage">
@@ -164,16 +167,17 @@
 				<div class="fullpage-menu">
 					<ul>
 						<!--  <li><a href="#." data-bs-toggle="modal" data-bs-target="#mNoticeBoard"  title="공지사항">공지사항</a></li> -->
-						<li><a href="/board/boardList.do?code=notice" title="공지사항">공지사항</a></li>
+						<li><a href="${pageContext.request.contextPath}/board/boardList.do?code=notice" title="공지사항">공지사항</a></li>
 						
 						<!-- <li><a href="#.">스탬프</a></li> -->
 						
 						<!-- <li><a href="#.">이용안내</a></li> -->
 						<!-- <li><a href="#.">자주묻는 질문</a></li> -->
 						<!-- <li><a href="#.">약관 및 정책서</a></li> -->
+						<li><a href="${pageContext.request.contextPath}/mypage/myOrderList.do" data-bs-toggle="modal" data-bs-target="#mBranchSearch" class="mypageBranchSearch">매장찾기</a></li>
 						<c:if test="${sessionScope.sessionUser.userId != null}">
-							<li><a href="/mypage/myOrderList.do">주문내역</a></li>
-  							<li><a href="/user/doLogOut.do">로그아웃 </a></li>
+							<li><a href="${pageContext.request.contextPath}/mypage/myOrderList.do">주문내역</a></li>
+  							<li><a href="${pageContext.request.contextPath}/user/doLogOut.do">로그아웃 </a></li>
 						</c:if>
 					</ul>
 				</div>
@@ -182,7 +186,7 @@
 	</div>
 </div>
 
-<<!-- 로그인 Modal -->
+<!-- 로그인 Modal -->
 <div class="modal fade" id="mlogin" tabindex="-1" aria-labelledby="mloginLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -192,9 +196,9 @@
       </div>
       <div class="modal-body">
     <main class="form-signin w-100 m-auto">
-      <form action="/user/doLoginCheck.do" method="post" target="iframe">
+      <form action="${pageContext.request.contextPath}/user/doLoginCheck.do" method="post" target="iframe">
 		<div style="text-align:center;">
-        <img src="/resources/img/doc5_logo.png" class="" style="margin-bottom:60px;width:150px;">
+        <img src="${pageContext.request.contextPath}/resources/img/doc5_logo.png" class="" style="margin-bottom:60px;width:150px;">
 	   </div>
         <h1 class="h3 mb-3 fw-normal">로그인 정보</h1>
         <div class="form-floating">
@@ -221,8 +225,8 @@
         </div>
         
         <button class="w-100 btn btn-lg btn-primary" type="submit">로그인 하기</button>
-        <button class="w-100 btn btn-lg btn-regist" type="button" onclick="location.href='/user/userRegist.do'">회원가입</button>
-        <p class="text-password-find"><a href="/user/userPasswordFind.do">비밀번호찾기</a></p>
+        <button class="w-100 btn btn-lg btn-regist" type="button" onclick="location.href='${pageContext.request.contextPath}/user/userRegist.do'">회원가입</button>
+        <p class="text-password-find"><a href="${pageContext.request.contextPath}/user/userPasswordFind.do">비밀번호찾기</a></p>
         <p class="mt-5 mb-3 text-body-secondary">&copy; PROJECT02 DOC5 TEAM.</p>
       </form>
       

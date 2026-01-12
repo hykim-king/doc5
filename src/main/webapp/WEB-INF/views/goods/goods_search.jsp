@@ -15,7 +15,7 @@
 }
 
 </style>
-<link rel="stylesheet" href="/resources/css/item.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/item.css">
 	<div class="cont_wrap menu_wrap">
 		<div class="cont">
 			<div class="search_keyword">검색단어 : "${keyword}"</div>
@@ -28,10 +28,10 @@
 				<c:otherwise>
 				<c:forEach var="vo" items="${list}">
 				<li>
-		          <a href="/goods/goodsView.do?goodsno=${vo.goodsNo}">
+		          <a href="${pageContext.request.contextPath}/goods/goodsView.do?goodsno=${vo.goodsNo}">
 		            <div class="cont_gallery_list_box">
 		                <div class="cont_gallery_list_img">
-		                    <img src="/resources/img/goods/${vo.goodsNo}.png" onerror="this.onerror=null; this.src='/resources/img/goods/10001.png';">
+		                    <img src="${pageContext.request.contextPath}/resources/img/goods/${vo.goodsNo}.png" onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/resources/img/goods/10001.png';">
 		                    ${vo.goodsNo}
 		                </div>
 		                

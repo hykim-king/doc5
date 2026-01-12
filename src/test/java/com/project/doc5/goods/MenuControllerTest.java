@@ -54,7 +54,7 @@ public class MenuControllerTest {
 	@Test
 	void getMenu() {
 		//3.
-		List<MenuVO> list = menuMapper.getMenuAll();
+		List<MenuVO> list = menuMapper.doMenuAll();
 		log.debug(list);
 	}
 	

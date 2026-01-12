@@ -9,6 +9,6 @@ import com.project.doc5.cmn.MenuVO;
 @Mapper
 public interface MenuMapper {
 	
-	List<MenuVO> getMenuAll();
+	List<MenuVO> doMenuAll();
 	
 }

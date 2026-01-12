@@ -15,9 +15,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.doc5.mapper.MypageOrderMapper;
 import com.project.doc5.mypage.domain.MypageOrderVO;
+import com.project.doc5.mypage.service.MypageOrderService;
 import com.project.doc5.user.domain.UserVO;
 
 @Controller
@@ -27,7 +29,7 @@ public class MypageController {
 	final Logger log = LogManager.getLogger(getClass());
 	
 	@Autowired
-	MypageOrderMapper mypageOrderMapper;
+	MypageOrderService mypageOrderService;
 
 	public MypageController() {
 		super();
@@ -64,7 +66,7 @@ public class MypageController {
         	MypageOrderVO mypageOrderVO = new MypageOrderVO();
         	mypageOrderVO.setUserId(userId);
         	
-        	List<MypageOrderVO> list = mypageOrderMapper.doRetrieve(mypageOrderVO);
+        	List<MypageOrderVO> list = mypageOrderService.doRetrieve(mypageOrderVO);
     		for(MypageOrderVO vo  :list) {
     			log.debug(vo);
     		}
@@ -74,7 +76,7 @@ public class MypageController {
 	}
 	
 	@GetMapping(value = "/myOrderView.do", produces = "text/plain;charset=UTF-8")
-	public String myOrderView(final HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+	public String myOrderView(String orderNo, HttpSession session, HttpServletResponse response, Model model) throws IOException {
 		
 		log.debug("┌──────────────────────────┐");
 		log.debug("│myOrderView()             │");
@@ -82,7 +84,7 @@ public class MypageController {
 		
 		String viewString = "mypage/mypage_order_view";
 		
-		HttpSession session = request.getSession();
+		log.debug("orderNo : {}", orderNo);
 		
 		if(null == session.getAttribute("sessionUser")) {
 			response.setContentType("text/html; charset=UTF-8");
@@ -90,7 +92,7 @@ public class MypageController {
         	String message = "잘못된 접속입니다.";
 	        out.println("<script>");
 	        out.println("alert('"+message+"');");
-	        out.println("location.href='/';"); //  페이지로 돌아가기
+	        out.println("location.href='../';"); //  페이지로 돌아가기
 	        out.println("</script>");
 	        out.flush();
 	        return null;
@@ -101,7 +103,7 @@ public class MypageController {
         	MypageOrderVO mypageOrderVO = new MypageOrderVO();
         	mypageOrderVO.setUserId(userId);
         	
-        	List<MypageOrderVO> list = mypageOrderMapper.doRetrieve(mypageOrderVO);
+        	List<MypageOrderVO> list = mypageOrderService.doRetrieve(mypageOrderVO);
     		for(MypageOrderVO vo  :list) {
     			log.debug(vo);
     		}

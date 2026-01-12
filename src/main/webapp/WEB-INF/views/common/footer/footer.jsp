@@ -1,5 +1,6 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <script>
 	var topMenuSwiper = new Swiper(".topMenuSwiper", {
 		slidesPerView: 6,
@@ -61,31 +62,32 @@
 	*/
 </script>
 	</div>
-
+	
+	<c:if test="${bottomMenuFl ne 'N' }">
 	<div class="bottomMenu">
 		<ul>
 			<li>
-				<a href="/">
-					<div><img src="/resources/img/5doc_home.png" class="bottom-5doc-menu"></div>
+				<a href="${pageContext.request.contextPath}">
+					<div><img src="${pageContext.request.contextPath}/resources/img/5doc_home.png" class="bottom-5doc-menu"></div>
 					<span>HOME</span>
 				</a>
 			</li>
 			<li>
-				<a href="/goods/goodsList.do">
-					<div><img src="/resources/img/5p_order.png" class="bottom_5doc_order"></div>
+				<a href="${pageContext.request.contextPath}/goods/goodsList.do">
+					<div><img src="${pageContext.request.contextPath}/resources/img/5p_order.png" class="bottom_5doc_order"></div>
 					<span>DOC5 오더</span>
 				</a>
 			</li>
 			<li>
 				<a href="#." class="top_login" data-bs-toggle="modal" data-bs-target="#fullPage" title="마이페이지">
-					<div><img src="/resources/img/5doc_all.png" class="bottom-5doc-menu"></div>
+					<div><img src="${pageContext.request.contextPath}/resources/img/5doc_all.png" class="bottom-5doc-menu"></div>
 					<span>전체메뉴</span>
 				</a>
 			</li>
 
 		</ul>
 	</div>
-	
+	</c:if>
 	
 
 	<div id="bottomPopup" class="popup-container">
@@ -132,5 +134,5 @@
 		});
 	</script>
 	     <!-- iframe 설정 -->
-    <iframe id="iframe" name="iframe"></iframe>   
+    <iframe id="iframe" name="iframe" data-contextPath="${pageContext.request.contextPath}"></iframe>   
 </html>

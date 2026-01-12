@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.doc5.mapper.MenuMapper">
 
-  <select id="getMenuAll" parameterType="MenuVO" resultType="MenuVO">
+  <select id="doMenuAll" parameterType="MenuVO" resultType="MenuVO">
    SELECT * FROM doc5_category WHERE LENGTH(code) = 3 
   </select>
 </mapper>

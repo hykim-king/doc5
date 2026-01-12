@@ -2,7 +2,150 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.doc5.mapper.GoodsMapper">
-
+	<resultMap id="optionTypeMap" type="com.project.doc5.goods.domain.OptionTypeVO">
+	    <id property="seq" column="seq"/>
+	    <result property="goodsNo" column="goods_no"/>
+	    <result property="goodsOptionName" column="goods_option_name"/>
+	    <result property="goodsType" column="goods_type"/>
+	    <result property="listSort" column="list_sort"/>
+	    
+	    <collection property="goodsOptionVO" ofType="com.project.doc5.goods.domain.GoodsOptionVO">
+	        <result property="optionName" column="option_name"/>
+	        <result property="optionPrice" column="option_price"/>
+	    </collection>
+	</resultMap>
+	
+	<insert id="doCartSave" parameterType="MypageCartVO">
+	<selectKey keyProperty="seq" order="BEFORE" resultType="int">
+		SELECT c_seq.NEXTVAL FROM dual
+	</selectKey>
+	INSERT INTO doc5_cart (
+	    seq,
+	    goods_no,
+	    branch_code,
+	    order_no,
+	    user_id,
+	    goods_name,
+	    goods_price,
+	    goods_cnt,
+	    tumbler_fl,
+	    hot_fl,
+	    hot_price,
+	    ice_fl,
+	    ice_price,
+	    order_type,
+	    cancel_dt,
+	    reg_dt,
+	    mod_dt
+	) VALUES (
+		#{seq},       
+	    #{goodsNo},
+	    #{branchCode},
+	    #{orderNo},
+	    #{userId},
+	    #{goodsName},
+	    #{goodsPrice},
+	    #{goodsCnt},
+	    #{tumblerFl},
+	    #{hotFl},
+	    #{hotPrice},
+	    #{iceFl},
+	    #{icePrice},
+	    #{orderType},
+	    null,
+	    SYSDATE,
+	    SYSDATE
+	)
+	</insert>
+	
+	<insert id="doCartGoodsOptionSave" parameterType="com.project.doc5.mypage.domain.MypageCartGoodsOptionVO">
+	INSERT INTO doc5_cart_goods_option (
+	    seq,
+	    c_seq,
+	    goods_no,
+	    goods_type,
+	    option_name,
+	    option_price
+	) VALUES ( 
+		cgo_seq.NEXTVAL,
+	    #{cSeq},
+	    #{goodsNo},
+	    #{goodsType},
+	    #{optionName},
+	    #{optionPrice}
+	)
+	</insert>
+	
+	<select id="doGoodsInfoSelect" parameterType="com.project.doc5.goods.domain.GoodsInfoVO" resultType="com.project.doc5.goods.domain.GoodsInfoVO">
+	SELECT
+	    seq,
+	    goods_no,
+	    goods_type,
+	    product_info_sort,
+	    product_info_title,
+	    product_info_text
+	FROM
+	    doc5_goods_info
+	WHERE goods_no = #{goodsNo}
+	  AND goods_type = #{goodsType}
+	</select>
+	<select id="doOptionTypeSelect" parameterType="int" resultMap="optionTypeMap">
+    SELECT
+        ot.seq,
+        ot.goods_no,
+        ot.goods_option_name,
+        ot.goods_type,
+        ot.list_sort,
+        go.option_name,
+        go.option_price
+    FROM
+        doc5_option_type ot
+    LEFT JOIN doc5_goods_option go
+      ON ot.seq = go.ot_seq
+    WHERE ot.goods_no = #{goodsNo}
+      AND ot.hidden_fl = 'N'
+      AND (go.option_hidden = 'N' OR go.option_hidden IS NULL)
+    ORDER BY ot.list_sort ASC
+	</select>
+	
+	<select id="doSelectOne" parameterType="com.project.doc5.goods.domain.GoodsVO" resultType="com.project.doc5.goods.domain.GoodsVO">
+	SELECT
+	    goods_no,
+	    goods_name,
+	    goods_eng_name,
+	    goods_price,
+	    hot_fl,
+	    hot_price,
+	    ice_fl,
+	    ice_price,
+	    tumbler_fl,
+	    short_description,
+	    goods_contents,
+	    new_fl,
+	    best_fl,
+	    alleoji_info,
+	    goods_view,
+	    hidden_fl,
+	    reg_dt,
+	    reg_id,
+	    mod_dt,
+	    mod_id
+	FROM
+	    doc5_goods
+	WHERE goods_no = #{goodsNo}
+	</select>
+	
+	<select id="doRetrieve" parameterType="String" resultType="com.project.doc5.goods.domain.GoodsVO" >
+	SELECT g.*,
+           cj.code 
+	  FROM
+	       doc5_goods g
+    LEFT JOIN doc5_category_join cj
+        ON g.goods_no = cj.goods_no
+	 WHERE cj.code = #{cate}
+       AND cj.hidden_fl = 'N'
+	</select>
+	
 	<!-- 컬럼 →Value Object와 매핑 -->
 <resultMap id="GoodsVO" type="com.project.doc5.goods.domain.GoodsVO">
     <id column="goods_no" property="goodsNo"/>

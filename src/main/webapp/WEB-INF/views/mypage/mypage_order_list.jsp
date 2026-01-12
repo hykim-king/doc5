@@ -132,7 +132,7 @@
 			        		</c:when>
 			        		<c:otherwise>
 			        			<c:forEach var="vo" items="${list}">
-			        			<li><a href="/mypage/myOrderView.do?orderNo=${vo.orderNo}">
+			        			<li><a href="${pageContext.request.contextPath}/mypage/myOrderView.do?orderNo=${vo.orderNo}">
 			        				<p><span class="order-step">${vo.orderStep}</span></p>
 			        				${vo.orderName}
 			        				<p class="order-side-info">${vo.branchName}점 | ${vo.modDt}</p> 

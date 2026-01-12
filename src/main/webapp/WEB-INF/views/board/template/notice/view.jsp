@@ -83,7 +83,7 @@
 	</div>
 <script type="text/javascript">
 function goBoardList(code, pageNo){
-	location.href="/board/boardList.do?code="+code+"&pageNo="+pageNo;
+	location.href="${pageContext.request.contextPath}/board/boardList.do?code="+code+"&pageNo="+pageNo;
 }
 
 </script>

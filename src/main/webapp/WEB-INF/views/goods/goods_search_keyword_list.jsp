@@ -8,7 +8,7 @@
 	</c:when>
 	<c:otherwise>
 		<c:forEach var="vo" items="${gsList }">
-		<div><a href="/goods/goodsSearch.do?keyword=${vo.keyword}">${vo.keyword}</a><span>${vo.regDt} </span><span class="goodsKeywordDel" data-keyword="${vo.keyword}">X</span></div>
+		<div><a href="${pageContext.request.contextPath}/goods/goodsSearch.do?keyword=${vo.keyword}">${vo.keyword}</a><span>${vo.regDt} </span><span class="goodsKeywordDel" data-keyword="${vo.keyword}">X</span></div>
 		</c:forEach>
 	</c:otherwise>
 </c:choose>

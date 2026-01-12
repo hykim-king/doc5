@@ -18,7 +18,7 @@ private static final Logger logger = LoggerFactory.getLogger(MainController.clas
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = {"/", "/index", "/home"})
+	@RequestMapping(value = {"/",  "/index", "/home"})
 	public String index(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		

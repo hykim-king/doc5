@@ -225,7 +225,7 @@ class StroeInputTest {
 					cateCd1 = goodsDataJson.substring(goodsDataJson.length()-11,goodsDataJson.length()-8);
 					cateCd2 = goodsDataJson.substring(goodsDataJson.length()-11,goodsDataJson.length()-5);
 					
-					if(cateCd1.equals("001") || cateCd1.equals("002") || cateCd1.equals("003")) {
+					if(cateCd1.equals("001") || cateCd1.equals("002") ) {
 					
 						//옵션 저장 
 						int seq = 0;
@@ -239,20 +239,34 @@ class StroeInputTest {
 						setGoodsOption(0, otSeq, "0", "저당 스테비아 추가", 600, "N");
 						
 						otSeq = setGoodsOptionType(n, "당도 선택");
-						if(cateCd1.equals("003")) {
-							setGoodsOption(0, otSeq, "0", "바닐라시럽추가", 500, "N");
-							setGoodsOption(0, otSeq, "1", "카라멜시럽추가", 500, "N");
-							setGoodsOption(0, otSeq, "2", "헤이즐넛시럽추가", 500, "N");
-							setGoodsOption(0, otSeq, "3", "라이트바닐라시럽추가", 800, "N");
-							setGoodsOption(0, otSeq, "4", "꿀 추가", 700, "N");
-						} else {
-							setGoodsOption(0, otSeq, "0", "연유 추가", 700, "N");
-						}
+						setGoodsOption(0, otSeq, "0", "연유 추가", 700, "N");
 						
 						otSeq = setGoodsOptionType(n, "토핑 선택");
 						setGoodsOption(0, otSeq, "0", "휘핑추가", 500, "N");
 						setGoodsOption(0, otSeq, "1", "타피오카 펄 추가", 700, "N");
 						setGoodsOption(0, otSeq, "2", "초코젤라또 추가", 700, "N");
+		
+					}else if(cateCd1.equals("003")){
+						//옵션 저장 
+						int seq = 0;
+						int otSeq = 0;
+						otSeq = setGoodsOptionType(n, "논-커피 샷 선택");
+						setGoodsOption(0, otSeq, "0", "연하게", 0, "N");
+						setGoodsOption(0, otSeq, "1", "샷 추가", 600, "N");
+						setGoodsOption(0, otSeq, "2", "2샷 추가", 1200, "N");
+						setGoodsOption(0, otSeq, "3", "디카페인 샷 추가", 1000, "N");
+						setGoodsOption(0, otSeq, "4", "디카페인 2샷 추가", 2000, "N");
+						
+						otSeq = setGoodsOptionType(n, "당도 선택");
+						setGoodsOption(0, otSeq, "0", "바닐라시럽추가", 500, "N");
+						setGoodsOption(0, otSeq, "1", "카라멜시럽추가", 500, "N");
+						setGoodsOption(0, otSeq, "2", "헤이즐넛시럽추가", 500, "N");
+						setGoodsOption(0, otSeq, "3", "라이트바닐라시럽추가", 800, "N");
+						setGoodsOption(0, otSeq, "4", "꿀 추가", 700, "N");
+						
+						otSeq = setGoodsOptionType(n, "토핑 선택");
+						setGoodsOption(0, otSeq, "0", "휘핑추가", 500, "N");
+						setGoodsOption(0, otSeq, "1", "타피오카 펄 추가", 700, "N");
 		
 					}
 					

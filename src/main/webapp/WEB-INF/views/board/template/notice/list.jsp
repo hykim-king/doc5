@@ -44,6 +44,9 @@
 	padding:15px 0px;
 	line-height:40px;
 	text-indent: 20px;
+	    text-overflow: ellipsis;
+overflow: hidden;
+white-space: nowrap;
 
 }
 
@@ -83,6 +86,7 @@
     background-color: #fff;
     transition: all 0.2s;
     text-align:center;
+      
 }
 
 .board-paging ul li a {
@@ -123,7 +127,7 @@
 			        		</c:when>
 			        		<c:otherwise>
 			        			<c:forEach var="vo" items="${list}">
-			        			<li><a href="/board/boardView.do?code=notice&seq=${vo.seq}">${vo.subject}</a></li>
+			        			<li><a href="${pageContext.request.contextPath}/board/boardView.do?code=notice&seq=${vo.seq}">${vo.subject}</a></li>
 			        			</c:forEach>
 			        		</c:otherwise>
 			        	</c:choose>

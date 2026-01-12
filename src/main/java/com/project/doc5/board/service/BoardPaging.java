@@ -1,6 +1,6 @@
 package com.project.doc5.board.service;
 
-public class BoardPages {
+public class BoardPaging {
 
 	private int totalPosts;
 	private int currentPage;
@@ -8,7 +8,7 @@ public class BoardPages {
 	private int displayPageNum;
 	private String code;
 
-	public BoardPages(int totalPosts, int currentPage, int postsPerPage, int displayPageNum, String code) {
+	public BoardPaging(int totalPosts, int currentPage, int postsPerPage, int displayPageNum, String code) {
 		super();
 		this.totalPosts = totalPosts;
 		this.currentPage = currentPage;
@@ -100,16 +100,16 @@ public class BoardPages {
         pageCode = "<ul>";
         		
         if(hasPrev) {
-        	pageCode += "<li><a href='/board/boardList.do?code="+this.code+"&pageNo=1'>처음</a></li>";
-        	pageCode += "<li class='pagingPrev'><a href='/board/boardList.do?code="+this.code+"&pageNo="+(startPage-1)+"'>이전</a></li>";
+        	pageCode += "<li><a href='./boardList.do?code="+this.code+"&pageNo=1'>처음</a></li>";
+        	pageCode += "<li class='pagingPrev'><a href='./boardList.do?code="+this.code+"&pageNo="+(startPage-1)+"'>이전</a></li>";
         }
         for (int page = startPage; page <= endPage; page++) {
         	nowPageCheck =  this.currentPage == page ? "class='on'" : "";
-        	pageCode += "<li "+nowPageCheck+"><a href='/board/boardList.do?code="+this.code+"&pageNo="+page+"'>"+page+"</a></li>";
+        	pageCode += "<li "+nowPageCheck+"><a href='./boardList.do?code="+this.code+"&pageNo="+page+"'>"+page+"</a></li>";
         }
         if(hasNext){
-        	pageCode += "<li class='pagingNext'><a href='/board/boardList.do?code="+this.code+"&pageNo="+(endPage+1)+"'>다음</a></li>";
-        	pageCode += "<li><a href='/board/boardList.do?code="+this.code+"&pageNo="+totalPages+"'>마지막</a></li>";
+        	pageCode += "<li class='pagingNext'><a href='./boardList.do?code="+this.code+"&pageNo="+(endPage+1)+"'>다음</a></li>";
+        	pageCode += "<li><a href='./boardList.do?code="+this.code+"&pageNo="+totalPages+"'>마지막</a></li>";
         }
         pageCode += "<ul>";
         

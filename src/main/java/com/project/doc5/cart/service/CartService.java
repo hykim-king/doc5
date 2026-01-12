@@ -3,9 +3,10 @@ package com.project.doc5.cart.service;
 import java.util.List;
 
 import com.project.doc5.cart.domain.CartVO;
+import com.project.doc5.mypage.domain.MypageCartVO;
 import com.project.doc5.cart.domain.CartOptionVO;
 
-public interface CartService<CartVO> {
+public interface CartService {
 	
 	/**
 	 * 장바구니 저장
@@ -27,7 +28,7 @@ public interface CartService<CartVO> {
 	 * @param param
 	 * @return
 	 */
-	List<CartVO> doCartList(CartVO param);
+	List<MypageCartVO> doCartList(MypageCartVO param);
 	
 	/**
 	 * 장바구니 상품 옵션 리스트
@@ -41,7 +42,7 @@ public interface CartService<CartVO> {
 	 * @param param
 	 * @return
 	 */
-	int doCartUpdate(CartVO param);	
+	int doCartUpdate(MypageCartVO param);	
 	
 	
 	/**
@@ -49,7 +50,7 @@ public interface CartService<CartVO> {
 	 * @param param
 	 * @return
 	 */
-	int doCartDelete(CartVO param);
+	int doCartDelete(MypageCartVO param);
 
 	
 	/**

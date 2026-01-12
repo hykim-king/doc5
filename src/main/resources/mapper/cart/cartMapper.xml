@@ -2,19 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.doc5.mapper.CartMapper">
-
-  <insert id="doCartSave">
-  </insert>
-
-  <insert id="doCartOptionSave">
-  </insert>
+	<resultMap id="mapMypageCartVO" type="MypageCartVO">
+	    <id property="seq" column="seq"/>
+	    <result property="goodsNo" column="goods_no"/>
+	    <result property="branchCode" column="goods_option_name"/>
+	    <result property="orderNo" column="order_no"/>
+	    <result property="userId" column="user_id"/>
+	    <result property="goodsName" column="goods_name"/>
+	    <result property="goodsPrice" column="goods_price"/>
+	    <result property="goodsCnt" column="goods_cnt"/>
+	    <result property="tumblerFl" column="tumbler_fl"/>
+	    <result property="hotFl" column="hot_fl"/>
+	    <result property="hotPrice" column="hot_price"/>
+	    <result property="iceFl" column="ice_fl"/>
+	    <result property="icePrice" column="ice_price"/>
+	    <result property="cancelDt" column="cancel_dt"/>
+	    <result property="regDt" column="reg_dt"/>
+	    <result property="modDt" column="mod_dt"/>
+	    
+	    <collection property="mcgList" ofType="com.project.doc5.mypage.domain.MypageCartGoodsOptionVO">
+	        <result property="optionName" column="option_name"/>
+	        <result property="optionPrice" column="option_price"/>
+	    </collection>
+	</resultMap>
   
-  <select id="doCartList" parameterType="CartVO" resultType="CartVO">
+  
+  <select id="doCartList" parameterType="MypageCartVO" resultMap="mapMypageCartVO">
   SELECT c.*,cgo.* 
     FROM doc5_cart c
   LEFT JOIN doc5_cart_goods_option cgo
       ON c.seq = cgo.c_seq
    WHERE c.user_id = #{userId}
+     AND c.order_no IS NULL
+     AND c.cancel_dt IS NULL
+     AND NVL(c.order_type, ' ') != 'direct'
+  ORDER BY c.seq DESC
   </select>
   
   <select id="doCartOptionList" parameterType="CartOptionVO" resultType="CartOptionVO">
@@ -30,12 +52,23 @@
   WHERE c_seq = #{cSeq}
   </select>  
     
-  <update id="doCartUpdate">
+  <update id="doCartUpdate" parameterType="MypageCartVO">
+  UPDATE doc5_cart
+	SET
+	    goods_cnt = #{goodsCnt}
+	WHERE
+	    seq = #{seq}
+	    AND user_id = #{userId}
   </update>
+ 
   
-  <delete id="doCartDelete">
-  </delete>
-  
+  <delete id="doCartDelete" parameterType="hashmap">
+    BEGIN
+        DELETE FROM doc5_cart_goods_option WHERE c_seq = #{seq};
+        DELETE FROM doc5_cart WHERE seq = #{seq};
+    END;
+</delete>
+
   <delete id="cartDeleteAll">
   </delete>
   

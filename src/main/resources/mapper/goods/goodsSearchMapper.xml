@@ -19,19 +19,21 @@
         user_id = #{tmpUserId}
 	</update>
 
-	<select id="goodsSearchKeywordList" parameterType="com.project.doc5.goods.domain.GoodsSearchKeywordVO" resultType="com.project.doc5.goods.domain.GoodsSearchKeywordVO">
-	SELECT seq,
-	       user_id,
-	       keyword,
-	       TO_CHAR(reg_dt,'MM.DD') AS reg_dt
-	  FROM(
-		   SELECT *
-	         FROM doc5_search_keyword
-	        WHERE user_id = #{userId}
-	          AND hidden_fl = 'N'
-	          ORDER BY reg_dt DESC
-	      ) 
-	 WHERE ROWNUM  <![CDATA[ <= ]]>10
+	<select id="goodsSearchKeywordList" parameterType="com.project.doc5.goods.domain.GoodsSearchKeywordVO" resultType="com.project.doc5.goods.domain.GoodsSearchKeywordVO"> 
+	SELECT seq, user_id, keyword, reg_dt
+	   FROM (
+	        SELECT seq, 
+	               user_id, 
+	               keyword, 
+	               TO_CHAR(reg_dt, 'MM.DD') AS reg_dt,
+	               ROW_NUMBER() OVER (PARTITION BY keyword ORDER BY reg_dt DESC) as rn
+	          FROM doc5_search_keyword
+	         WHERE user_id = #{userId}
+	           AND hidden_fl = 'N'
+	        ) 
+	 WHERE rn = 1 -- 중복 키워드 중 가장 최근 것만 선택
+	   AND ROWNUM <![CDATA[ <= ]]>10 -- 그 중 상위 10개
+	ORDER BY reg_dt DESC
 	</select>
 	
 	<select id="goodsSearch" parameterType="String" resultType="com.project.doc5.goods.domain.GoodsVO">

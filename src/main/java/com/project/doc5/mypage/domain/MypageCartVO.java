@@ -19,9 +19,11 @@ public class MypageCartVO extends DTO{
 	private double hotPrice     ;//HOT 가격
 	private String iceFl        ;//ICE 옵션
 	private double icePrice     ;//ICE 가격
+	private String orderType    ;//다이렉트주문 
 	private String cancelDt     ;//취소일
 	private String regDt        ;//등록일
 	private String modDt        ;//수정일
+	private double totalGoodsTotalPrice ; //옵션포함총합금액 
 	
 	// 옵션  컬렉션 포함 (1:N 관계)
     private List<MypageCartGoodsOptionVO> mcgList;
@@ -33,7 +35,8 @@ public class MypageCartVO extends DTO{
 
 	public MypageCartVO(int seq, int goodsNo, String branchCode, String orderNo, String userId, String goodsName,
 			double goodsPrice, int goodsCnt, String tumblerFl, String hotFl, double hotPrice, String iceFl,
-			double icePrice, String cancelDt, String regDt, String modDt, List<MypageCartGoodsOptionVO> mcgList) {
+			double icePrice, String orderType, String cancelDt, String regDt, String modDt, double totalGoodsTotalPrice,
+			List<MypageCartGoodsOptionVO> mcgList) {
 		super();
 		this.seq = seq;
 		this.goodsNo = goodsNo;
@@ -48,9 +51,11 @@ public class MypageCartVO extends DTO{
 		this.hotPrice = hotPrice;
 		this.iceFl = iceFl;
 		this.icePrice = icePrice;
+		this.orderType = orderType;
 		this.cancelDt = cancelDt;
 		this.regDt = regDt;
 		this.modDt = modDt;
+		this.totalGoodsTotalPrice = totalGoodsTotalPrice;
 		this.mcgList = mcgList;
 	}
 
@@ -158,6 +163,14 @@ public class MypageCartVO extends DTO{
 		this.icePrice = icePrice;
 	}
 
+	public String getOrderType() {
+		return orderType;
+	}
+
+	public void setOrderType(String orderType) {
+		this.orderType = orderType;
+	}
+
 	public String getCancelDt() {
 		return cancelDt;
 	}
@@ -182,6 +195,14 @@ public class MypageCartVO extends DTO{
 		this.modDt = modDt;
 	}
 
+	public double getTotalGoodsTotalPrice() {
+		return totalGoodsTotalPrice;
+	}
+
+	public void setTotalGoodsTotalPrice(double totalGoodsTotalPrice) {
+		this.totalGoodsTotalPrice = totalGoodsTotalPrice;
+	}
+
 	public List<MypageCartGoodsOptionVO> getMcgList() {
 		return mcgList;
 	}
@@ -195,11 +216,15 @@ public class MypageCartVO extends DTO{
 		return "MypageCartVO [seq=" + seq + ", goodsNo=" + goodsNo + ", branchCode=" + branchCode + ", orderNo="
 				+ orderNo + ", userId=" + userId + ", goodsName=" + goodsName + ", goodsPrice=" + goodsPrice
 				+ ", goodsCnt=" + goodsCnt + ", tumblerFl=" + tumblerFl + ", hotFl=" + hotFl + ", hotPrice=" + hotPrice
-				+ ", iceFl=" + iceFl + ", icePrice=" + icePrice + ", cancelDt=" + cancelDt + ", regDt=" + regDt
-				+ ", modDt=" + modDt + ", mcgList=" + mcgList + "]";
+				+ ", iceFl=" + iceFl + ", icePrice=" + icePrice + ", orderType=" + orderType + ", cancelDt=" + cancelDt
+				+ ", regDt=" + regDt + ", modDt=" + modDt + ", totalGoodsTotalPrice=" + totalGoodsTotalPrice
+				+ ", mcgList=" + mcgList + "]";
 	}
+	
+
 
 	
-    
+
 	
+
 }
