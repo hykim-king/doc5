@@ -98,10 +98,10 @@ String verDate = simpleDate.format(date);
 				</div>
 				
 				<div class="mobile_top_icon_wrap" >
-                         <div><button class="top_search bn_srch" data-bs-toggle="modal" data-bs-target="#mSearch" title="검색"><span>검색</span></button></div>
+                    <div><button class="top_search bn_srch" data-bs-toggle="modal" data-bs-target="#mSearch" title="검색"><span>검색</span></button></div>
 					<!--로그인 중 일시 마이페이지 보기-->
 					<!-- <div><button class="top_branch_search" data-bs-toggle="modal" data-bs-target="#mBranchSearch" title="로그인"><span>매장찾기</span></button></div> -->
-<div><button class="top_cart" data-bs-target="#mCart" title="로그인" onclick="location.href='${pageContext.request.contextPath}/cart/cart.do'"><span>장바구</span></button></div>
+					<div><button class="top_cart" data-bs-target="#mCart" title="로그인" onclick="location.href='${pageContext.request.contextPath}/cart/cart.do'"><span>장바구</span></button></div>
 
 
                          
