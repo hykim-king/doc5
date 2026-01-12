@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ include file="/WEB-INF/views/common/header/header.jsp" %>
-<style>
+<style> 
 .container {
     max-width: 500px;
     margin: 0 auto;
