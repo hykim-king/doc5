@@ -102,12 +102,42 @@ public class MypageController {
         	
         	MypageOrderVO mypageOrderVO = new MypageOrderVO();
         	mypageOrderVO.setUserId(userId);
+        	mypageOrderVO.setOrderNo(orderNo);
         	
-        	List<MypageOrderVO> list = mypageOrderService.doRetrieve(mypageOrderVO);
-    		for(MypageOrderVO vo  :list) {
-    			log.debug(vo);
-    		}
+        	List<MypageOrderVO> list = mypageOrderService.doDetailOrder(mypageOrderVO);
+    		
+        	String orderStepText;
+        	if(list.get(0).getOrderStep().equals("p")) {
+        		orderStepText = "주문완료";
+        	}else if(list.get(0).getOrderStep().equals("p")) {
+        		
+        	}
+        	
+        	switch (list.get(0).getOrderStep()) {
+			case "O":
+				orderStepText = "주문완료 되었습니다.";
+				break;
+			case "P":
+				orderStepText = "준비중 입니다.";
+				break;
+			case "S":
+				orderStepText = "준비완료(픽업) 되었습니다.";
+				break;
+			case "C":
+				orderStepText = "주문취소 되었습니다.";
+				break;
+
+			default:
+				orderStepText = "기타";
+				break;
+			}
+        	log.debug("orderStepText : {}", orderStepText);
+        	log.debug("MypageOrderVO : {}", list);
+        	model.addAttribute("orderStepText",orderStepText);
     		model.addAttribute("list",list);
+    		
+    		model.addAttribute("headerFl", "N" );
+    		model.addAttribute("bottomMenuFl", "N" );
         }
 		return viewString;
 	}

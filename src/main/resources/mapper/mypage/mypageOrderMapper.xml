@@ -1,6 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.doc5.mapper.MypageOrderMapper">
+	<resultMap id="mapMypageOrderVO" type="MypageOrderVO">
+	    <id property="orderNo" column="order_no"/>
+	    <result property="branchCode" column="branch_code"/>
+	    <result property="orderName" column="order_name"/>
+	    <result property="goodsTotalCnt" column="goods_total_cnt"/>
+	    <result property="settleTotalPrice" column="settle_total_price"/>
+	    <result property="goodsTotalPrice" column="goods_total_price"/>
+	    <result property="optionTotalPrice" column="option_total_price"/>
+	    <result property="settelKind" column="settel_kind"/>
+	    <result property="orderStep" column="order_step"/>
+	    <result property="regDt" column="reg_dt"/>
+	    <result property="modDt" column="mod_dt"/>
+	    
+	    
+	    <collection property="cList" ofType="MypageCartVO">
+	    	<result property="seq" column="seq"/>
+	   	 	<result property="goodsName" column="goods_name"/>
+	   	 	<result property="goodsNo" column="goods_no"/>
+	   	 	<result property="goodsPrice" column="goods_price"/>
+	   	 	<result property="goodsCnt" column="goods_cnt"/>
+	   	 	
+		    <result property="hotFl" column="hot_fl"/>
+		    <result property="hotPrice" column="hot_price"/>
+		    <result property="iceFl" column="ice_fl"/>
+		    <result property="icePrice" column="ice_price"/>
+		    <result property="cancelDt" column="cancel_dt"/>
+		    
+		    <collection property="mcgList" ofType="com.project.doc5.mypage.domain.MypageCartGoodsOptionVO">
+	        	<result property="optionName" column="option_name"/>
+	        	<result property="optionPrice" column="option_price"/>
+	        </collection>
+	    </collection>
+	    
+	    
+	   
+	   
+	</resultMap>
+  <select id="doDetailOrder" parameterType="MypageOrderVO" resultMap="mapMypageOrderVO">
+  SELECT
+	    o.order_no,
+	    o.branch_code,
+	    o.order_name,
+	    o.goods_total_cnt,
+	    o.settle_total_price,
+	    o.goods_total_price,
+	    o.option_total_price,
+	    o.settel_kind,
+	    o.order_step,
+	    TO_CHAR(o.reg_dt,'MM.DD HH24:MI') reg_dt,
+	    CASE 
+            WHEN o.order_step IN ('O', 'P') THEN TO_CHAR(o.mod_dt + (20/1440), 'MM.DD HH24:MI')
+            ELSE TO_CHAR(o.mod_dt, 'MM.DD HH24:MI')
+        END AS mod_dt,
+	    c.seq,
+	    c.goods_no,
+	    c.goods_name,
+	    c.goods_price,
+	    c.goods_cnt,
+	    c.hot_fl,
+	    c.hot_price,
+	    c.ice_fl,
+	    c.ice_price,
+	    cgo.option_name,
+	    cgo.option_price
+	FROM
+	    doc5_order o
+	LEFT JOIN doc5_cart c
+	  ON o.order_no = c.order_no
+	LEFT JOIN doc5_cart_goods_option cgo
+	  ON c.seq = cgo.c_seq
+	WHERE o.order_no = #{orderNo}
+	  AND c.user_id = #{userId}
+	  ORDER BY c.seq DESC
+  </select>
   <select id="doRetrieve" parameterType="MypageOrderVO" resultType="MypageOrderVO">
     SELECT
 	    o.order_no,
@@ -14,15 +88,18 @@
 	    o.settel_kind,
 	    DECODE(o.order_step,'O','주문완료','P','준비중','S','준비완료(픽업)','C','주문취소') AS order_step,
 	    o.reg_dt,
-	    TO_CHAR(o.mod_dt,'YYYY.MM.DD') as mod_dt,
-	    c.user_id
-	FROM
-	    doc5_order o
-	LEFT JOIN doc5_cart c
-	  ON o.order_no = c.order_no
-	LEFT JOIN doc5_branch b
-	  ON b.branch_code = o.branch_code
-	WHERE c.user_id = '${userId}'
+	    TO_CHAR(o.mod_dt, 'YYYY.MM.DD') as mod_dt,
+	    '${userId}' as user_id
+	FROM doc5_order o
+	LEFT JOIN doc5_branch b ON b.branch_code = o.branch_code
+	WHERE EXISTS (
+	    SELECT 1 
+	    FROM doc5_cart c 
+	    WHERE c.order_no = o.order_no 
+	      AND c.user_id = '${userId}'
+	)
+	ORDER BY o.reg_dt DESC
+	
   </select>
 
 	<select id="doSelectOne" parameterType="MypageOrderVO" resultType="MypageOrderVO">

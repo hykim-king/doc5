@@ -68,7 +68,21 @@
     position: relative;
 }
 
-.progress-fill {
+.progress-fill-O {
+    width: 0%;
+    height: 100%;
+    background-color: #ffda00; /* 메가커피 노란색 */
+    border-radius: 3px;
+}
+
+.progress-fill-P {
+    width: 50%;
+    height: 100%;
+    background-color: #ffda00; /* 메가커피 노란색 */
+    border-radius: 3px;
+}
+
+.progress-fill-S {
     width: 100%;
     height: 100%;
     background-color: #ffda00; /* 메가커피 노란색 */
@@ -106,6 +120,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
+    border-bottom:2px solid #eee;
 }
 
 .btn-receipt {
@@ -120,6 +135,8 @@
     display: flex;
     align-items: center;
     position: relative;
+    padding:20px 0;
+    border-bottom:1px solid #eee;
 }
 
 .item-img {
@@ -140,6 +157,7 @@
     font-size: 13px;
     margin: 4px 0;
 }
+
 
 .item-price {
     font-weight: 600;
@@ -218,80 +236,76 @@ hr {
 
     <div class="container">
         <header class="header">
-            <span class="material-icons">close</span>
+            <span class="material-icons" onclick="history.back();">close</span>
             <h1 class="title">주문내역</h1>
-            <span class="material-icons">refresh</span>
+            <span class="material-icons" onclick="location.reload();">refresh</span>
         </header>
 
         <section class="status-section">
-            <p class="store-info">홍대서교점(메가MGC커피) (주문번호 0117)</p>
-            <h2 class="status-text">픽업이 완료되었습니다 👌</h2>
+            <h2 class="status-text">${orderStepText} 👌</h2>
             
             <div class="progress-bar-container">
                 <div class="progress-labels">
-                    <span>주문완료</span>
-                    <span>준비중</span>
-                    <span class="active">준비완료</span>
+                    <span class="${list[0].orderStep eq 'O' ? 'active' : ''}">주문완료</span>
+                    <span class="${list[0].orderStep eq 'P' ? 'active' : ''}">준비중</span>
+                    <span class="${list[0].orderStep eq 'S' ? 'active' : ''}">준비완료</span>
                 </div>
                 <div class="progress-bar">
-                    <div class="progress-fill"></div>
+                    <div class="progress-fill-${list[0].orderStep}"></div>
                     <div class="progress-dot"></div>
                 </div>
                 <div class="progress-times">
-                    <span>01.09 13:12</span>
-                    <span>01.09 13:14</span>
+                    <span>${list[0].regDt}</span>
+                    <span>${list[0].modDt}</span>
                 </div>
             </div>
         </section>
 
         <section class="order-list">
             <div class="section-header">
-                <h3>주문내역 1개</h3>
-                <button class="btn-receipt">영수증 보기</button>
+                <h3>주문내역 ${list[0].cList.size() }개</h3>
             </div>
-            <div class="item-card">
-                <img src="https://via.placeholder.com/80" alt="아메리카노" class="item-img">
-                <div class="item-info">
-                    <p class="item-name">아메리카노</p>
-                    <p class="item-option">ICE</p>
-                    <p class="item-price">1개 | 2,000원</p>
-                </div>
-                <span class="material-icons favorite-icon">favorite_border</span>
-            </div>
+            <c:forEach var="vo" items="${list }">
+	            <c:forEach var="sVo" items="${vo.cList }">
+	            <div class="item-card">
+	                <img src="${pageContext.request.contextPath}/resources/img/goods/${sVo.goodsNo}.png" alt="${sVo.goodsName }" class="item-img" onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/resources/img/goods/10001.png';">
+	                <div class="item-info">
+	                    <p class="item-name">${sVo.goodsName }</p> 
+	                    <p class="item-option">
+	                    	ICE
+	                    </p>
+	                    <p class="item-option">
+	                    <c:forEach var="optVO" items="${sVo.mcgList}" varStatus="status">
+								<c:if test="${status.index != 0}"> | </c:if>
+								${optVO.optionName} (<fmt:formatNumber value="${optVO.optionPrice}" type="number" />원)
+							</c:forEach>
+	                    </p>
+	                    <p class="item-price">${sVo.goodsCnt}개 | <fmt:formatNumber value="${sVo.totalGoodsTotalPrice}" type="number" />원</p>
+	                </div>
+	            </div>
+	            </c:forEach>
+            </c:forEach>
         </section>
 
         <section class="payment-section">
             <h3>결제금액</h3>
             <div class="price-row">
                 <span>총 상품금액</span>
-                <span>2,000원</span>
+                <span><fmt:formatNumber value="${list[0].goodsTotalPrice}" type="number"/>원</span>
             </div>
             <div class="price-row">
-                <span>제휴 멤버십</span>
-                <span>-0원</span>
+                <span>총 옵션금액</span>
+                <span><fmt:formatNumber value="${list[0].optionTotalPrice}" type="number"/>원</span>
             </div>
-            <div class="price-row">
-                <span>쿠폰</span>
-                <span>-0원</span>
-            </div>
+
+            
             <hr>
             <div class="price-row total">
                 <span>총 결제금액</span>
-                <span>2,000원</span>
+                <span><fmt:formatNumber value="${list[0].settleTotalPrice}" type="number"/>원</span>
             </div>
         </section>
 
-        <section class="stamp-section">
-            <div class="stamp-content">
-                <p class="stamp-title">스탬프 1개가 적립되었어요! 🎉</p>
-                <p class="stamp-desc">스탬프 10개를 모아 아메리카노(HOT/ICE)<br>1잔 무료 쿠폰을 넣어드렸어요!</p>
-                <button class="btn-stamp-detail">스탬프 내역 보러가기 &gt;</button>
-            </div>
-            <div class="stamp-icon">
-                <div class="badge">
-                    <img src="https://via.placeholder.com/40" alt="cup">
-                </div>
-            </div>
-        </section>
+        
     </div>
 <%@ include file="/WEB-INF/views/common/footer/footer.jsp" %>

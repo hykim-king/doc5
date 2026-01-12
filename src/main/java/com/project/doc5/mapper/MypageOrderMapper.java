@@ -22,5 +22,7 @@ public interface MypageOrderMapper extends WorkDiv<MypageOrderVO> {
 
 	// 전체삭제:O
 	int deleteAll();
+	
+	List<MypageOrderVO> doDetailOrder(MypageOrderVO param);
 
 }

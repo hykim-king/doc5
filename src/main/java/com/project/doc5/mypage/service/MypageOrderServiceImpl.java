@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.doc5.cmn.DTO;
 import com.project.doc5.mapper.MypageOrderMapper;
+import com.project.doc5.mypage.domain.MypageCartGoodsOptionVO;
 import com.project.doc5.mypage.domain.MypageCartVO;
 import com.project.doc5.mypage.domain.MypageOrderVO;
 
@@ -53,4 +54,27 @@ public class MypageOrderServiceImpl implements MypageOrderService {
 		return mypageOrderMapper.doSave(param);
 	}
 
+	@Override
+	public List<MypageOrderVO> doDetailOrder(MypageOrderVO param){
+		
+		List<MypageOrderVO> mypageOrderVO = mypageOrderMapper.doDetailOrder(param);
+		log.debug("┌──────────────────────────┐");
+		log.debug("│doDetailOrder()        │");
+		log.debug("└──────────────────────────┘");
+		if(mypageOrderVO != null) {
+			for(MypageCartVO cart : mypageOrderVO.get(0).getcList()) {
+	        	double totalGoodsTotalPrice = 0;
+	        	double totalOptionPrice = 0;
+	        	for(MypageCartGoodsOptionVO opt : cart.getMcgList()) {
+	        		totalOptionPrice += opt.getOptionPrice();
+	        	}
+	        	
+	        	totalGoodsTotalPrice = (cart.getGoodsPrice() + totalOptionPrice) * cart.getGoodsCnt();
+	        	
+	        	log.debug("{}, 상품가격 : {} ,  옵션가격 : {}, 총가격 : {}", cart.getGoodsName() ,cart.getGoodsPrice() ,totalOptionPrice, totalGoodsTotalPrice);
+	            cart.setTotalGoodsTotalPrice(totalGoodsTotalPrice);
+	        }
+		}
+		return mypageOrderVO;
+	}
 }

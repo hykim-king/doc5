@@ -59,6 +59,7 @@
 	WHERE
 	    seq = #{seq}
 	    AND user_id = #{userId}
+	    AND order_no IS NULL
   </update>
  
   

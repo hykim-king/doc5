@@ -7,11 +7,37 @@
 .form-floating {margin:5px 0;}
 .form-floating .form-control{border-radius: 5px !important;}
 .form-floating #floatingPassword {marign:0;}
+
+.sub-box {
+	width:95%;
+    min-width: 410px;
+    max-width: 900px;
+    padding: 1rem;
+    margin: auto !important;
+  	padding-bottom:180px;
+    
+}
+
+.sub-box .sub_title {
+	border-bottom: 2px solid #fdd000;
+	box-shadow:0px 0px 5px 0px #eee;
+	font-weight: 400 !important;
+	margin-bottom: 1rem !important;
+	font-size: calc(1.325rem + .9vw);
+	padding:10px;
+	/* border-radius: 0 0 20px 20px ; */
+	
+}
 </style>
+
+<div class="sub-box">
+				<div class="sub_title">
+					${pageTitle}
+				</div>
+				
 		    <main class="form-signin w-100 m-auto">
 		      <form action="${actionUrl}" method="post" target="iframe">
 				<div style="text-align:center;"> </div>
-		        <h1 class="h3 mb-3 fw-normal">${pageTitle}</h1>
 		        <div class="form-floating">
 		          <input
 		            type="email"
@@ -85,6 +111,7 @@
 		        <button class="w-100 btn btn-lg btn-primary" type="submit">${pageTitle}</button>
 		      </form>
 		    </main>
+		    </div>
 		</div>
 		    
 

@@ -20,29 +20,11 @@ public class MypageOrderVO extends DTO {
 	private String modDt              ;  //수정일
 	private String userId			  ;  //회원아이디
 	
-
+	private List<MypageCartVO> cList;
+	
 	public MypageOrderVO() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-
-	public MypageOrderVO(String orderNo, String branchCode, String branchName, String orderName, int goodsTotalCnt,
-			double settleTotalPrice, double goodsTotalPrice, double optionTotalPrice, String settelKind,
-			String orderStep, String regDt, String modDt, String userId) {
-		super();
-		this.orderNo = orderNo;
-		this.branchCode = branchCode;
-		this.branchName = branchName;
-		this.orderName = orderName;
-		this.goodsTotalCnt = goodsTotalCnt;
-		this.settleTotalPrice = settleTotalPrice;
-		this.goodsTotalPrice = goodsTotalPrice;
-		this.optionTotalPrice = optionTotalPrice;
-		this.settelKind = settelKind;
-		this.orderStep = orderStep;
-		this.regDt = regDt;
-		this.modDt = modDt;
-		this.userId = userId;
 	}
 
 	public String getOrderNo() {
@@ -149,14 +131,24 @@ public class MypageOrderVO extends DTO {
 		this.userId = userId;
 	}
 
+	public List<MypageCartVO> getcList() {
+		return cList;
+	}
+
+	public void setcList(List<MypageCartVO> cList) {
+		this.cList = cList;
+	}
+
 	@Override
 	public String toString() {
 		return "MypageOrderVO [orderNo=" + orderNo + ", branchCode=" + branchCode + ", branchName=" + branchName
 				+ ", orderName=" + orderName + ", goodsTotalCnt=" + goodsTotalCnt + ", settleTotalPrice="
 				+ settleTotalPrice + ", goodsTotalPrice=" + goodsTotalPrice + ", optionTotalPrice=" + optionTotalPrice
 				+ ", settelKind=" + settelKind + ", orderStep=" + orderStep + ", regDt=" + regDt + ", modDt=" + modDt
-				+ ", userId=" + userId + "]";
+				+ ", userId=" + userId + ", cList=" + cList + "]";
 	}
+
+	
 
 	
 
