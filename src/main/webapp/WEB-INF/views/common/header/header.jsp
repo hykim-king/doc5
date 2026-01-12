@@ -115,20 +115,11 @@ String verDate = simpleDate.format(date);
 				
 				<div class="mobile_top_icon_wrap" >
 					
-				<c:choose>
-				    <c:when test="${sessionScope.sessionUser.userId != null}">
-				    	<div><button class="top_mypage" title="마이페이지" onclick="location.href='${pageContext.request.contextPath}/user/userModify.do'"><span>마이페이지</span></button></div>
-				    </c:when>
-				    <c:otherwise>
-				        <div><button class="top_login" data-bs-toggle="modal" data-bs-target="#mlogin" title="로그인"><span>Login</span></button></div>
-				    </c:otherwise>
-				</c:choose>
-                         <div><button class="top_search bn_srch" data-bs-toggle="modal" data-bs-target="#mSearch" title="검색"><span>검색</span></button></div>
+				
+                    <div><button class="top_search bn_srch" data-bs-toggle="modal" data-bs-target="#mSearch" title="검색"><span>검색</span></button></div>
 					<!--로그인 중 일시 마이페이지 보기-->
-<!-- <div><button class="top_branch_search" data-bs-toggle="modal" data-bs-target="#mBranchSearch" title="매장찾기"><span>매장찾기</span></button></div> -->
-<div><button class="top_cart" data-bs-target="#mCart" title="로그인" onclick="location.href='${pageContext.request.contextPath}/cart/cart.do'"><span>장바구</span></button></div>
-
-                         
+					<!-- <div><button class="top_branch_search" data-bs-toggle="modal" data-bs-target="#mBranchSearch" title="매장찾기"><span>매장찾기</span></button></div> -->
+					<div><button class="top_cart" data-bs-target="#mCart" title="로그인" onclick="location.href='${pageContext.request.contextPath}/cart/cart.do'"><span>장바구니</span></button></div>
 				</div>
 			</div>
 		</div>

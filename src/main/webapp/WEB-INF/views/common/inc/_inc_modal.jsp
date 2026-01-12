@@ -175,10 +175,17 @@
 						<!-- <li><a href="#.">자주묻는 질문</a></li> -->
 						<!-- <li><a href="#.">약관 및 정책서</a></li> -->
 						<li><a href="${pageContext.request.contextPath}/mypage/myOrderList.do" data-bs-toggle="modal" data-bs-target="#mBranchSearch" class="mypageBranchSearch">매장찾기</a></li>
-						<c:if test="${sessionScope.sessionUser.userId != null}">
-							<li><a href="${pageContext.request.contextPath}/mypage/myOrderList.do">주문내역</a></li>
-  							<li><a href="${pageContext.request.contextPath}/user/doLogOut.do">로그아웃 </a></li>
-						</c:if>
+						<c:choose>
+						    <c:when test="${sessionScope.sessionUser.userId != null}">
+						    	<li><a href="${pageContext.request.contextPath}/mypage/myOrderList.do">주문내역</a></li>
+								<li><a href="${pageContext.request.contextPath}/user/userModify.do">마이페이지</a></li>
+  								<li><a href="${pageContext.request.contextPath}/user/doLogOut.do">로그아웃 </a></li>
+						    </c:when>
+						    <c:otherwise>
+						        <li><a href="#" data-bs-toggle="modal" data-bs-target="#mlogin" title="로그인">로그인</a></li>
+						    </c:otherwise>
+						</c:choose>
+						
 					</ul>
 				</div>
 			</div>
