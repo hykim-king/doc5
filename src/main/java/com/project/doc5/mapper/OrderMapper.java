@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.project.doc5.mypage.domain.MypageCartVO;
+import com.project.doc5.order.domain.OrderVO;
 
 @Mapper
 public interface OrderMapper {
@@ -15,6 +16,10 @@ public interface OrderMapper {
      * @param seqs 주문할 장바구니 일련번호 배열 (IN 절 활용)
      * @param orderType 주문 구분 (direct: 바로구매, 그 외: 장바구니)
      */
-    List<MypageCartVO> doList(@Param("seqs") String[] seqs, @Param("orderType") String orderType);
-
+    List<MypageCartVO> doList(@Param("seqs")List<Long> seqs, @Param("orderType") String orderType);
+    List<String> selectExistCartSeq(@Param("userId") String userId,@Param("seqs") String[] seqs);
+    int doOrder(OrderVO param);
+    int updateCartOrderNo(@Param("seq") int seq, @Param("orderNo") String orderNo);
+    
+    
 }

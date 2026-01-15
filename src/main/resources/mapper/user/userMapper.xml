@@ -15,6 +15,7 @@
   <result column="reg_dt" property="regDt"/>
   <result column="mod_dt" property="modDt"/>  
   <result column="privacy_dt" property="privacyDt"/>
+  <result column="branchCode" property="branchCode"/>
   </resultMap>
 
   <insert id="saveAll">
@@ -141,7 +142,8 @@ SELECT A.*, B.*
      password,                                          
      phone,                                             
      DECODE(grade,1,'BASIC', 2, 'SILVER', 3, 'GOLD') grade,                                             
-     TO_CHAR(reg_dt,'YYYY/MM/DD HH24:MI:SS')  AS reg_dt 
+     TO_CHAR(reg_dt,'YYYY/MM/DD HH24:MI:SS')  AS reg_dt,
+     Branch_Code AS branchCode
     FROM                                                   
      doc5_member
    WHERE user_id = #{userId}
@@ -186,7 +188,8 @@ SELECT A.*, B.*
      phone,                                             
      DECODE(grade,1,'BASIC', 2, 'SILVER', 3, 'GOLD') grade,                                             
      TO_CHAR(reg_dt,'YYYY/MM/DD HH24:MI:SS')  AS reg_dt,
-     TO_CHAR(privacy_dt,'YYYY/MM/DD HH24:MI:SS')  AS privacy_dt 
+     TO_CHAR(privacy_dt,'YYYY/MM/DD HH24:MI:SS')  AS privacy_dt,
+     Branch_Code AS branchCode
     FROM                                                   
      doc5_member
    WHERE user_id = #{userId} AND password = #{password}

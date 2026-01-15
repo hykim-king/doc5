@@ -57,11 +57,6 @@
   <input type="hidden" name="iceFl" value="${goodsVO.iceFl}">
   <input type="hidden" name="icePrice" value="${goodsVO.icePrice}">
 </form>  
-<script>
-
-
-
-</script>
 
         <div class="section-box" style="text-align:center;">
             <button id="detailBtn" class="detail-btn">

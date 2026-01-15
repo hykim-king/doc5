@@ -5,11 +5,23 @@ public class MessageVO extends DTO {
 	private int flag; //상태코드
 	private String message;//메세지
 	private int seq;
+	private String orderNo;
 	
 	public MessageVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	public MessageVO(int flag, String message, int seq, String orderNo) {
+		super();
+		this.flag = flag;
+		this.message = message;
+		this.seq = seq;
+		this.orderNo = orderNo;
+	}
+
+
+	
 	
 	public MessageVO(int flag, String message, int seq) {
 		super();
@@ -42,11 +54,20 @@ public class MessageVO extends DTO {
 		this.seq = seq;
 	}
 
-	@Override
-	public String toString() {
-		return "MessageVO [flag=" + flag + ", message=" + message + ", seq=" + seq + "]";
+	public String getOrderNo() {
+		return orderNo;
 	}
 
+	public void setOrderNo(String orderNo) {
+		this.orderNo = orderNo;
+	}
+
+	@Override
+	public String toString() {
+		return "MessageVO [flag=" + flag + ", message=" + message + ", seq=" + seq + ", orderNo=" + orderNo + "]";
+	}
+	
+	
 	
 	
 	

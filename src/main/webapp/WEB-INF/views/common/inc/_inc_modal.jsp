@@ -107,13 +107,33 @@
 			
 			<!-- Modal Header -->
 			<div class="modal-header">
-			<h4 class="modal-title">매장찾기</h4>
-			<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				<h4 class="modal-title">매장찾기</h4>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 			</div>
 
-			<!-- Modal body -->
 			<div class="modal-body">
-				<ul id="branchList"><div class="branch-list-circle"><img src="${pageContext.request.contextPath}/resources/img/loading-14573_256.gif" title="circle"/></div></ul>
+    			<div class="modal-search-body">
+			
+			<!-- Modal body -->
+					<form id="branchSearchForm">
+						<div class="search-container-inputBox">
+							<ul>
+								<li><input type="text" class="form-control" id="keyword"
+									placeholder="주소를 입력하세요" required></li>
+								<li>
+									<button type="submit" class="btn btn-secondary">검색</button>
+								</li>
+							</ul>
+						</div>
+					</form>
+					<div id="resultBox" style="padding-bottom:10px; font-size:20px; margin-left:20px;">&nbsp;</div> 
+					<ul id="branchList">
+						<div class="branch-list-circle">
+							<img src="${pageContext.request.contextPath}/resources/img/loading-14573_256.gif"
+								title="circle" />
+						</div>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -233,7 +253,7 @@
         
         <button class="w-100 btn btn-lg btn-primary" type="submit">로그인 하기</button>
         <button class="w-100 btn btn-lg btn-regist" type="button" onclick="location.href='${pageContext.request.contextPath}/user/userRegist.do'">회원가입</button>
-        <p class="text-password-find"><a href="${pageContext.request.contextPath}/user/userPasswordFind.do">비밀번호찾기</a></p>
+        <p class="text-password-find"><a href="${pageContext.request.contextPath}/user/findPassword.do">비밀번호찾기</a></p>
         <p class="mt-5 mb-3 text-body-secondary">&copy; PROJECT02 DOC5 TEAM.</p>
       </form>
       
@@ -242,3 +262,11 @@
     </div>
   </div>
 </div>
+
+<script>
+$(document).ready(function () {
+
+    
+
+});
+</script>

@@ -232,11 +232,23 @@ hr {
     justify-content: center;
     align-items: center;
 }
+
+.item-option .ICE {
+    font-size: 12px;
+    color: #023dff;
+    margin-top: 2px;
+}
+
+.item-option .HOT {
+    font-size: 12px;
+    color: #ff0000;
+    margin-top: 2px;
+}
 </style>
 
     <div class="container">
         <header class="header">
-            <span class="material-icons" onclick="history.back();">close</span>
+            <span class="material-icons" onclick="location.href='${pageContext.request.contextPath}/mypage/myOrderList.do'">close</span>
             <h1 class="title">주문내역</h1>
             <span class="material-icons" onclick="location.reload();">refresh</span>
         </header>
@@ -272,7 +284,12 @@ hr {
 	                <div class="item-info">
 	                    <p class="item-name">${sVo.goodsName }</p> 
 	                    <p class="item-option">
-	                    	ICE
+	                    	<c:if test="${sVo.hotFl eq 'Y'}">
+                           		<span class="text HOT">HOT</span>
+                          	</c:if>
+                            <c:if test="${sVo.iceFl eq 'Y'}"> 
+                           		<span class="text ICE">ICE</span>
+                            </c:if>
 	                    </p>
 	                    <p class="item-option">
 	                    <c:forEach var="optVO" items="${sVo.mcgList}" varStatus="status">

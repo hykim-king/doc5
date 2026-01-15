@@ -68,4 +68,6 @@ public interface UserService<UserVo> {
 	 * @return
 	 */
 	UserVO userLogin(UserVo param);
+	
+	String certificationNumber();
 }

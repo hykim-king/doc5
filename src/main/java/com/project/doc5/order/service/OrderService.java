@@ -3,6 +3,7 @@ package com.project.doc5.order.service;
 import java.util.List;
 
 import com.project.doc5.mypage.domain.MypageCartVO;
+import com.project.doc5.order.domain.OrderVO;
 
 public interface OrderService {
 
@@ -11,8 +12,12 @@ public interface OrderService {
 	 * @param param
 	 * @return
 	 */
-	List<MypageCartVO> doList(String seq, String orderType);
+	List<MypageCartVO> doList(List<Long> seqs, String orderType);
 	
-	int doUpdate(MypageCartVO param);
 	
+	List<String> getValidCartSeq(String userId, String[] seq);
+
+	int updateCartOrderNo(int seq, String orderNo);
+
+	int doOrder(OrderVO param);
 }

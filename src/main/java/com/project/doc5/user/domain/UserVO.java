@@ -14,7 +14,7 @@ public class UserVO extends DTO implements Serializable {
 	private String regDt; // 등록일
 	private String modDt; // 수정일
 	private String privacyDt; // 개인정보취급방침
-
+	private String branchCode;
 	// 전역변수
 	// Default 생성자
 	// 인자있는 생성자
@@ -26,7 +26,7 @@ public class UserVO extends DTO implements Serializable {
 	}
 
 	public UserVO(String userId, String password, String name, String phone, Grade grade, String regDt, String modDt,
-			String privacyDt) {
+			String privacyDt, String branchCode) {
 		super();
 		this.userId = userId;
 		this.password = password;
@@ -36,6 +36,7 @@ public class UserVO extends DTO implements Serializable {
 		this.regDt = regDt;
 		this.modDt = modDt;
 		this.privacyDt = privacyDt;
+		this.branchCode = branchCode;
 	}
 
 	public String getUserId() {
@@ -102,10 +103,20 @@ public class UserVO extends DTO implements Serializable {
 		this.privacyDt = privacyDt;
 	}
 
+	public String getBranchCode() {
+		return branchCode;
+	}
+
+	public void setBranchCode(String branchCode) {
+		this.branchCode = branchCode;
+	}
+
 	@Override
 	public String toString() {
 		return "UserVO [userId=" + userId + ", password=" + password + ", name=" + name + ", phone=" + phone
-				+ ", grade=" + grade + ", regDt=" + regDt + ", modDt=" + modDt + ", privacyDt=" + privacyDt + "]";
+				+ ", grade=" + grade + ", regDt=" + regDt + ", modDt=" + modDt + ", privacyDt=" + privacyDt
+				+ ", branchCode=" + branchCode + "]";
 	}
 
+	
 }

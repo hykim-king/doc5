@@ -1,12 +1,70 @@
-$(document).ready(function(){
-	// 키워드 리스트 불러오기
+document.addEventListener("DOMContentLoaded", function() {
+    // 모바일에서 주소창 숨기기
+    setTimeout(function() {
+        window.scrollTo(0, 1);
+    }, 100);
+
+    // 키워드 리스트 불러오기
 	getAjaxGoodsSearchKeyword();
 	
 	//header 파일에서 매장찾기 아이콘 클릭시 _inc_modal.jsp 매장찾기 열리며 위치 찾기 자동 검색 
-	$('.mypageBranchSearch').on("click",function(){
-		getAjaxBranchFinder();
-	});
+    document.querySelector('.mypageBranchSearch').addEventListener("click",function(){
+        getAjaxBranchFinder();
+    });
+    
+    const caBtn = document.querySelector('#close-account');
+    
+    if(caBtn){
+	    document.querySelector('#close-account').addEventListener("click",function(){
+	    	console.log('ajaxCloseAccount');
+	        ajaxCloseAccount();
+	    });
+    }
+    
+    $('#branchSearchForm').on('submit', function (e) {
+        e.preventDefault();
+		let contextPath = document.querySelector("#iframe").dataset.contextpath;
+	    
+        const address = $('#keyword').val().trim();
+        if (!address) {
+            alert('주소를 입력하세요');
+            return;
+        }
+        
+        $.ajax({
+            url: contextPath + "/branch/geoCoding.do",
+            method: "GET",
+            data: { address: address },
+            success: function (res) {
+
+                if (!res.response || res.response.status !== "OK") {
+                    $('#resultBox').html("<b>검색주소</b> :  \""+address + "\"는 없는 주소 입니다.");
+                    return;
+                }
+
+                const point = res.response.result.point;
+                const userLat = parseFloat(point.y);
+                const userLng = parseFloat(point.x);
+                
+                //compareWithBranches(userLat, userLng);
+
+                // 👉 좌표 출력 (확인용)
+                $('#resultBox').html("<b>검색주소</b> : \""+address + "\"");
+
+             // 👉 주소 기반 거리 계산 호출
+                getStoreListByAddress(branchStoreList, userLat, userLng);
+                
+                // 👉 다음 단계 호출
+                //compareWithBranches(userLat, userLng);
+            },
+            error: function () {
+                $('#resultBox').html("<b>서버 호출 실패</b>");
+            }
+        });
+    });
 });
+ 
+var branchStoreList;
 
 /*
 function login(){
@@ -58,6 +116,32 @@ function getAjaxGoodsSearchKeywordHiddeh(keyword){
 	}); 
 };
 
+//회원탈 
+function ajaxCloseAccount(keyword){
+	let contextPath = document.querySelector("#iframe").dataset.contextpath;
+	var params = {
+		
+	};
+	
+	const confirmCA = confirm("회원 탈퇴 하시겠습니까?");
+	if(confirmCA){
+		$.ajax({
+			method: "POST",
+			cache: false,
+			url: contextPath+"/user/ajaxCloseAccount.do",
+			data: params,
+			dataType : 'json',
+			success: function (data) {
+				console.log(data);
+				alert(data.message)
+				if(data.flag === 1){
+					location.href=contextPath;
+				}
+			}
+		}); 
+	}
+};
+
 //위치기반 가까운 지점 불러오기 HTTPS에서 작동 , HTTP 에서는 http://localhost 에서만 작동 
 //=======================위치 기반 시작 =======================
 function getStoreList(list) {
@@ -105,13 +189,17 @@ function getStoreList(list) {
             // 상세 에러 확인용
             const errorTypes = {
                 0: "알 수 없는 오류",
-                1: "사용자가 권한을 거부했습니다.",
+                1: "실시간 위치기반 좌표기능은 사용자가 권한을 거부했습니다.<br/>Https, Localhost, 127.0.0.1 에서만 작동 됩니다<br/><br/>주소를 입력해주세요.",
                 2: "위치를 찾을 수 없습니다 (신호 부족).",
                 3: "응답 시간 초과"
             };
-            alert("에러: " + errorTypes[error.code]);
-        },
-        options //옵션 추
+            let html = "<div style='font-size:16px;'>";
+            html += errorTypes[error.code];
+            html += "</div>";
+            document.querySelector(".branch-list-circle").innerHTML = html;
+            
+            //alert("에러: " + errorTypes[error.code]);
+        }
     );
 }
 
@@ -126,8 +214,11 @@ function calculateHaversine(lat1, lon1, lat2, lon2) {
     return R * c;
 }
 
+
+
 function renderBranch(list) {
     var ul = document.getElementById("branchList");
+    
     ul.innerHTML = "";
 
     for (var i = 0; i < list.length; i++) {
@@ -155,6 +246,7 @@ function getAjaxBranchFinder(){
         data: {},
         dataType : 'json',
         success: function (data) {
+            branchStoreList = data;
             getStoreList(data);
         },
         error: function() {
@@ -164,4 +256,27 @@ function getAjaxBranchFinder(){
 };
 
 //=======================위치 기반 끝  =======================
+function getStoreListByAddress(list, userLat, userLng) {
 
+    var result = [];
+
+    for (var i = 0; i < list.length; i++) {
+        var b = list[i];
+
+        var distance = calculateHaversine(
+            userLat,
+            userLng,
+            parseFloat(b.lat),
+            parseFloat(b.lng)
+        );
+
+        b.distance = distance;
+        result.push(b);
+    }
+
+    result.sort(function (a, b) {
+        return a.distance - b.distance;
+    });
+
+    renderBranch(result.slice(0, 30));
+}

@@ -98,7 +98,7 @@
 	    WHERE c.order_no = o.order_no 
 	      AND c.user_id = '${userId}'
 	)
-	ORDER BY o.reg_dt DESC
+	ORDER BY o.mod_dt DESC
 	
   </select>
 

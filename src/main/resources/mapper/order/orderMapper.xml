@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.doc5.mapper.OrderMapper">
+
+
+<resultMap id="cartMap" type="com.project.doc5.mypage.domain.MypageCartVO">
+
+    <id property="seq" column="seq"/>
+    <result property="goodsNo" column="goods_no"/>
+    <result property="goodsName" column="goods_name"/>
+    <result property="goodsCnt" column="goods_cnt"/>
+    <result property="goodsPrice" column="goods_price"/>
+    <result property="tumblerFl" column="tumbler_fl"/>
+    <result property="hotFl" column="hot_fl"/>
+    <result property="hotPrice" column="hot_price"/>
+    <result property="iceFl" column="ice_fl"/>
+    <result property="icePrice" column="ice_price"/>
+    
+    <!-- 옵션 리스트 (1:N) -->
+    <collection property="mcgList"
+                ofType="com.project.doc5.mypage.domain.MypageCartGoodsOptionVO">
+        <id property="seq" column="cgo_seq"/>
+        <result property="cSeq" column="c_seq"/>
+        <result property="optionName" column="option_name"/>
+        <result property="optionPrice" column="option_price"/>
+    </collection>
+
+</resultMap>
+
+  <update id="updateCartOrderNo" parameterType="map">
+    UPDATE doc5_cart
+		SET
+		    order_no = #{orderNo}
+		WHERE
+        seq = #{seq}
+  </update>
+
+
+
+
+
+	<insert id="doOrder" parameterType="com.project.doc5.order.domain.OrderVO">
+
+	    <selectKey keyProperty="orderNo"
+	               resultType="String"
+	               order="BEFORE">
+	        SELECT TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISSFF')
+	        FROM dual
+	    </selectKey>
+	
+	    INSERT INTO doc5_order (
+	        order_no,
+	        branch_code,
+	        order_name,
+	        goods_total_cnt,
+	        settle_total_price,
+	        goods_total_price,
+	        option_total_price,
+	        settel_kind,
+	        order_step,
+	        reg_dt,
+	        mod_dt
+	    ) VALUES (
+	        #{orderNo},
+	        #{branchCode},
+	        #{orderName},
+	        #{goodsTotalCnt},
+	        #{settleTotalPrice},
+	        #{goodsTotalPrice},
+	        #{optionTotalPrice},
+	        #{settleKind},
+	        'O',
+	        SYSDATE,
+	        SYSDATE
+	    )
+	
+	</insert>
+
+
+
+
+	<select id="selectExistCartSeq" resultType="string">
+	    SELECT seq
+	    FROM doc5_cart
+	    WHERE user_id = #{userId}
+	      AND seq IN
+	      <foreach collection="seqs" item="s" open="(" separator="," close=")">
+	          #{s}
+	      </foreach>
+	      AND cancel_dt IS NULL
+	</select>
+
+
+
+
+
+    <!--
+        주문서 작성을 위한 상품 및 옵션 상세 리스트 조회
+        - cart   : 장바구니 기반
+        - direct : 바로구매 기반
+    -->
+		<select id="doList"
+		        parameterType="map"
+		        resultMap="cartMap">
+		
+		    SELECT
+		        c.*, cgo.*
+		    FROM doc5_cart c
+		    LEFT JOIN doc5_cart_goods_option cgo
+		           ON c.seq = cgo.c_seq
+		
+		    WHERE c.seq IN
+		    <foreach collection="seqs"
+		             item="seq"
+		             open="("
+		             separator=","
+		             close=")">
+		        #{seq, jdbcType=NUMERIC}
+		    </foreach>
+		
+		    AND c.order_no IS NULL
+		    AND c.cancel_dt IS NULL
+		    AND c.order_type IN ('cart','direct')
+		    
+		
+		    ORDER BY c.seq DESC
+		
+		</select>
+
+</mapper>

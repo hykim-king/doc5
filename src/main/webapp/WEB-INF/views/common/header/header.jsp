@@ -14,6 +14,8 @@ String verDate = simpleDate.format(date);
 <head>
 	<title>DOC5커피</title>
 	<meta charset="UTF-8">
+	<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<meta name="title" content="DOC5커피">
 	<meta name="Subject" content="DOC5 커피전문점, 프랜차이즈, 빅사이즈 투샷, 테이크아웃">
@@ -52,7 +54,6 @@ String verDate = simpleDate.format(date);
 	<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
 	
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<!-- <link rel="stylesheet" type="text/css" href="https://img.79plus.co.kr/megahp/common/css/simple-line-icons.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css?ver=<%=verDate%>">
 	<link rel="stylesheet" type="text/css" href="https://img.79plus.co.kr/megahp/common/css/animate.css">
 	<link rel="stylesheet" type="text/css" href="https://img.79plus.co.kr/megahp/common/css/aos.css?ver=202508271045">
@@ -68,9 +69,7 @@ String verDate = simpleDate.format(date);
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="theme-color" content="#ffffff">
 	
-	<!-- swiper -->
-	<link rel="stylesheet" type="text/css" href="https://img.79plus.co.kr/megahp/common/css/swiper.min.css?ver=202508271045">
-	<script type="text/javascript" src="https://img.79plus.co.kr/megahp/common/js/swiper.min.js"></script>
+	
 
 	<script src="${pageContext.request.contextPath}/resources/js/assets/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/assets/js/color-modes.js"></script>
@@ -117,7 +116,6 @@ String verDate = simpleDate.format(date);
 					
 				
                     <div><button class="top_search bn_srch" data-bs-toggle="modal" data-bs-target="#mSearch" title="검색"><span>검색</span></button></div>
-					<!--로그인 중 일시 마이페이지 보기-->
 					<!-- <div><button class="top_branch_search" data-bs-toggle="modal" data-bs-target="#mBranchSearch" title="매장찾기"><span>매장찾기</span></button></div> -->
 					<div><button class="top_cart" data-bs-target="#mCart" title="로그인" onclick="location.href='${pageContext.request.contextPath}/cart/cart.do'"><span>장바구니</span></button></div>
 				</div>

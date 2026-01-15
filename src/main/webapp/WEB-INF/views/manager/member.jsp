@@ -1,50 +1,113 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-    
-    <%@ include file="/WEB-INF/views/manager/common/header.jsp" %>
-        <form action="doRetrieve.do" method="get"> 
-            <table>
-                <tr>
-                    <th>조회 기준</th><th>입력</th><th>검색</th>
-                </tr>
-                <tr>
-                    <td>
-                        <select name="searchType">
-                            <option value="id">아이디</option> 
-                        </select>
-                    </td>
-                    <td><input type="text" name="searchKeyword" placeholder="검색어" ></td>
-                    <td>
-                        <input type="hidden" name="pageNo" value="1">
-                        <input type="hidden" name="pageSize" value="10">
-                        <button type="submit">조회</button>
-                    </td>
-                </tr>
-            </table>
-        </form>
-        <table>
-            <tr><th>회원ID</th><th>이름</th><th>전화번호</th><th>가입일</th><th>관리</th></tr> 
-            <tr>
-                <td>user01</td><td>홍길동</td><td>010-1234-5678</td><td>2025-01-01</td>
-                <td>
-                    <button onclick="deleteMember('user01')">삭제</button> 
-                </td>
-            </tr>
-            <tr>
-                <td>test104</td><td>김테스트</td><td>010-9876-5432</td><td>2025-11-20</td>
-                <td>
-                    <button onclick="deleteMember('test104')">삭제</button>
-                </td>
-            </tr>
-            </table>
-        
-        <div class="pagination">
-            <a href="?pageNo=1&pageSize=10">&laquo;</a>
-            <a href="?pageNo=1&pageSize=10" class="active">1</a>
-            <a href="?pageNo=2&pageSize=10">2</a>
-            <a href="?pageNo=3&pageSize=10">3</a>
-            <a href="?pageNo=4&pageSize=10">&raquo;</a>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>DOC5 관리자 - 회원관리</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/admin.css">
+    <style>
+      .search-area {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 15px;
+        }
+        .search-area input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            margin-right: 5px;
+        }
+        .search-area button {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+<div class="sidebar">
+    <h2>DOC5 관리자 페이지</h2>
+    <a href="${pageContext.request.contextPath}/manager/index.do">메인</a> 
+    <a href="${pageContext.request.contextPath}/manager/member.do">회원관리</a>
+    <a href="${pageContext.request.contextPath}/manager/shop.do">주문 관리</a>
+</div>
+
+    <div class="content">
+        <div class="header">
+            <div class="page-title">회원 관리</div>
+<div class="admin-menu">
+    <a>[${adminBranchName.branchName}]</a>
+    <a href="${pageContext.request.contextPath}/manager/branchLogin.do" class="logout-link">로그아웃</a>
+</div>
         </div>
-        
-<%@ include file="/WEB-INF/views/manager/common/footer.jsp" %>        
+
+        <div class="section">
+            <h2> 전체 회원 목록</h2>
+            
+            <div class="search-area">
+                <form action="${pageContext.request.contextPath}/manager/member.do" method="GET">
+                    <input type="text" name="searchWord" placeholder="ID로 검색" value="${param.searchWord}">
+                    <button type="submit">검색</button>
+                </form>
+            </div>
+
+            <table class="member-table">
+                <thead>
+                    <tr>
+                        <th>회원 ID</th>
+                        <th>이름</th>
+                        <th>전화번호</th>
+                        <th>가입일</th>
+                        <th>관리</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:choose>
+                        <c:when test="${not empty memberList}">
+                            <c:forEach var="member" items="${memberList}">
+                                <tr>
+                                    <td>${member.userId}</td>
+                                    <td>${member.name}</td>
+                                    <td>${member.phone}</td>
+                                    <td>${member.regDt}</td>
+                                    <td>
+                                        <button onclick="confirmDelete('${member.userId}')" class="btn-delete">삭제</button>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <tr>
+                                <td colspan="5">등록된 회원이 없습니다.</td>
+                            </tr>
+                        </c:otherwise>
+                    </c:choose>
+                </tbody>
+            </table>
+            
+            
+            
+        </div>
+    </div>
+</div>
+
+<form id="deleteForm" action="${pageContext.request.contextPath}/manager/deleteMember.do" method="POST">
+    <input type="hidden" name="userId" id="deleteUserId">
+</form>
+
+<script>
+    function confirmDelete(userId) {
+        if (confirm("정말로 회원 [" + userId + "] 님을 삭제하시겠습니까?")) {
+            document.getElementById('deleteUserId').value = userId;
+            document.getElementById('deleteForm').submit();
+        }
+    }
+</script>
+
+</body>
+</html>

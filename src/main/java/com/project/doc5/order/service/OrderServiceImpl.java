@@ -4,39 +4,94 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.doc5.mapper.OrderMapper;
+import com.project.doc5.mypage.domain.MypageCartGoodsOptionVO;
 import com.project.doc5.mypage.domain.MypageCartVO;
+import com.project.doc5.order.domain.OrderVO;
 
 @Service
 public class OrderServiceImpl implements OrderService {
 
 	final Logger log = LogManager.getLogger(getClass());
 	
+	@Autowired
+	OrderMapper orderMapper;
+	
+	
+	
+	
+	
+	public OrderServiceImpl() {
+		super();
+		log.debug("┌──────────────────────────┐");
+		log.debug("│OrderServiceImpl()        │");
+		log.debug("└──────────────────────────┘");
+	}
+	
 	@Override
-	public List<MypageCartVO> doList(String seq, String orderType) {
-		
-		String[] unitSeqs = seq.split(",");
-		
-		// 2. 개수와 상관없이 루프를 돌며 처리 (단건이면 1번만 실행됨)
-		for (String seqs : unitSeqs) {
-		    if (seq != null && !seqs.trim().isEmpty()) {
-		        // VO에 각각의 seq 설정
-		        
-		        
-		        log.debug("삭제 대상 seq : {}", seqs);
-		        
-		        
-		    }
-		}
-		// TODO Auto-generated method stub
-		return null;
+    public int updateCartOrderNo(int seq, String orderNo) {
+        return orderMapper.updateCartOrderNo(seq, orderNo);
+    }
+	
+	
+	@Override
+	public int doOrder(OrderVO param) {
+		return orderMapper.doOrder(param);
 	}
 
 	@Override
-	public int doUpdate(MypageCartVO param) {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<String> getValidCartSeq(String userId, String[] seq) {
+	    return orderMapper.selectExistCartSeq(userId, seq);
 	}
+	
+	
+	@Override
+	public List<MypageCartVO> doList(List<Long> seqs, String orderType) {
+
+	    log.debug("OrderService.doList 호출");
+	    log.debug("seqs = {}", (Object) seqs);
+	    log.debug("orderType = {}", orderType);
+
+	    // 1. DB 조회
+	    List<MypageCartVO> list = orderMapper.doList(seqs, orderType);
+
+	    // 2. 조회 결과 로그
+	    if (list == null) {
+	        log.debug("조회 결과: null");
+	    } else {
+	        log.debug("조회 결과 : {}", list);
+	        for (MypageCartVO vo : list) {
+	            log.debug("cartSeq={}, goodsName={}",
+	                    vo.getSeq(),
+	                    vo.getGoodsName());
+	        }
+	    }
+	    for (MypageCartVO vo : list) {
+	        double total = vo.getGoodsPrice();
+
+	        
+
+	        if (vo.getMcgList() != null && !vo.getMcgList().isEmpty()) {
+	            for (MypageCartGoodsOptionVO opt : vo.getMcgList()) {
+	                total += opt.getOptionPrice();
+	            }
+	        }
+	        
+	        
+	        total = total * vo.getGoodsCnt();
+	        vo.setTotalGoodsTotalPrice(total);
+	    }
+	    // 3. 반드시 조회 결과 반환 ⭐⭐⭐
+	    return list;
+	}
+
+
+
+
+
+
 
 }

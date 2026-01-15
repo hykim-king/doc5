@@ -50,6 +50,166 @@ public class UserController {
 		log.debug("└──────────────────────────┘");	
 	}
 	
+	@RequestMapping(value = "/findId.do")  
+	public String findId(Model model) {
+		log.debug("┌──────────────────────────┐");
+		log.debug("│findId()              │");
+		log.debug("└──────────────────────────┘");
+
+		String actionUrl = "./idFind.do";
+		model.addAttribute("pageTitle","아이디찾");
+		model.addAttribute("actionUrl",actionUrl);
+		return "/user/find_password";
+	}
+	
+	@RequestMapping(value = "/findPassword.do")  
+	public String findPassword(Model model) {
+		log.debug("┌──────────────────────────┐");
+		log.debug("│findPassword()              │");
+		log.debug("└──────────────────────────┘");
+
+		String actionUrl = "./passwordFindPs.do";
+		model.addAttribute("pageTitle","비밀번호찾기");
+		model.addAttribute("actionUrl",actionUrl);
+		return "/user/find_password";
+	}
+	
+	@RequestMapping(value = "/passwordFindPs.do")  
+	public String passwordFindPs(Model model) {
+		log.debug("┌──────────────────────────┐");
+		log.debug("│passwordFindPs()          │");
+		log.debug("└──────────────────────────┘");
+
+		
+		return "/user/find_password";
+	}
+	
+	@RequestMapping(value = "/certificationNumbeCheck.do")  
+	@ResponseBody
+	public String certificationNumbeCheck(String certificationNumbe, HttpSession session, Model model) {
+		log.debug("┌──────────────────────────┐");
+		log.debug("│certificationNumbeCheck() │");
+		log.debug("└──────────────────────────┘");
+		
+		String jsonString = "";
+		
+		MessageVO message = new MessageVO();
+		
+		
+		
+		
+		
+		String sess_certificationNumber = (String) session.getAttribute("sessionCertificationNumbe");
+		if(certificationNumbe == sess_certificationNumber) {
+			message.setFlag(1);
+			message.setMessage("");
+		}else {
+			message.setFlag(2);
+		}
+			
+		
+		//log.debug("certificationNumber : {}", certificationNumber);
+		
+		jsonString = new Gson().toJson(message);
+		
+		return jsonString;
+	}
+	
+	@RequestMapping(value = "/certificationNumber.do")  
+	@ResponseBody
+	public String certificationNumber(
+			@RequestParam("type") String type,
+			@RequestParam(required = false) String findUserId,
+			@RequestParam(required = false) String findPhone,
+			@RequestParam(required = false) String findPassword,
+			@RequestParam(required = false) String findPasswordRe,
+			@RequestParam(required = false) String findCertificationNumber,
+			HttpSession session, 
+			Model model
+		) {
+		log.debug("┌──────────────────────────┐");
+		log.debug("│certificationNumber()     │");
+		log.debug("└──────────────────────────┘");
+		
+		String jsonString = "";
+		
+		MessageVO message = new MessageVO();
+		UserVO userVO = new UserVO();
+		
+		if(type.equals("sendcode")) {
+			userVO.setUserId(findUserId);
+        	UserVO userInfo = userService.doSelectOne(userVO);
+        	log.debug("userInfo : {}",userInfo);
+        	
+        	if(null == userInfo) {
+        		message.setFlag(2);
+    			message.setMessage(findUserId+"님 고객 정보가 없습니다.");
+        	}else {
+        		
+        		String tmpUserPhone = userInfo.getPhone().replaceAll("[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9,. ]", "");
+        		String tmpFindPhone = findPhone.replaceAll("[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9,. ]", "");
+        		log.debug("userPhone : {}",tmpUserPhone);
+
+        		if(!tmpUserPhone.equals(tmpFindPhone)) {
+        			message.setFlag(2);
+        			message.setMessage(findUserId+"님 휴대폰번호가 일치하지 않습니다.");
+        		}else {
+	        		String certificationNumberCode = userService.certificationNumber();
+	    			
+	    			message.setFlag(1);
+	    			message.setMessage(certificationNumberCode);
+	    			
+	    			session.setAttribute("sessionCertificationNumbe", certificationNumberCode);
+	    			log.debug("certificationNumberCode : {}", certificationNumberCode);
+        		}
+        	}
+        	
+			
+			
+			
+			
+		}else if(type.equals("confirm")){
+			
+			String sessionCertificationNumbe = (String) session.getAttribute("sessionCertificationNumbe");
+			
+			if(findCertificationNumber.equals(sessionCertificationNumbe)) {
+				message.setFlag(1);
+				message.setMessage("인증번호가 확인 되었습니다.");
+			}else {
+				message.setFlag(2);
+				message.setMessage("인증번호가 틀렸습니다. \n다시 확인해 주세요.");
+			}
+			log.debug("certificationNumber : {}",findCertificationNumber);
+			log.debug("sessionCertificationNumbe : {}",sessionCertificationNumbe);
+		}else if(type.equals("passwordChange")){
+			
+			userVO.setUserId(findUserId);
+
+        	UserVO userInfo = userService.doSelectOne(userVO);
+        	log.debug("userInfo : {}",userInfo);
+        	
+        	userInfo.setPassword(findPassword);
+        	int flag = userService.doUpdate(userInfo);
+			log.debug("2.flag:{}",flag);
+			
+			if( 1 == flag ) {
+				message.setFlag(1);
+				message.setMessage(userInfo.getName()+"님 비밀번호가 수정 되었습니다.");
+			}else {
+				message.setFlag(2);
+				message.setMessage(userInfo.getName()+"님 비밀번호가 수정 실패했습니다.");
+			}
+        	
+			
+		}
+				
+		
+		jsonString = new Gson().toJson(message);
+		
+		return jsonString;
+	}
+	
+
 	
 	@RequestMapping(value = "/userRegist.do")  
 	public String userRegist(Model model) {
@@ -190,7 +350,7 @@ public class UserController {
 		
 	}
 	
-	@GetMapping(value = "/doSelectOne.do")  
+	@GetMapping(value = "/doSelectOne.do")
 	public String doSelectOne(@RequestParam(required = false, defaultValue = "99") String userId
 			, Model model) {
 		log.debug("┌──────────────────────────┐");
@@ -370,6 +530,50 @@ public class UserController {
 			}
 		}
 		
+	}
+	
+	/**
+	 * 회원탈퇴 
+	 * @param param
+	 * @param response
+	 * @param request
+	 * @return
+	 * @throws IOException
+	 */
+	@PostMapping(value =  "/ajaxCloseAccount.do",produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String ajaxCloseAccount(UserVO param, HttpServletResponse response, HttpSession session){
+		log.debug("┌──────────────────────────┐");
+		log.debug("│ajaxCloseAccount()        │");
+		log.debug("└──────────────────────────┘");
+		
+		String jsonString = null;
+		MessageVO message = new MessageVO();
+		UserVO userVO = (UserVO) session.getAttribute("sessionUser");
+		
+		message.setFlag(1);
+		message.setMessage("회원탈퇴를 완료했습니다.");
+		
+		if (userVO.getUserId() != null) {
+			param.setUserId(userVO.getUserId());
+			int flag = userService.doDelete(param);
+			session.invalidate();
+			
+			if(flag > 0) {
+				message.setFlag(flag);
+				message.setMessage("회원탈퇴를 완료했습니다.");
+			}else {
+				message.setFlag(flag);
+				message.setMessage("회원탈퇴 실패했습니다.\n관리자에게 문의해주세요.");
+			}
+		}else {
+			message.setFlag(2);
+			message.setMessage("잘못된 접속입니다.");
+		}
+		
+		jsonString = new Gson().toJson(message);
+		
+		return jsonString;
 	}
 	
 }

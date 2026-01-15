@@ -1,3 +1,4 @@
+
 package com.project.doc5.manager.domain;
 
 public class AdDTO {

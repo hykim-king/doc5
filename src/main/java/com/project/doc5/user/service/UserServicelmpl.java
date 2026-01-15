@@ -94,7 +94,24 @@ public class UserServicelmpl implements UserService<UserVO> {
 	}
 
 
-	
+	@Override
+	public String certificationNumber() {
+		
+		// 1. 5자리 랜덤 숫자(10000 ~ 99999) 생성
+        int fiveDigitNumber = 10000 + (int)(Math.random() * 90000); // 10000부터 89999 범위에 10000 더함
+
+        // 2. 숫자를 문자열로 변환
+        String fiveDigitString = String.valueOf(fiveDigitNumber); //
+
+        // 3. 문자열에서 첫 번째 문자 제거 (인덱스 1부터 끝까지 자르기)
+        String fourDigitString = fiveDigitString.substring(1); //
+
+        // 결과 출력
+        System.out.println("원본 5자리 숫자: " + fiveDigitNumber);
+        System.out.println("제거 후 4자리 문자열: " + fourDigitString);
+
+		return fourDigitString;
+	}
 	
 
 }

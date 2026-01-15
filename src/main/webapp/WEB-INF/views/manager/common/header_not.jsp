@@ -24,7 +24,7 @@
 	<meta property="og:site_name" content="DOC5 커피전문점, 프랜차이즈, 빅사이즈 투샷, 테이크아웃">
 	<meta property="og:description" content="DOC5 커피전문점, 프랜차이즈, 빅사이즈 투샷, 테이크아웃">
 	<meta property="og:url" content="http://192.168.100.185:8080/">
-	<meta property="og:image" content="/resources/img/doc5_logo.png">
+	<meta property="og:image" content="${pageContext.request.contextPath}/resources/img/doc5_logo.png">
 	<!-- webmaster end -->
 	<!-- app start-->
 	<meta property="al:ios:url" content="applinks://docs">
@@ -45,10 +45,10 @@
     <meta charset="UTF-8" />
 
 	
-<script src="/resources/js/assets/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/resources/js/assets/js/color-modes.js"></script>
-<link href="/resources/js/assets/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="/resources/css/sign-in.css" rel="stylesheet" />
+<script src="${pageContext.request.contextPath}/resources/js/assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/assets/js/color-modes.js"></script>
+<link href="${pageContext.request.contextPath}/resources/js/assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="${pageContext.request.contextPath}/resources/css/sign-in.css" rel="stylesheet" />
   
 </head>
 <body>

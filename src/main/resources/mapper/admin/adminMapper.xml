@@ -3,86 +3,156 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.doc5.mapper.AdMapper">
+    <resultMap id="mapMypageOrderVO" type="MypageOrderVO">
+<id property="orderNo" column="order_no"/>
+        <result property="branchCode" column="branch_code"/>
+        <result property="orderName" column="order_name"/>
+        <result property="goodsTotalCnt" column="goods_total_cnt"/>
+        <result property="settleTotalPrice" column="settle_total_price"/>
+        <result property="goodsTotalPrice" column="goods_total_price"/>
+        <result property="optionTotalPrice" column="option_total_price"/>
+        <result property="settelKind" column="settel_kind"/>
+        <result property="orderStep" column="order_step"/>
+        <result property="regDt" column="reg_dt"/>
+        <result property="modDt" column="mod_dt"/>
+   <collection property="cList" ofType="MypageCartVO">
+        <result property="seq" column="seq"/>
+        <result property="goodsName" column="goods_name"/>
+        <result property="goodsNo" column="goods_no"/>
+        <result property="goodsPrice" column="goods_price"/>
+        <result property="goodsCnt" column="goods_cnt"/>
+        <result property="hotFl" column="hot_fl"/>
+        <result property="hotPrice" column="hot_price"/>
+        <result property="iceFl" column="ice_fl"/>
+        <result property="icePrice" column="ice_price"/>
+        <result property="cancelDt" column="cancel_dt"/>
+     <collection property="mcgList" ofType="com.project.doc5.mypage.domain.MypageCartGoodsOptionVO">
+        <result property="optionName" column="option_name"/>
+        <result property="optionPrice" column="option_price"/>
+     </collection>
+  </collection>
+  </resultMap>
+    
+    
     <!-- ==================== 주문 결과 매핑 ==================== -->
     <resultMap id="orderResultMap" type="com.project.doc5.manager.domain.AdOrderVO">
         <id column="ORDER_NO" property="orderNo"/>
         <result column="ORDER_DATE" property="regDt"/>
-        <result column="USER_ID" property="userId"/>
         <result column="SETTLE_TOTAL_PRICE" property="settleTotalPrice"/>
+        <result column="OPTION_TOTAL_PRICE" property="optionTotalPrice"/>
         <result column="ORDER_STEP" property="orderStep"/>
+        <result column="ORDER_NAME" property="orderName"/>      
     </resultMap>
     <!-- ==================== 매출/주문수 결과 매핑 ==================== -->
     <resultMap id="salesResultMap" type="com.project.doc5.manager.domain.AdOrderVO">
         <result column="TOTAL_SALES" property="totalSales"/>
         <result column="TOTAL_ORDER_COUNT" property="totalOrderCount"/>
     </resultMap>
+    <!-- ==================== 지점명 매핑 ==================== -->
+    <resultMap id="branchDomain"  type="com.project.doc5.branch.domain.BranchVO">
+    <result column ="branch_name" property="branchName"/> 
+    </resultMap>
+    <select id="doDetailOrder" parameterType="MypageOrderVO" resultMap="mapMypageOrderVO"> 
+    SELECT o.order_no, 
+           o.branch_code, 
+           o.order_name, 
+           o.goods_total_cnt, 
+           o.settle_total_price, 
+           o.goods_total_price, 
+           o.option_total_price, 
+           o.settel_kind, o.order_step, 
+           TO_CHAR(o.reg_dt,'MM.DD HH24:MI') reg_dt, 
+           CASE WHEN o.order_step IN ('O', 'P') THEN TO_CHAR(o.mod_dt + (20/1440), 'MM.DD HH24:MI') 
+           ELSE TO_CHAR(o.mod_dt, 'MM.DD HH24:MI') END AS mod_dt, 
+           c.seq, c.goods_no, 
+           c.goods_name, 
+           c.goods_price, 
+           c.goods_cnt, 
+           c.hot_fl, 
+           c.hot_price, 
+           c.ice_fl, 
+           c.ice_price, 
+           cgo.option_name, 
+           cgo.option_price 
+           FROM doc5_order o 
+           LEFT JOIN doc5_cart c ON o.order_no = c.order_no 
+           LEFT JOIN doc5_cart_goods_option cgo ON c.seq = cgo.c_seq 
+           WHERE o.order_no = #{orderNo} 
+           ORDER BY c.seq DESC </select>
+    
+    <!-- ==================== 지점명 조회 ==================== -->
+    <select id="getBranchName" resultMap="branchDomain">
+    SELECT branch_name  
+      FROM doc5_branch 
+     WHERE branch_code=#{branchCode}
+    
+    </select>
+    
+    
     <!-- ==================== 월 매출 + 주문 수 ==================== -->
-<select id="selectSalesAndOrderCount"
+    <select id="selectSalesAndOrderCount"
         parameterType="java.util.Map"
         resultMap="salesResultMap">
-        SELECT (SELECT b.branch_name FROM doc5_branch b WHERE b.branch_code=#{branchCode}),
-               NVL(SUM(SETTLE_TOTAL_PRICE), 0) AS TOTAL_SALES,
-               count(*) AS TOTAL_ORDER_COUNT
-          FROM DOC5_ORDER
-         WHERE branch_code =#{branchCode} 
-               AND order_step = 'S'
-               AND TO_CHAR(reg_dt,'YYYYMM') = TO_CHAR(ADD_MONTHS(TRUNC(SYSDATE, 'MM'), -1),'YYYYMM')
-         GROUP BY branch_code   
+    SELECT NVL(SUM(SETTLE_TOTAL_PRICE), 0) AS TOTAL_SALES,
+           count(*) AS TOTAL_ORDER_COUNT
+      FROM DOC5_ORDER
+     WHERE branch_code =#{branchCode}
+       AND order_step = 'S'
+   <![CDATA[
+       AND reg_dt >= TRUNC(SYSDATE, 'MM')
+       AND reg_dt <  ADD_MONTHS(TRUNC(SYSDATE, 'MM'), 1)
+   ]]>
+     GROUP BY branch_code   
 </select>
     <!-- ==================== 회원 목록 조회 ==================== -->
     <select id="selectMemberList"  resultType="com.project.doc5.user.domain.UserVO">
-        SELECT
-            USER_ID,
-            NAME,
-            PHONE,
-            TO_CHAR(REG_DT, 'YYYY-MM-DD') AS REG_DT
-        FROM DOC5_MEMBER
-        <where>
-            <if test="searchWord != null and searchWord != ''">
-                AND USER_ID LIKE '%' || #{searchWord} || '%'
-            </if>
+     SELECT user_id,
+            name,
+            phone,
+            TO_CHAR(REG_DT, 'YYYY-MM-DD') AS reg_dt
+       FROM DOC5_MEMBER
+     <where>
+        <if test="searchWord != null and searchWord != ''">
+         AND USER_ID LIKE '%' || #{searchWord} || '%'
+        </if>
         </where>
-        ORDER BY REG_DT DESC
+    ORDER BY REG_DT DESC
     </select>
     <!-- ==================== 회원 삭제 ==================== -->
     <delete id="deleteMemberCartData" parameterType="String">
         DELETE FROM DOC5_CART
-        WHERE USER_ID = #{value}
+        WHERE USER_ID = #{userId}
     </delete>
     <delete id="deleteMember" parameterType="String">
         DELETE FROM DOC5_MEMBER
-        WHERE USER_ID = #{value}
+        WHERE USER_ID = #{userId}
     </delete>
-    <!-- ==================== 회원 주문 목록 ==================== -->
-    <select id="selectOrdersByMemberId"
-            parameterType="String"
-            resultMap="orderResultMap">
+    <!-- ================ 지점별 회원 주문 목록 ================ -->
+    <select id="selectOrdersByBranch" parameterType="String" 
+      resultType="com.project.doc5.manager.domain.AdOrderVO">
         SELECT
-            O.ORDER_NO,
-            TO_CHAR(O.REG_DT, 'YYYY-MM-DD HH24:MI:SS') AS ORDER_DATE,
-            C.USER_ID,
-            O.SETTLE_TOTAL_PRICE,
-            O.ORDER_STEP
-        FROM DOC5_ORDER O
-        JOIN DOC5_CART C ON O.ORDER_NO = C.ORDER_NO
-        WHERE C.USER_ID = #{value}
-        ORDER BY O.REG_DT DESC
+            order_no as orderNo,
+            TO_CHAR(reg_dt, 'YYYY-MM-DD HH24:MI:SS') AS regdt,
+            order_name as orderName,
+            settle_total_price as settleTotalPrice,
+            order_step as orderStep
+        FROM DOC5_ORDER 
+        WHERE BRANCH_CODE = #{BRANCH_CODE}
+        ORDER BY reg_dt DESC
     </select>
-    <!-- ==================== 미처리 주문 (페이징) ==================== -->
-    <select id="selectPendingOrders"
-            parameterType="com.project.doc5.manager.domain.AdDTO"
-            resultMap="orderResultMap">
+    <!-- ==================지점별 미처리 주문  ==================== -->
+    <select id="selectPendingOrders" parameterType="com.project.doc5.manager.domain.AdDTO" 
+        resultType="com.project.doc5.manager.domain.AdOrderVO">
         SELECT
-            O.ORDER_NO,
-            TO_CHAR(O.REG_DT, 'YYYY-MM-DD HH24:MI:SS') AS ORDER_DATE,
-            C.USER_ID,
-            O.SETTLE_TOTAL_PRICE,
-            O.ORDER_STEP
-        FROM DOC5_ORDER O
-        JOIN DOC5_CART C ON O.ORDER_NO = C.ORDER_NO
-        WHERE O.ORDER_STEP = 'P'
-          AND O.BRANCH_CODE = #{branchCode}
-        ORDER BY O.REG_DT ASC
+            order_no as orderNo,
+            TO_CHAR(REG_DT, 'YYYY-MM-DD HH24:MI:SS') AS regDt,
+            order_name as orderName,
+            SETTLE_TOTAL_PRICE as settleTotalPrice,
+            ORDER_STEP as orderStep
+        FROM DOC5_ORDER 
+        WHERE ORDER_STEP IN ('O', 'P')
+          AND BRANCH_CODE = #{branchCode}
+        ORDER BY REG_DT ASC
     </select>
     <!-- ==================== 주문 상태 변경 ==================== -->
     <update id="updateOrderToSuccess" parameterType="java.util.Map">
@@ -98,9 +168,35 @@
            SET ORDER_STEP = 'C',
                MOD_DT = SYSDATE
          WHERE ORDER_NO = #{orderNo}
-           AND ORDER_STEP = 'P'
+           AND ORDER_STEP IN ('O','P')
            AND BRANCH_CODE = #{branchCode}
-    </update>
+    </update>   
+    
+    <update id="updateOrderToP" parameterType="java.util.Map"> 
+    UPDATE DOC5_ORDER 
+       SET ORDER_STEP = 'P', 
+           MOD_DT = SYSDATE 
+     WHERE ORDER_NO = #{orderNo} 
+       AND ORDER_STEP = 'O' 
+       AND BRANCH_CODE = #{branchCode} 
+    </update> 
+    
+    <select id ="getCountPO">
+    SELECT count(order_no)
+      FROM DOC5_ORDER
+     WHERE BRANCH_CODE = #{branchCode}
+       AND ORDER_STEP IN ('O','P')
+    </select>
+    
+    <select id ="getCountAll">
+    SELECT count(order_no)
+      FROM DOC5_ORDER
+     WHERE BRANCH_CODE = #{branchCode}
+    </select>
+    
+    
+    
+    
     <!-- ==================== 테스트용 INSERT ==================== -->
     <insert id="testInsertMember"
             parameterType="com.project.doc5.user.domain.UserVO">

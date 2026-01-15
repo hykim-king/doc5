@@ -28,6 +28,16 @@
 	/* border-radius: 0 0 20px 20px ; */
 	
 }
+
+.close-account-box{
+	text-align:right;margin:20px 0;
+}
+
+.close-account-box button{
+	background-color:#fff;
+	border:1px solid #eee;
+	color:#ddd;
+}
 </style>
 
 <div class="sub-box">
@@ -110,6 +120,7 @@
             <br/>
 		        <button class="w-100 btn btn-lg btn-primary" type="submit">${pageTitle}</button>
 		      </form>
+			  <div class="close-account-box"><button class="w-50 btn btn-lg btn-primary"  type="button" id="close-account">회원탈퇴</button></div>
 		    </main>
 		    </div>
 		</div>

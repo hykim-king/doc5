@@ -1,66 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<script>
-	var topMenuSwiper = new Swiper(".topMenuSwiper", {
-		slidesPerView: 6,
-		spaceBetween:5,
-		freeMode: true
-	});
 
-	$(document).ready(function(){
-		
-		$(".topMenuSwiper .swiper-slide").each(function() {
-			if($(this).hasClass('on')==true){
-				topMenuSwiper.slideTo($(this).data("num"));
-			}
-		});
-
-	});
-
-	/*
-	var category_change = "";
-	$(document).on("click","[name='list_checkbox_all']",function(){
-		if ($(this).prop("checked") == true) {
-			$(this).parents(".list_checkbox_wrap").find(".list_checkbox").find(":checkbox").prop("checked",false).change();
-		}
-		menu();
-	});
-	$(document).on("click","[name='list_checkbox']",function(){
-		$(this).parents(".list_checkbox_wrap").find("[name='list_checkbox_all']").prop("checked",false).change();
-		if ( $(this).parents(".list_checkbox_wrap").find("[name='list_checkbox']").length ==  $(this).parents(".list_checkbox").find("[name='list_checkbox']:checked").length ) {
-			$(this).parents(".list_checkbox_wrap").find("[name='list_checkbox_all']").prop("checked",true).change();
-		} else {
-			$(this).parents(".list_checkbox_wrap").find("[name='list_checkbox_all']").prop("checked",false).change();
-		}
-		menu();
-	});
-
-	function menu(page){
-		var list_checkbox_all = $("input[name='list_checkbox_all']:checked").val();
-		var checkbox = [];
-		$("input[name='list_checkbox']:checked").each(function(i) {
-			checkbox.push($(this).val());
-		});
-		var checklist_join = checkbox.join(",");
-		$.ajax({
-			url : "menu.php",
-			type : "GET",
-			data : {
-				"page" : page,
-				"menu_category1" : '',
-				"menu_category2" : '',
-				"category" : checklist_join,
-				"list_checkbox_all" : list_checkbox_all,
-			},
-			success : function(result) {
-				$("#menu_list").html(result);
-				cont_gallery_list_img();
-			}
-		});
-	};
-	*/
-</script>
 	</div>
 	
 	<c:if test="${bottomMenuFl ne 'N' }">
@@ -109,30 +50,8 @@
 		AOS.init({
 		  duration: 1200,
 		});
-		$(document).ready(function(){
-			var swiper_foot = new Swiper(".swiper_foot", {
-				slidesPerView: "auto",
-				spaceBetween: 50,
-				loop: true,
-				autoplay: {
-				  delay: 0,
-				},
-				speed: 5000,
-				navigation: {
-					nextEl: ".swiper-button-next",
-					prevEl: ".swiper-button-prev",
-				},
-				on: {
-					slideChange: function () {
-					},
-					activeIndexChange: function () {
-					}
-				},
-				breakpoints: {
-				}
-			});
-		});
+		
 	</script>
-	     <!-- iframe 설정 -->
+	<!-- iframe 설정 -->
     <iframe id="iframe" name="iframe" data-contextPath="${pageContext.request.contextPath}"></iframe>   
 </html>
