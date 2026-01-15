@@ -20,14 +20,18 @@ public interface AdMapper {
     // ==================== 회원 삭제 (XML: deleteMemberCartData, deleteMember) ====================
     int deleteMemberCartData(String userId);
     int deleteMember(String userId);
-    // ==================== 지점별 회원 주문 목록 (XML: selectOrdersByBranch) ====================
-    List<AdOrderVO> selectOrdersByBranch(String branchCode);
-    // ==================== 지점별 미처리 주문 (XML: selectPendingOrders) ====================
-    List<AdOrderVO> selectPendingOrders(AdDTO dto);
+    
+    
+    List<AdOrderVO> getPendingOrders(AdDTO dto);
+    List<AdOrderVO> getOrdersByBranch(AdDTO dto);
     // ==================== 주문 상태 변경 (XML: updateOrderToSuccess/Cancel) ====================
     int updateOrderToSuccess(Map<String, Object> paramMap);
     int updateOrderToCancel(Map<String, Object> paramMap);
     int updateOrderToP(Map<String, Object> paramMap);
+    
+    
+    int getCountPO(String branchCode);
+    int getCountAll(String branchCode);
     
     
     
@@ -38,6 +42,12 @@ public interface AdMapper {
     int testInsertCart(Map<String, Object> paramMap);
 
     List<MypageOrderVO> doDetailOrder(MypageOrderVO param);
+	List<AdOrderVO> getOrdersByBranch(String tEST_BRANCH_CODE);
+    
+    
+    
+    
+    
 
  
 }

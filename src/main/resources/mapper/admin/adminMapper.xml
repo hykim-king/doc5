@@ -127,33 +127,28 @@
         DELETE FROM DOC5_MEMBER
         WHERE USER_ID = #{userId}
     </delete>
-    <!-- ================ 지점별 회원 주문 목록 ================ -->
-    <select id="selectOrdersByBranch" parameterType="String" 
-      resultType="com.project.doc5.manager.domain.AdOrderVO">
-        SELECT
-            order_no as orderNo,
-            TO_CHAR(reg_dt, 'YYYY-MM-DD HH24:MI:SS') AS regdt,
-            order_name as orderName,
-            settle_total_price as settleTotalPrice,
-            order_step as orderStep
-        FROM DOC5_ORDER 
-        WHERE BRANCH_CODE = #{BRANCH_CODE}
-        ORDER BY reg_dt DESC
-    </select>
-    <!-- ==================지점별 미처리 주문  ==================== -->
-    <select id="selectPendingOrders" parameterType="com.project.doc5.manager.domain.AdDTO" 
-        resultType="com.project.doc5.manager.domain.AdOrderVO">
-        SELECT
-            order_no as orderNo,
-            TO_CHAR(REG_DT, 'YYYY-MM-DD HH24:MI:SS') AS regDt,
-            order_name as orderName,
-            SETTLE_TOTAL_PRICE as settleTotalPrice,
-            ORDER_STEP as orderStep
-        FROM DOC5_ORDER 
-        WHERE ORDER_STEP IN ('O', 'P')
-          AND BRANCH_CODE = #{branchCode}
-        ORDER BY REG_DT ASC
-    </select>
+<select id="getPendingOrders" parameterType="com.project.doc5.manager.domain.AdDTO" resultType="com.project.doc5.manager.domain.AdOrderVO">
+    SELECT * FROM (
+        SELECT ROWNUM AS RNUM, A.* FROM (
+            SELECT * FROM DOC5_ORDER 
+            WHERE BRANCH_CODE = #{branchCode} 
+              AND ORDER_STEP IN ('O', 'P')
+            ORDER BY REG_DT DESC
+        ) A
+        WHERE ROWNUM &lt;= #{pageNo} * #{pageSize}
+    ) WHERE RNUM &gt;= (#{pageNo} - 1) * #{pageSize} + 1
+</select>
+
+<select id="getOrdersByBranch" parameterType="com.project.doc5.manager.domain.AdDTO" resultType="com.project.doc5.manager.domain.AdOrderVO">
+    SELECT * FROM (
+        SELECT ROWNUM AS RNUM, A.* FROM (
+            SELECT * FROM DOC5_ORDER 
+            WHERE BRANCH_CODE = #{branchCode} 
+            ORDER BY REG_DT DESC
+        ) A
+        WHERE ROWNUM &lt;= #{pageNo} * #{pageSize}
+    ) WHERE RNUM &gt;= (#{pageNo} - 1) * #{pageSize} + 1
+</select>
     <!-- ==================== 주문 상태 변경 ==================== -->
     <update id="updateOrderToSuccess" parameterType="java.util.Map">
         UPDATE DOC5_ORDER
@@ -182,14 +177,14 @@
     </update> 
     
     <select id ="getCountPO">
-    SELECT count(order_no)
+    SELECT count(*)
       FROM DOC5_ORDER
      WHERE BRANCH_CODE = #{branchCode}
        AND ORDER_STEP IN ('O','P')
     </select>
     
     <select id ="getCountAll">
-    SELECT count(order_no)
+    SELECT count(*)
       FROM DOC5_ORDER
      WHERE BRANCH_CODE = #{branchCode}
     </select>

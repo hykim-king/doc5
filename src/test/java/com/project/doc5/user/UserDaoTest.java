@@ -52,9 +52,9 @@ class UserDaoTest {
 		log.debug("│──setup───────────────────│");
 		log.debug("└──────────────────────────┘");	
 		
-		user01 = new UserVO("doc5_01@doc5.com", "doc5_010", "독오01","010-0000-0000",Grade.BASIC,"날짜 없음!","NULL","NULL");		
-		user02 = new UserVO("doc5_02@doc5.com", "doc5_010", "독오02","010-0000-0000",Grade.SILVER,"날짜 없음!","NULL","NULL");
-		user03 = new UserVO("doc5_03@doc5.com", "doc5_010", "독오03","010-0000-0000",Grade.GOLD,"날짜 없음!","NULL","NULL");
+		user01 = new UserVO("doc5_01@doc5.com", "doc5_010", "독오01","010-0000-0000",Grade.BASIC,"날짜 없음!","NULL","NULL","");		
+		user02 = new UserVO("doc5_02@doc5.com", "doc5_010", "독오02","010-0000-0000",Grade.SILVER,"날짜 없음!","NULL","NULL","");
+		user03 = new UserVO("doc5_03@doc5.com", "doc5_010", "독오03","010-0000-0000",Grade.GOLD,"날짜 없음!","NULL","NULL","");
 		
 		dto = new DTO();
 	}

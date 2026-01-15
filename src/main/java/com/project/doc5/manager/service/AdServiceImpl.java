@@ -55,16 +55,14 @@ public class AdServiceImpl implements AdService {
         adMapper.deleteMember(userId);
     }
 
-    // ==================== 5. 지점별 회원 주문 목록 조회 ====================
-    @Override
-    public List<AdOrderVO> getOrdersByBranch(String branchCode) {
-        return adMapper.selectOrdersByBranch(branchCode);
-    }
-
-    // ==================== 6. 지점별 미처리 주문 조회 ====================
     @Override
     public List<AdOrderVO> getPendingOrders(AdDTO dto) {
-        return adMapper.selectPendingOrders(dto);
+        return adMapper.getPendingOrders(dto);
+    }
+
+    @Override
+    public List<AdOrderVO> getOrdersByBranch(AdDTO dto) {
+        return adMapper.getOrdersByBranch(dto);
     }
 
     // ==================== 7. 주문 상태 변경 처리 ====================
@@ -105,4 +103,14 @@ public class AdServiceImpl implements AdService {
 		}
 		return mypageOrderVO;
 	}
+
+    @Override
+    public int getCountPO(String branchCode) {
+        return adMapper.getCountPO(branchCode);
+    }
+
+    @Override
+    public int getCountAll(String branchCode) {
+        return adMapper.getCountAll(branchCode);
+    }
 }
