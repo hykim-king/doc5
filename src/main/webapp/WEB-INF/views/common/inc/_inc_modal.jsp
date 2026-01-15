@@ -253,7 +253,7 @@
         
         <button class="w-100 btn btn-lg btn-primary" type="submit">로그인 하기</button>
         <button class="w-100 btn btn-lg btn-regist" type="button" onclick="location.href='${pageContext.request.contextPath}/user/userRegist.do'">회원가입</button>
-        <p class="text-password-find"><a href="${pageContext.request.contextPath}/user/findIdForm.do">아이디찾기</a> / <a href="${pageContext.request.contextPath}/user/findPassword.do">비밀번호찾기</a></p>
+        <p class="text-password-find"><a href="${pageContext.request.contextPath}/user/findPassword.do">비밀번호찾기</a></p>
         <p class="mt-5 mb-3 text-body-secondary">&copy; PROJECT02 DOC5 TEAM.</p>
       </form>
       
