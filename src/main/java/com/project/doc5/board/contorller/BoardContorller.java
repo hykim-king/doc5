@@ -92,8 +92,10 @@ public class BoardContorller {
 		
 		log.debug("dto : {}",dto);
 		
+		String pageUrl = "./boardList.do";
 		//페이징 설정 
-		BoardPaging boardPages = new BoardPaging(list.get(0).getTotalCnt(), pageNo, pageSize, blockSize, code);
+		//BoardPaging(총 카운트수, 페이징번호, 리스트수, 페이징 표기할 수, 게시판 코드번호, 페이징 이동경로);
+		BoardPaging boardPages = new BoardPaging(list.get(0).getTotalCnt(), pageNo, pageSize, blockSize, code, pageUrl);
 		
 		String pageCode = boardPages.printPages();
 		

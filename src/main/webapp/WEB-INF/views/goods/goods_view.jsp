@@ -17,7 +17,23 @@
 		bottom:5px;
 		margin:5px;
 	}
+	.goods-detail-box{
+		margin-top:20px;
+	}
 	
+.goods-detail-box li {
+    display: flex;              /* 한 줄을 차지하며 flex 컨테이너로 설정 */
+    justify-content: space-between; /* 왼쪽(b)과 오른쪽(span)을 양 끝으로 배치 */
+    align-items: center;        /* 세로 중앙 정렬 */
+    width: 100%;                /* 가로 전체 차지 */
+    padding: 10px 0;           /* 줄 간격 여백 */
+    border-bottom: 1px solid #eee; /* 줄 구분선 (선택사항) */
+}
+
+/* b와 span에서 float 속성은 제거해도 됩니다. */
+.goods-detail-box li b {
+    flex-shrink: 0;             /* 제목이 찌그러지지 않게 설정 */
+}
     </style>
 	<div class="cont_wrap menu_wrap">
 		<div class="cont goods_list">
@@ -37,26 +53,12 @@
 	                </c:if>
                 		
                 </div>
-                <p id="goodsSummary">${goodsVO.goodsContents}</p>
+                <p id="goodsSummary" style="margin:20px 0;font-size:15px;">${goodsVO.goodsContents}</p>
             </div>
         </div>
 
  
-<form id="cartForm" name="cartForm" method="post">
-  <input type="hidden" name="orderType" value="cart">
-  <input type="hidden" name="goodsNo" value="${goodsVO.goodsNo}">
-  <input type="hidden" name="branchCode" value="s0001">
-  <input type="hidden" name="orderNo" value="">
-  <input type="hidden" name="userId" value="${sessionScope.sessionUser.userId}">
-  <input type="hidden" name="goodsName" value="${goodsVO.goodsName}">
-  <input type="hidden" name="goodsPrice" value="${goodsVO.goodsPrice}">
-  <input type="hidden" name="goodsCnt" value="1">
-  <input type="hidden" name="tumblerFl" value="N">
-  <input type="hidden" name="hotFl" value="${goodsVO.hotFl}">
-  <input type="hidden" name="hotPrice" value="${goodsVO.hotPrice}">
-  <input type="hidden" name="iceFl" value="${goodsVO.iceFl}">
-  <input type="hidden" name="icePrice" value="${goodsVO.icePrice}">
-</form>  
+
 
         <div class="section-box" style="text-align:center;">
             <button id="detailBtn" class="detail-btn">
@@ -200,6 +202,21 @@
 
 		</div>
 	</div>
+<form id="cartForm" name="cartForm" method="post">
+  <input type="hidden" name="orderType" value="cart">
+  <input type="hidden" name="goodsNo" value="${goodsVO.goodsNo}">
+  <input type="hidden" name="branchCode" value="s0001">
+  <input type="hidden" name="orderNo" value="">
+  <input type="hidden" name="userId" value="${sessionScope.sessionUser.userId}">
+  <input type="hidden" name="goodsName" value="${goodsVO.goodsName}">
+  <input type="hidden" name="goodsPrice" value="${goodsVO.goodsPrice}">
+  <input type="hidden" name="goodsCnt" value="1">
+  <input type="hidden" name="tumblerFl" value="N">
+  <input type="hidden" name="hotFl" value="${goodsVO.hotFl}">
+  <input type="hidden" name="hotPrice" value="${goodsVO.hotPrice}">
+  <input type="hidden" name="iceFl" value="${goodsVO.iceFl}">
+  <input type="hidden" name="icePrice" value="${goodsVO.icePrice}">
+</form>  
 
 <style>
 /* 컨펌 모달 전용 스타일 */

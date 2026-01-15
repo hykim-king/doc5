@@ -121,7 +121,7 @@ String verDate = simpleDate.format(date);
 					</div>
 					</c:when>
 					<c:otherwise>
-					<div class="menu-rollback"><span id="m-roolback-btn">＜Back</span></div>
+					<div class="menu-rollback"><span id="m-roolback-btn">＜ Back</span></div>
 					
 					</c:otherwise>
 				</c:choose>

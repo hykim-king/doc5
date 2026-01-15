@@ -38,6 +38,14 @@
 	border:1px solid #eee;
 	color:#ddd;
 }
+
+/* 2. 체크되었을 때 (배경색과 체크 모양 설정) */
+.form-check-input[type=checkbox]:checked {
+    background-color: #000 !important; /* 배경을 검정으로 */
+    border-color: #000 !important;
+    /* 흰색 체크 모양 SVG */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e") !important;
+}
 </style>
 
 <div class="sub-box">
@@ -120,7 +128,9 @@
             <br/>
 		        <button class="w-100 btn btn-lg btn-primary" type="submit">${pageTitle}</button>
 		      </form>
+		      <c:if test="${pageTitle eq '회원정보 수정' }">
 			  <div class="close-account-box"><button class="w-50 btn btn-lg btn-primary"  type="button" id="close-account">회원탈퇴</button></div>
+			  </c:if>
 		    </main>
 		    </div>
 		</div>

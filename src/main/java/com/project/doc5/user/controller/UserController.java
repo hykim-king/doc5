@@ -409,6 +409,9 @@ public class UserController {
 		}else {
 		
 			if(userInfo == null) {
+				
+				param.setPhone(param.getPhone().replaceAll("[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9,. ]", ""));
+				
 				int flag = userService.doSave(param);
 				log.debug("2.flag:{}",flag);
 		

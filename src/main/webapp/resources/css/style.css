@@ -10,7 +10,7 @@
 	html, body{font-weight:300; letter-spacing:normal; word-break:keep-all; width:100%; text-align:left; font-size:16px; color:#1c1c1b; line-height:1.4; margin:0; padding:0; font-family:'Noto Sans KR','Noto Sans','sans-serif','MalgunGothic','Malgun Gothic','NanumGothic','Helvetica','Tahoma','Arial','Dotum','DotumChe';}
 	body{transition:ease-in-out 400ms padding; font-smoothing:antialiased; -webkit-font-smoothing:antialiased; -moz-font-smoothing:unset; -moz-osx-font-smoothing:grayscale; font-smoothing:antialiased; -webkit-backface-visibility:hidden; -moz-backface-visibility:hidden; backface-visibility:hidden;}
 	h1,h2{padding:0; margin:0; display:inline-block; font-weight:normal;}
-	a, a:link, a:focus, textarea, button, input, select{outline:none; resize:none; border:0px; text-decoration:none;   -webkit-border-radius:0;background-color:#fff;}
+	a, a:link, a:focus, textarea, button, input, select{outline:none; resize:none; border:0px; text-decoration:none;   -webkit-border-radius:0;}
 	a, a:link, a:focus{text-decoration:none; color:inherit; cursor:pointer;}
 	a:visited {color: inherit; }
 	textarea, button, input, select{font-family:'Lato', 'Noto Sans KR', sans-serif;}
